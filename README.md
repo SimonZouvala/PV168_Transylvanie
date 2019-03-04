@@ -1,6 +1,7 @@
 # PV168_Transylvanie
 
 ### Specifikace:
+Aplikace PV168_Transylvanie je určena na evidenci hostu v hotelu, prihlaseni hostu do hotelu (pokoje) a odhlaseni hostu z hotelu (pokoje).
 
 
 
