@@ -25,14 +25,14 @@ Kdyz uzivatel klikne na tlacitko "Hosti", objevi se seznam hostu. Pri kliknuti n
 Kdyz uzivatel klikne na tlacitko "Pokoje", objevi se seznam pokoju. Pri kliknuti na pokoj se vypisou informace o nem.
 ![alt text](Images/pokoje.png)
 
-Uzivatel muze pri kliknuti na tlacitko "Přihlásit pokoj", prihlasit urcity pocet hostu do pokoje. Pocet je omezen kapacitou.
+Uzivatel muze pri kliknuti na tlacitko "Přihlásit pokoj", prihlasit urcity pocet hostu do pokoje. Pocet je omezen kapacitou (max 5 hostu v jednom pokoji).
 ![alt text](Images/prihlasit.png)
 
 Obrazovka, ktera se objevi pri pridavani posledniho hosta v pokoji.
 ![alt text](Images/prihlasit_5.png)
 
 Uzivatel muze odhlasit pokoj. Po napsani cisla pokoje do kolonky, se uzivatli objevi cena za stravene noci.
-![alt text](Images/hosti.png)
+![alt text](Images/odhlasit.png)
 
 
 
