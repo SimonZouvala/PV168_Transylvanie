@@ -1,5 +1,8 @@
 # PV168_Transylvanie
 
+### Téma:
+Evidence hostů v hotelu 
+
 ### Specifikace:
 Aplikace PV168_Transylvanie je určena na evidenci hostu v hotelu, prihlaseni hostu do hotelu (pokoje) a odhlaseni hostu z hotelu (pokoje). 
 Evidenci hostu lze provadet pomoci seznamu hostu, kdy po zvolení hosta dostaneme informace o nem. Dalsi moznost evidence hosta lze podle vyhledani hosta podle jmena. 
