@@ -3,6 +3,8 @@ package hotel;
 import java.util.List;
 
 /**
+ * This service allows to manipulate with rooms.
+ *
  * @author Šimon Zouvala {445475@mail.muni.cz}
  */
 
