@@ -21,4 +21,9 @@ public class RoomManagerImpl implements RoomManager {
     public List<Room> findAllRoom() {
         return null;
     }
+    
+    @Override
+    public Room getRoom(Long id){
+        return null;
+    }
 }

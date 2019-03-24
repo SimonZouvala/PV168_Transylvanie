@@ -14,4 +14,6 @@ public interface RoomManager {
     void deleteRoom(Room room);
 
     List<Room> findAllRoom();
+    
+    Room getRoom(Long id);
 }

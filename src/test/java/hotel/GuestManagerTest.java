@@ -63,7 +63,7 @@ public class GuestManagerTest {
         DBUtils.executeSqlScript(ds,GuestManager.class.getResourceAsStream("dropTables.sql"));
     }
     
-    private GuestBuilder sampleWillyGuestBuilder() {
+    private GuestBuilder willyGuestBuilder() {
         return new GuestBuilder()
                 .name("Willy Werewolf")
                 .phone("705052648")
@@ -72,7 +72,7 @@ public class GuestManagerTest {
                 .room(room);
     }
 
-    private GuestBuilder sampleAliceGuestBuilder() {
+    private GuestBuilder aliceGuestBuilder() {
         return new GuestBuilder()
             .name("Alice Zombie")
             .phone("605050689")
@@ -87,7 +87,7 @@ public class GuestManagerTest {
     
     @Test
     public void createGuest() {
-        Guest guest = sampleWillyGuestBuilder().build();
+        Guest guest = willyGuestBuilder().build();
         manager.createGuest(guest);
 
         Long guestId = guest.getId();
@@ -100,7 +100,7 @@ public class GuestManagerTest {
     
     @Test
     public void createGuestWithExistingId() {
-        Guest guest = sampleWillyGuestBuilder()
+        Guest guest = willyGuestBuilder()
                 .id(1L)
                 .build();
         expectedException.expect(IllegalEntityException.class);
@@ -109,7 +109,7 @@ public class GuestManagerTest {
     
     @Test
     public void createGuestWithNullName() {
-        Guest guest = sampleWillyGuestBuilder()
+        Guest guest = willyGuestBuilder()
                 .name(null)
                 .build();
         assertThatThrownBy(() -> manager.createGuest(guest))
@@ -118,7 +118,7 @@ public class GuestManagerTest {
 
     @Test
     public void createGuestWithNullPhone() {
-        Guest guest = sampleWillyGuestBuilder()
+        Guest guest = willyGuestBuilder()
                 .phone(null)
                 .build();
         assertThatThrownBy(() -> manager.createGuest(guest))
@@ -127,7 +127,7 @@ public class GuestManagerTest {
 
     @Test
     public void createGuestCheckOutBeforeCheckIn() {
-        Guest guest = sampleWillyGuestBuilder()
+        Guest guest = willyGuestBuilder()
                 .dateOfCheckIn(2019,JANUARY,21)
                 .dateOfCheckOut(2019,JANUARY,20)
                 .build();
@@ -137,7 +137,7 @@ public class GuestManagerTest {
 
     @Test
     public void createGuestCheckInAndCheckOutInSameDay() {
-        Guest guest = sampleWillyGuestBuilder()
+        Guest guest = willyGuestBuilder()
                 .dateOfCheckIn(2019,JANUARY,21)
                 .dateOfCheckOut(2019,JANUARY,21)
                 .build();
@@ -151,7 +151,7 @@ public class GuestManagerTest {
     @Test
     public void createGuestWithCheckInTomorrow() {
         LocalDate tomorrow = NOW.toLocalDate().plusDays(1);
-        Guest guest = sampleWillyGuestBuilder()
+        Guest guest = willyGuestBuilder()
                 .dateOfCheckIn(tomorrow)
                 .dateOfCheckOut(null)
                 .build();
@@ -162,7 +162,7 @@ public class GuestManagerTest {
     @Test
     public void createGuestWithCheckInToday() {
         LocalDate today = NOW.toLocalDate();
-        Guest guest = sampleWillyGuestBuilder()
+        Guest guest = willyGuestBuilder()
             .dateOfCheckIn(2019,JANUARY,21)
             .dateOfCheckOut(2019,JANUARY,20)
             .build();
@@ -176,7 +176,7 @@ public class GuestManagerTest {
     @Test
     public void createGuestWithCheckOutTomorrow() {
         LocalDate tomorrow = NOW.toLocalDate().plusDays(1);
-        Guest guest = sampleWillyGuestBuilder()
+        Guest guest = willyGuestBuilder()
                 .dateOfCheckOut(tomorrow)
                 .build();
         assertThatThrownBy(() -> manager.createGuest(guest))
@@ -185,7 +185,7 @@ public class GuestManagerTest {
 
     @Test
     public void createGuestNullCheckIn() {
-        Guest guest = sampleWillyGuestBuilder()
+        Guest guest = willyGuestBuilder()
                 .dateOfCheckIn(null)
                 .build();
         manager.createGuest(guest);
@@ -196,7 +196,7 @@ public class GuestManagerTest {
 
     @Test
     public void createGuestNullCheckOut() {
-        Guest guest = sampleWillyGuestBuilder()
+        Guest guest = willyGuestBuilder()
             .dateOfCheckOut(null)
             .build();
         manager.createGuest(guest);
@@ -211,8 +211,8 @@ public class GuestManagerTest {
     public void findAllGuest() {
         assertThat(manager.findAllGuest()).isEmpty();
 
-        Guest willy = sampleWillyGuestBuilder().build();
-        Guest alice = sampleAliceGuestBuilder().build();
+        Guest willy = willyGuestBuilder().build();
+        Guest alice = aliceGuestBuilder().build();
 
         manager.createGuest(willy);
         manager.createGuest(alice);
@@ -224,7 +224,7 @@ public class GuestManagerTest {
 
     @Test
     public void findGuestByName() {
-        Guest willy = sampleWillyGuestBuilder().build();
+        Guest willy = willyGuestBuilder().build();
 
         manager.createGuest(willy);
 
@@ -240,8 +240,8 @@ public class GuestManagerTest {
      @Test
     public void deleteGuest() {
 
-        Guest willy = sampleWillyGuestBuilder().build();
-        Guest alice = sampleAliceGuestBuilder().build();
+        Guest willy = willyGuestBuilder().build();
+        Guest alice = aliceGuestBuilder().build();
         manager.createGuest(willy);
         manager.createGuest(alice);
 
@@ -263,14 +263,14 @@ public class GuestManagerTest {
 
     @Test
     public void deleteGuestWithNullId() {
-        Guest guest = sampleWillyGuestBuilder().id(null).build();
+        Guest guest = willyGuestBuilder().id(null).build();
         expectedException.expect(IllegalEntityException.class);
         manager.deleteGuest(guest);
     }
 
     @Test
     public void deleteNonExistingGuest() {
-        Guest guest = sampleWillyGuestBuilder().id(1L).build();
+        Guest guest = willyGuestBuilder().id(1L).build();
         expectedException.expect(IllegalEntityException.class);
         manager.deleteGuest(guest);
     }
