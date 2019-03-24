@@ -1,5 +1,7 @@
 package hotel;
 
+import exception.*;
+
 import java.util.List;
 
 /**
@@ -14,6 +16,8 @@ public interface GuestManager {
     void createGuest(Guest guest);
 
     List<Guest> findAllGuest();
+    
+    Guest getGuest(Long id) throws ServiceFailureException;
 
     Guest findGuestByName(String name);
 }
