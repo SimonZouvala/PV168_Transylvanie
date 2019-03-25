@@ -83,8 +83,7 @@ public class AccommodationTest {
         manager.addGuest(g1, r3);
 
         assertThat(manager.findGuestByRoom(r3))
-                .usingFieldByFieldElementComparator()
-                .containsOnly(g1);
+                .isEqualToComparingFieldByField(g1);
         assertThat(manager.findGuestByRoom(r2)).isNull();
         assertThat(manager.findGuestByRoom(r1)).isNull();
     }
@@ -111,13 +110,11 @@ public class AccommodationTest {
        // manager.addGuest(g2, r3);
 
         assertThat(manager.findGuestByRoom(r1))
-                .usingFieldByFieldElementComparator()
-                .containsOnly(g3);
+                .isEqualToComparingFieldByField(g3);
         assertThat(manager.findGuestByRoom(r2))
-                .isEmpty();
+                .isNull();
         assertThat(manager.findGuestByRoom(r3))
-                .usingFieldByFieldElementComparator()
-                .containsOnly(g1);
+                .isEqualToComparingFieldByField(g1);
         
     }
     @Test
@@ -131,13 +128,11 @@ public class AccommodationTest {
         
         
          assertThat(manager.findGuestByRoom(r1))
-                .usingFieldByFieldElementComparator()
-                .containsOnly(g3);
+                .isEqualToComparingFieldByField(g3);
         assertThat(manager.findGuestByRoom(r2))
-                .isEmpty();
+                .isNull();
         assertThat(manager.findGuestByRoom(r3))
-                .usingFieldByFieldElementComparator()
-                .containsOnly(g1);
+                .isEqualToComparingFieldByField(g1);
     }
     
     @Test(expected = IllegalArgumentException.class)
@@ -173,8 +168,7 @@ public class AccommodationTest {
     public void checkOutGuest(){
         manager.addGuest(g1, r3);
         assertThat(manager.findGuestByRoom(r3))
-                .usingFieldByFieldElementComparator()
-                .containsOnly(g1);
+                .isEqualToComparingFieldByField(g1);
         int day = NOW.getDayOfMonth()-g1.getDateOfCheckIn().getDayOfMonth();
         int price = day*r3.getPrice();
         
