@@ -18,8 +18,8 @@ import static org.assertj.core.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 /**
- * @author L�die Hemalov� {433757@mail.muni.cz}
- * @author ?imon Zouvala {445475@mail.muni.cz}
+ * @author Lýdie Hemalová {433757@mail.muni.cz}
+ * @author Šimon Zouvala {445475@mail.muni.cz}
  */
 public class AccommodationTest {
 
