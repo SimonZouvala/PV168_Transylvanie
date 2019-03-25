@@ -1,5 +1,6 @@
 package hotel;
 
+import javax.sql.DataSource;
 import java.util.List;
 
 /**
@@ -7,6 +8,14 @@ import java.util.List;
  */
 
 public class RoomManagerImpl implements RoomManager {
+
+    private DataSource dataSource;
+
+    @SuppressWarnings("WeakerAccess")
+    public RoomManagerImpl(DataSource dataSource) {
+        this.dataSource = dataSource;
+    }
+
     @Override
     public void createRoom(Room room) {
 
@@ -18,12 +27,14 @@ public class RoomManagerImpl implements RoomManager {
     }
 
     @Override
-    public List<Room> findAllRoom() {
+    public List<Room> findAllRooms() {
         return null;
     }
-    
+
     @Override
-    public Room getRoom(Long id){
+    public Room getRoom(Long id) {
         return null;
     }
+
+
 }
