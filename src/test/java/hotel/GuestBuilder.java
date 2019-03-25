@@ -5,7 +5,7 @@ import java.time.Month;
 
 /**
  *
- * @author Lýdie Hemalová (433757@mail.muni.cz)
+ * @author LÃ½die HemalovÃ¡ (433757@mail.muni.cz)
  */
 public class GuestBuilder {
         
