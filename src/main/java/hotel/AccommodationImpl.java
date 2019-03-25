@@ -5,6 +5,7 @@
  */
 package hotel;
 
+import javax.sql.DataSource;
 import java.util.List;
 
 /**
@@ -12,7 +13,14 @@ import java.util.List;
  * @author Lýdie Hemalová {433757@mail.muni.cz}
  */
 public class AccommodationImpl implements Accommodation{
-   
+
+    private DataSource dataSource;
+
+    @SuppressWarnings("WeakerAccess")
+    public AccommodationImpl(DataSource dataSource) {
+        this.dataSource = dataSource;
+    }
+
     @Override
     public Guest findGuestByRoom(Room room){
         return null;
