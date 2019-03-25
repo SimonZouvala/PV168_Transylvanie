@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: hotel.RoomManagerTest
 -------------------------------------------------------------------------------
-Tests run: 3, Failures: 3, Errors: 0, Skipped: 0, Time elapsed: 0.156 sec <<< FAILURE!
-findAllRoom(hotel.RoomManagerTest)  Time elapsed: 0.139 sec  <<< FAILURE!
+Tests run: 3, Failures: 3, Errors: 0, Skipped: 0, Time elapsed: 0.004 sec <<< FAILURE!
+findAllRoom(hotel.RoomManagerTest)  Time elapsed: 0 sec  <<< FAILURE!
 java.lang.AssertionError: 
 Expecting actual not to be null
 	at hotel.RoomManagerTest.findAllRoom(RoomManagerTest.java:75)
@@ -37,7 +37,7 @@ Expecting actual not to be null
 	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:175)
 	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
-createRoom(hotel.RoomManagerTest)  Time elapsed: 0.006 sec  <<< FAILURE!
+createRoom(hotel.RoomManagerTest)  Time elapsed: 0 sec  <<< FAILURE!
 java.lang.AssertionError: 
 Expecting actual not to be null
 	at hotel.RoomManagerTest.idIsNotNull(RoomManagerTest.java:92)
@@ -73,7 +73,7 @@ Expecting actual not to be null
 	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:175)
 	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
-deleteRoom(hotel.RoomManagerTest)  Time elapsed: 0.007 sec  <<< FAILURE!
+deleteRoom(hotel.RoomManagerTest)  Time elapsed: 0.001 sec  <<< FAILURE!
 java.lang.AssertionError: 
 Expecting actual not to be null
 	at hotel.RoomManagerTest.deleteRoom(RoomManagerTest.java:68)

@@ -28,7 +28,14 @@ public class AccommodationTest {
     
     @Rule
     public ExpectedException expectedException = ExpectedException.none();
-    
+
+    private static DataSource prepareDataSource() throws SQLException {
+        EmbeddedDataSource ds = new EmbeddedDataSource();
+        ds.setDatabaseName("memory:gravemgr-test");
+        ds.setCreateDatabase("create");
+        return ds;
+    }
+
     @Before
     // databaze
             

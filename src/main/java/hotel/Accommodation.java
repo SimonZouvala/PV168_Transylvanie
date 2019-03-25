@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface Accommodation {
 
-    List<Guest> findGuestByRoom(Room room);
+    Guest findGuestByRoom(Room room);
 
     void addGuest(Guest guest, Room room);
 

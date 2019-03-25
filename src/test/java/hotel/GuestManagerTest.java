@@ -23,7 +23,7 @@ import static org.mockito.Mockito.*;
 
 
 /**
- * @author Å imon Zouvala {445475@mail.muni.cz}
+ * @author ?imon Zouvala {445475@mail.muni.cz}
  * @author Lýdie Hemalová {433757@mail.muni.cz}
  */
 

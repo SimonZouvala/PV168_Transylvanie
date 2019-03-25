@@ -12,7 +12,9 @@ import java.util.List;
  * @author Lýdie Hemalová {433757@mail.muni.cz}
  */
 public class AccommodationImpl implements Accommodation{
-    public List<Guest> findGuestByRoom(Room room){
+   
+    @Override
+    public Guest findGuestByRoom(Room room){
         return null;
     }
 
