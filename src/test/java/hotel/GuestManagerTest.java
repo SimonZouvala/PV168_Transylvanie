@@ -21,8 +21,8 @@ import static org.mockito.Mockito.*;
 
 
 /**
- * @author Šimon Zouvala {445475@mail.muni.cz}
- * @author Lýdie Hemalová {433757@mail.muni.cz}
+ * @author Å imon Zouvala {445475@mail.muni.cz}
+ * @author LÃ½die HemalovÃ¡ {433757@mail.muni.cz}
  */
 
 public class GuestManagerTest {
