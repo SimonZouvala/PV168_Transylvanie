@@ -1,8 +1,6 @@
 package hotel;
 
-//name of package
 import exception.*;
-
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -23,7 +21,7 @@ import static org.mockito.Mockito.*;
 
 
 /**
- * @author ?imon Zouvala {445475@mail.muni.cz}
+ * @author Šimon Zouvala {445475@mail.muni.cz}
  * @author Lýdie Hemalová {433757@mail.muni.cz}
  */
 
@@ -81,9 +79,9 @@ public class GuestManagerTest {
             .room(room);
     }
 
-    //
+    //--------------------------------------------------------------------------
     // Test for GuestManager.createGuest(Guest)
-    //
+    //--------------------------------------------------------------------------
     
     @Test
     public void createGuest() {
@@ -204,9 +202,11 @@ public class GuestManagerTest {
                 .isNotNull()
                 .isEqualToComparingFieldByField(guest);
     }
-    //
+    
+    //--------------------------------------------------------------------------
     // Test for GuestManager find methods
-    //
+    //--------------------------------------------------------------------------
+    
     @Test
     public void findAllGuest() {
         assertThat(manager.findAllGuest()).isEmpty();
@@ -233,9 +233,9 @@ public class GuestManagerTest {
                 .isEqualToComparingFieldByField(willy);
     }
     
-     //
+    //--------------------------------------------------------------------------
     // Test for GuestManager.deleteGuest(Guest)
-    //
+    //--------------------------------------------------------------------------
     
      @Test
     public void deleteGuest() {
@@ -273,5 +273,61 @@ public class GuestManagerTest {
         Guest guest = willyGuestBuilder().id(1L).build();
         expectedException.expect(IllegalEntityException.class);
         manager.deleteGuest(guest);
+    }
+    
+    //--------------------------------------------------------------------------
+    // Tests if GuestManager methods throws ServiceFailureException in case of
+    // DB operation failure
+    //--------------------------------------------------------------------------
+
+    @FunctionalInterface
+    private static interface Operation<T> {
+        void callOn(T subjectOfOperation);
+    }
+
+
+    @Test
+    public void createGuestWithSqlExceptionThrown() throws SQLException {
+        SQLException sqlException = new SQLException();
+        DataSource failingDataSource = mock(DataSource.class);
+        when(failingDataSource.getConnection()).thenThrow(sqlException);
+        manager = new GuestManagerImpl(failingDataSource,prepareClockMock(NOW));
+
+        Guest guest = willyGuestBuilder().build();
+
+        assertThatThrownBy(() -> manager.createGuest(guest))
+                .isInstanceOf(ServiceFailureException.class)
+                .hasCause(sqlException);
+    }
+
+
+    private void testExpectedServiceFailureException(Operation<GuestManager> operation) throws SQLException {
+        SQLException sqlException = new SQLException();
+        DataSource failingDataSource = mock(DataSource.class);
+        when(failingDataSource.getConnection()).thenThrow(sqlException);
+        manager = new GuestManagerImpl(failingDataSource,prepareClockMock(NOW));
+        assertThatThrownBy(() -> operation.callOn(manager))
+                .isInstanceOf(ServiceFailureException.class)
+                .hasCause(sqlException);
+    }
+
+
+    @Test
+    public void getGuestWithSqlExceptionThrown() throws SQLException {
+        Guest guest = willyGuestBuilder().build();
+        manager.createGuest(guest);
+        testExpectedServiceFailureException((GuestManager) -> manager.getGuest(guest.getId()));
+    }
+
+    @Test
+    public void deleteGuestWithSqlExceptionThrown() throws SQLException {
+        Guest guest = willyGuestBuilder().build();
+        manager.createGuest(guest);
+        testExpectedServiceFailureException((GuestManager) -> manager.deleteGuest(guest));
+    }
+
+    @Test
+    public void findAllGuestsWithSqlExceptionThrown() throws SQLException {
+        testExpectedServiceFailureException(GuestManager::findAllGuest);
     }
 }

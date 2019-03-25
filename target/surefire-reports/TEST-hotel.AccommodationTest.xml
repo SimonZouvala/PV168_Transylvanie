@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="13" failures="0" name="hotel.AccommodationTest" time="0.156" errors="13" skipped="0">
+<testsuite tests="13" failures="0" name="hotel.AccommodationTest" time="0.135" errors="13" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_152\jre\bin"/>
@@ -63,7 +63,7 @@
   </properties>
   <testcase classname="hotel.AccommodationTest" name="checkOutGuest" time="0.01">
     <error type="java.lang.NullPointerException">java.lang.NullPointerException
-	at hotel.AccommodationTest.checkOutGuest(AccommodationTest.java:167)
+	at hotel.AccommodationTest.checkOutGuest(AccommodationTest.java:169)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -128,7 +128,7 @@
 	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
 Caused by: java.lang.NullPointerException
-	at hotel.AccommodationTest.putGuestIntoNullRoom(AccommodationTest.java:152)
+	at hotel.AccommodationTest.putGuestIntoNullRoom(AccommodationTest.java:154)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -143,7 +143,7 @@ Caused by: java.lang.NullPointerException
   </testcase>
   <testcase classname="hotel.AccommodationTest" name="addGuest" time="0">
     <error type="java.lang.NullPointerException">java.lang.NullPointerException
-	at hotel.AccommodationTest.addGuest(AccommodationTest.java:97)
+	at hotel.AccommodationTest.addGuest(AccommodationTest.java:103)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -179,7 +179,7 @@ Caused by: java.lang.NullPointerException
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
 </error>
   </testcase>
-  <testcase classname="hotel.AccommodationTest" name="putGuestNotInDBIntoRoom" time="0">
+  <testcase classname="hotel.AccommodationTest" name="putGuestNotInDBIntoRoom" time="0.001">
     <error message="Unexpected exception, expected&lt;exception.IllegalEntityException&gt; but was&lt;java.lang.NullPointerException&gt;" type="java.lang.Exception">java.lang.Exception: Unexpected exception, expected&lt;exception.IllegalEntityException&gt; but was&lt;java.lang.NullPointerException&gt;
 	at org.junit.internal.runners.statements.ExpectException.evaluate(ExpectException.java:28)
 	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
@@ -208,7 +208,7 @@ Caused by: java.lang.NullPointerException
 	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
 Caused by: java.lang.NullPointerException
-	at hotel.AccommodationTest.putGuestNotInDBIntoRoom(AccommodationTest.java:147)
+	at hotel.AccommodationTest.putGuestNotInDBIntoRoom(AccommodationTest.java:149)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -221,7 +221,7 @@ Caused by: java.lang.NullPointerException
 	... 25 more
 </error>
   </testcase>
-  <testcase classname="hotel.AccommodationTest" name="putNullGuestIntoRoom" time="0.001">
+  <testcase classname="hotel.AccommodationTest" name="putNullGuestIntoRoom" time="0.002">
     <error message="Unexpected exception, expected&lt;java.lang.IllegalArgumentException&gt; but was&lt;java.lang.NullPointerException&gt;" type="java.lang.Exception">java.lang.Exception: Unexpected exception, expected&lt;java.lang.IllegalArgumentException&gt; but was&lt;java.lang.NullPointerException&gt;
 	at org.junit.internal.runners.statements.ExpectException.evaluate(ExpectException.java:28)
 	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
@@ -250,7 +250,7 @@ Caused by: java.lang.NullPointerException
 	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
 Caused by: java.lang.NullPointerException
-	at hotel.AccommodationTest.putNullGuestIntoRoom(AccommodationTest.java:138)
+	at hotel.AccommodationTest.putNullGuestIntoRoom(AccommodationTest.java:140)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -263,7 +263,7 @@ Caused by: java.lang.NullPointerException
 	... 25 more
 </error>
   </testcase>
-  <testcase classname="hotel.AccommodationTest" name="findGuestWithNullRoom" time="0.002">
+  <testcase classname="hotel.AccommodationTest" name="findGuestWithNullRoom" time="0.001">
     <error message="Unexpected exception, expected&lt;java.lang.IllegalArgumentException&gt; but was&lt;java.lang.NullPointerException&gt;" type="java.lang.Exception">java.lang.Exception: Unexpected exception, expected&lt;java.lang.IllegalArgumentException&gt; but was&lt;java.lang.NullPointerException&gt;
 	at org.junit.internal.runners.statements.ExpectException.evaluate(ExpectException.java:28)
 	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
@@ -292,7 +292,7 @@ Caused by: java.lang.NullPointerException
 	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
 Caused by: java.lang.NullPointerException
-	at hotel.AccommodationTest.findGuestWithNullRoom(AccommodationTest.java:87)
+	at hotel.AccommodationTest.findGuestWithNullRoom(AccommodationTest.java:93)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -307,7 +307,7 @@ Caused by: java.lang.NullPointerException
   </testcase>
   <testcase classname="hotel.AccommodationTest" name="freeRooms" time="0.001">
     <error type="java.lang.NullPointerException">java.lang.NullPointerException
-	at hotel.AccommodationTest.freeRooms(AccommodationTest.java:183)
+	at hotel.AccommodationTest.freeRooms(AccommodationTest.java:184)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -343,7 +343,7 @@ Caused by: java.lang.NullPointerException
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
 </error>
   </testcase>
-  <testcase classname="hotel.AccommodationTest" name="putGuestWithNullIdIntoRoom" time="0.002">
+  <testcase classname="hotel.AccommodationTest" name="putGuestWithNullIdIntoRoom" time="0.003">
     <error message="Unexpected exception, expected&lt;exception.IllegalEntityException&gt; but was&lt;java.lang.NullPointerException&gt;" type="java.lang.Exception">java.lang.Exception: Unexpected exception, expected&lt;exception.IllegalEntityException&gt; but was&lt;java.lang.NullPointerException&gt;
 	at org.junit.internal.runners.statements.ExpectException.evaluate(ExpectException.java:28)
 	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
@@ -372,7 +372,7 @@ Caused by: java.lang.NullPointerException
 	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
 Caused by: java.lang.NullPointerException
-	at hotel.AccommodationTest.putGuestWithNullIdIntoRoom(AccommodationTest.java:142)
+	at hotel.AccommodationTest.putGuestWithNullIdIntoRoom(AccommodationTest.java:144)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -414,7 +414,7 @@ Caused by: java.lang.NullPointerException
 	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
 Caused by: java.lang.NullPointerException
-	at hotel.AccommodationTest.putGuestIntoRoomNotInDB(AccommodationTest.java:162)
+	at hotel.AccommodationTest.putGuestIntoRoomNotInDB(AccommodationTest.java:164)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -427,7 +427,7 @@ Caused by: java.lang.NullPointerException
 	... 25 more
 </error>
   </testcase>
-  <testcase classname="hotel.AccommodationTest" name="putGuestIntoRoomWithNullId" time="0.001">
+  <testcase classname="hotel.AccommodationTest" name="putGuestIntoRoomWithNullId" time="0.002">
     <error message="Unexpected exception, expected&lt;exception.IllegalEntityException&gt; but was&lt;java.lang.NullPointerException&gt;" type="java.lang.Exception">java.lang.Exception: Unexpected exception, expected&lt;exception.IllegalEntityException&gt; but was&lt;java.lang.NullPointerException&gt;
 	at org.junit.internal.runners.statements.ExpectException.evaluate(ExpectException.java:28)
 	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
@@ -456,7 +456,7 @@ Caused by: java.lang.NullPointerException
 	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
 Caused by: java.lang.NullPointerException
-	at hotel.AccommodationTest.putGuestIntoRoomWithNullId(AccommodationTest.java:157)
+	at hotel.AccommodationTest.putGuestIntoRoomWithNullId(AccommodationTest.java:159)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -469,9 +469,9 @@ Caused by: java.lang.NullPointerException
 	... 25 more
 </error>
   </testcase>
-  <testcase classname="hotel.AccommodationTest" name="addGuestToFullRoom" time="0.001">
+  <testcase classname="hotel.AccommodationTest" name="addGuestToFullRoom" time="0.003">
     <error type="java.lang.NullPointerException">java.lang.NullPointerException
-	at hotel.AccommodationTest.addGuestToFullRoom(AccommodationTest.java:118)
+	at hotel.AccommodationTest.addGuestToFullRoom(AccommodationTest.java:122)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -507,7 +507,7 @@ Caused by: java.lang.NullPointerException
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
 </error>
   </testcase>
-  <testcase classname="hotel.AccommodationTest" name="findGuestbyRoomWithNullId" time="0.002">
+  <testcase classname="hotel.AccommodationTest" name="findGuestbyRoomWithNullId" time="0.001">
     <error message="Unexpected exception, expected&lt;exception.IllegalEntityException&gt; but was&lt;java.lang.NullPointerException&gt;" type="java.lang.Exception">java.lang.Exception: Unexpected exception, expected&lt;exception.IllegalEntityException&gt; but was&lt;java.lang.NullPointerException&gt;
 	at org.junit.internal.runners.statements.ExpectException.evaluate(ExpectException.java:28)
 	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
@@ -536,7 +536,7 @@ Caused by: java.lang.NullPointerException
 	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
 Caused by: java.lang.NullPointerException
-	at hotel.AccommodationTest.findGuestbyRoomWithNullId(AccommodationTest.java:92)
+	at hotel.AccommodationTest.findGuestbyRoomWithNullId(AccommodationTest.java:98)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -551,7 +551,7 @@ Caused by: java.lang.NullPointerException
   </testcase>
   <testcase classname="hotel.AccommodationTest" name="findGuestByRoom" time="0.001">
     <error type="java.lang.NullPointerException">java.lang.NullPointerException
-	at hotel.AccommodationTest.findGuestByRoom(AccommodationTest.java:72)
+	at hotel.AccommodationTest.findGuestByRoom(AccommodationTest.java:79)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
