@@ -90,7 +90,7 @@ public class AccommodationImpl implements Accommodation {
              PreparedStatement st = conn.prepareStatement(
                      "SELECT Room.id, price, capacity, numberOfRoom " +
                              "FROM Room LEFT JOIN Guest ON Room.id = Guest.roomId " +
-                             "GROUP BY Grave.id, price, capacity, numberOfRoom " +
+                             "GROUP BY Room.id, price, capacity, numberOfRoom " +
                              "HAVING COUNT(Guest.id) = 0")) {
             return RoomManagerImpl.executeQueryForMultipleRooms(st);
         } catch (SQLException ex) {
