@@ -17,7 +17,6 @@ import java.sql.SQLException;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -38,7 +37,7 @@ public class RoomManagerTest {
 
     private static DataSource prepareDataSource() throws SQLException {
         EmbeddedDataSource ds = new EmbeddedDataSource();
-        ds.setDatabaseName("memory:gravemgr-test");
+        ds.setDatabaseName("memory:guestmgr-test");
         ds.setCreateDatabase("create");
         return ds;
     }
@@ -46,13 +45,13 @@ public class RoomManagerTest {
     @Before
     public void setUp() throws Exception {
         ds = prepareDataSource();
-        DBUtils.executeSqlScript(ds, RoomManager.class.getResourceAsStream("dropTables.sql"));
+        DBUtils.executeSqlScript(ds, RoomManager.class.getResourceAsStream("hotel/createTables.sql"));
         manager = new RoomManagerImpl(ds);
     }
 
     @After
     public void tearDown() throws Exception {
-        DBUtils.executeSqlScript(ds, RoomManager.class.getResourceAsStream("dropTables.sql"));
+        DBUtils.executeSqlScript(ds, RoomManager.class.getResourceAsStream("hotel/dropTables.sql"));
     }
 
     private RoomBuilder firstRoom() {
