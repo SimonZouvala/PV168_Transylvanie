@@ -26,6 +26,7 @@ public class GuestManagerImpl implements GuestManager {
         this.clock = clock;
     }
 
+
     @Override
     public void deleteGuest(Guest guest) throws ServiceFailureException {
         if (guest == null) throw new IllegalArgumentException("guest is null");
@@ -160,4 +161,14 @@ public class GuestManagerImpl implements GuestManager {
         return date == null ? null : date.toLocalDate();
     }
 
+
+    public static Guest executeQueryForSingleGuests(PreparedStatement st) throws SQLException {
+        try (ResultSet rs = st.executeQuery()) {
+            if (rs.next()) {
+                return rowToGuest(rs);
+            } else {
+                return null;
+            }
+        }
+    }
 }
