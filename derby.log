@@ -1,19 +1,6 @@
 ----------------------------------------------------------------
-Mon Apr 01 16:58:10 CEST 2019:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.1.0 - (1808820): instance a816c00e-0169-d968-5e89-000006e22f40 
-on database directory memory:/home/simon/JAVA/PV168/pv168_transylvanie/gravemgr-test with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@4459eb14 
-Loaded from file:/home/simon/.m2/repository/org/apache/derby/derby/10.14.1.0/derby-10.14.1.0.jar
-java.vendor=Oracle Corporation
-java.runtime.version=10.0.2+13-Ubuntu-1ubuntu0.18.04.4
-user.dir=/home/simon/JAVA/PV168/pv168_transylvanie
-os.name=Linux
-os.arch=amd64
-os.version=4.15.0-46-generic
-derby.system.home=null
-Database Class Loader started - derby.database.classpath=''
-----------------------------------------------------------------
-Mon Apr 01 16:58:12 CEST 2019:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.1.0 - (1808820): instance 0ddd00a9-0169-d968-5e89-000006e22f40 
+Mon Apr 01 17:21:24 CEST 2019:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.1.0 - (1808820): instance a816c00e-0169-d97d-a766-000006e26b48 
 on database directory memory:/home/simon/JAVA/PV168/pv168_transylvanie/guestmgr-test with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@4459eb14 
 Loaded from file:/home/simon/.m2/repository/org/apache/derby/derby/10.14.1.0/derby-10.14.1.0.jar
 java.vendor=Oracle Corporation

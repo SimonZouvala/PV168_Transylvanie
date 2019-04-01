@@ -15,10 +15,9 @@ import java.sql.SQLException;
 import java.util.List;
 
 /**
- *
  * @author Lýdie Hemalová {433757@mail.muni.cz}
  */
-public class AccommodationImpl implements Accommodation{
+public class AccommodationImpl implements Accommodation {
 
     private DataSource dataSource;
 
@@ -28,7 +27,7 @@ public class AccommodationImpl implements Accommodation{
     }
 
     @Override
-    public Guest findGuestByRoom(Room room){
+    public Guest findGuestByRoom(Room room) {
         if (room == null) throw new IllegalArgumentException("room is null");
         if (room.getId() == null) throw new IllegalEntityException("room id is null");
 
@@ -44,15 +43,58 @@ public class AccommodationImpl implements Accommodation{
         }
     }
 
-    public void addGuest(Guest guest, Room room){
+    public void addGuest(Guest guest, Room room) {
+        if (room == null) {
+            throw new IllegalArgumentException("grave is null");
+        }
+        if (room.getId() == null) {
+            throw new IllegalEntityException("grave id is null");
+        }
+        if (guest == null) throw new IllegalArgumentException("body is null");
+        if (guest.getId() == null) {
+            throw new IllegalEntityException("body id is null");
+        }
 
+        try (Connection conn = dataSource.getConnection()) {
+            try (PreparedStatement st = conn.prepareStatement("UPDATE Guest SET roomId = ? WHERE id = ? AND roomId IS NULL")) {
+                conn.setAutoCommit(false);
+
+                //check if any room is free
+                List<Room> countRooms = freeRooms();
+                if (countRooms.size() == 0)
+                    throw new IllegalEntityException("All rooms are full");
+
+                st.setLong(1, room.getId());
+                st.setLong(2, guest.getId());
+
+                conn.commit();
+            } catch (Exception ex) {
+
+                conn.rollback();
+                throw ex;
+            } finally {
+
+                conn.setAutoCommit(true);
+            }
+        } catch (SQLException ex) {
+            throw new ServiceFailureException("Error when adding guest into room", ex);
+        }
     }
 
-    public int checkOutGuest(Room room){
+    public int checkOutGuest(Room room) {
         return 1;
     }
 
-    public List<Room> freeRooms(){
-        return null;
+    public List<Room> freeRooms() {
+        try (Connection conn = dataSource.getConnection();
+             PreparedStatement st = conn.prepareStatement(
+                     "SELECT Room.id, price, capacity, numberOfRoom " +
+                             "FROM Room LEFT JOIN Guest ON Room.id = Guest.roomId " +
+                             "GROUP BY Grave.id, price, capacity, numberOfRoom " +
+                             "HAVING COUNT(Guest.id) = 0")) {
+            return RoomManagerImpl.executeQueryForMultipleRooms(st);
+        } catch (SQLException ex) {
+            throw new ServiceFailureException("Error when trying to find empty rooms", ex);
+        }
     }
 }
