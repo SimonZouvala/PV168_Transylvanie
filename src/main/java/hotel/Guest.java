@@ -89,5 +89,9 @@ public class Guest {
     public int hashCode() {
         return Objects.hash(id, name, phone);
     }
+
+    void getPhone(String string) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
 
