@@ -45,14 +45,14 @@ public class AccommodationImpl implements Accommodation {
 
     public void addGuest(Guest guest, Room room) {
         if (room == null) {
-            throw new IllegalArgumentException("grave is null");
+            throw new IllegalArgumentException("room is null");
         }
         if (room.getId() == null) {
-            throw new IllegalEntityException("grave id is null");
+            throw new IllegalEntityException("room id is null");
         }
-        if (guest == null) throw new IllegalArgumentException("body is null");
+        if (guest == null) throw new IllegalArgumentException("guest is null");
         if (guest.getId() == null) {
-            throw new IllegalEntityException("body id is null");
+            throw new IllegalEntityException("guest id is null");
         }
 
         try (Connection conn = dataSource.getConnection()) {
