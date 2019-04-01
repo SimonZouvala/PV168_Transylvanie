@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: hotel.AccommodationTest
 -------------------------------------------------------------------------------
-Tests run: 34, Failures: 0, Errors: 34, Skipped: 0, Time elapsed: 1.295 sec <<< FAILURE!
-checkOutGuest(hotel.AccommodationTest)  Time elapsed: 0.913 sec  <<< ERROR!
+Tests run: 34, Failures: 0, Errors: 34, Skipped: 0, Time elapsed: 1.183 sec <<< FAILURE!
+checkOutGuest(hotel.AccommodationTest)  Time elapsed: 0.88 sec  <<< ERROR!
 java.lang.NullPointerException
 	at java.io.Reader.<init>(Reader.java:78)
 	at java.io.InputStreamReader.<init>(InputStreamReader.java:72)
@@ -41,7 +41,7 @@ java.lang.NullPointerException
 	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:175)
 	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
-checkOutGuest(hotel.AccommodationTest)  Time elapsed: 0.915 sec  <<< ERROR!
+checkOutGuest(hotel.AccommodationTest)  Time elapsed: 0.882 sec  <<< ERROR!
 java.lang.NullPointerException
 	at java.io.Reader.<init>(Reader.java:78)
 	at java.io.InputStreamReader.<init>(InputStreamReader.java:72)
@@ -79,7 +79,7 @@ java.lang.NullPointerException
 	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:175)
 	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
-putGuestIntoNullRoom(hotel.AccommodationTest)  Time elapsed: 0 sec  <<< ERROR!
+putGuestIntoNullRoom(hotel.AccommodationTest)  Time elapsed: 0.002 sec  <<< ERROR!
 java.lang.NullPointerException
 	at java.io.Reader.<init>(Reader.java:78)
 	at java.io.InputStreamReader.<init>(InputStreamReader.java:72)
@@ -118,7 +118,7 @@ java.lang.NullPointerException
 	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:175)
 	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
-putGuestIntoNullRoom(hotel.AccommodationTest)  Time elapsed: 0.001 sec  <<< ERROR!
+putGuestIntoNullRoom(hotel.AccommodationTest)  Time elapsed: 0.002 sec  <<< ERROR!
 java.lang.NullPointerException
 	at java.io.Reader.<init>(Reader.java:78)
 	at java.io.InputStreamReader.<init>(InputStreamReader.java:72)
@@ -233,7 +233,7 @@ java.lang.NullPointerException
 	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:175)
 	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
-putGuestNotInDBIntoRoom(hotel.AccommodationTest)  Time elapsed: 0.003 sec  <<< ERROR!
+putGuestNotInDBIntoRoom(hotel.AccommodationTest)  Time elapsed: 0.004 sec  <<< ERROR!
 java.lang.NullPointerException
 	at java.io.Reader.<init>(Reader.java:78)
 	at java.io.InputStreamReader.<init>(InputStreamReader.java:72)
@@ -310,7 +310,7 @@ java.lang.NullPointerException
 	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:175)
 	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
-putNullGuestIntoRoom(hotel.AccommodationTest)  Time elapsed: 0.005 sec  <<< ERROR!
+putNullGuestIntoRoom(hotel.AccommodationTest)  Time elapsed: 0.004 sec  <<< ERROR!
 java.lang.NullPointerException
 	at java.io.Reader.<init>(Reader.java:78)
 	at java.io.InputStreamReader.<init>(InputStreamReader.java:72)
@@ -349,7 +349,7 @@ java.lang.NullPointerException
 	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:175)
 	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
-putNullGuestIntoRoom(hotel.AccommodationTest)  Time elapsed: 0.006 sec  <<< ERROR!
+putNullGuestIntoRoom(hotel.AccommodationTest)  Time elapsed: 0.004 sec  <<< ERROR!
 java.lang.NullPointerException
 	at java.io.Reader.<init>(Reader.java:78)
 	at java.io.InputStreamReader.<init>(InputStreamReader.java:72)
@@ -364,6 +364,45 @@ java.lang.NullPointerException
 	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
 	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
 	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:33)
+	at org.junit.rules.ExpectedException$ExpectedExceptionStatement.evaluate(ExpectedException.java:239)
+	at org.junit.rules.RunRules.evaluate(RunRules.java:20)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.apache.maven.surefire.junit4.JUnit4TestSet.execute(JUnit4TestSet.java:53)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:123)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:104)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:164)
+	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:110)
+	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:175)
+	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
+findGuestWithNullRoom(hotel.AccommodationTest)  Time elapsed: 0.004 sec  <<< ERROR!
+java.lang.NullPointerException
+	at java.io.Reader.<init>(Reader.java:78)
+	at java.io.InputStreamReader.<init>(InputStreamReader.java:72)
+	at java.util.Scanner.<init>(Scanner.java:563)
+	at exception.DBUtils.executeSqlScript(DBUtils.java:51)
+	at hotel.AccommodationTest.setUp(AccommodationTest.java:47)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:24)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
 	at org.junit.rules.ExpectedException$ExpectedExceptionStatement.evaluate(ExpectedException.java:239)
 	at org.junit.rules.RunRules.evaluate(RunRules.java:20)
 	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
@@ -393,45 +432,6 @@ java.lang.NullPointerException
 	at java.io.InputStreamReader.<init>(InputStreamReader.java:72)
 	at java.util.Scanner.<init>(Scanner.java:563)
 	at exception.DBUtils.executeSqlScript(DBUtils.java:51)
-	at hotel.AccommodationTest.setUp(AccommodationTest.java:47)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
-	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:24)
-	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
-	at org.junit.rules.ExpectedException$ExpectedExceptionStatement.evaluate(ExpectedException.java:239)
-	at org.junit.rules.RunRules.evaluate(RunRules.java:20)
-	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
-	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
-	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
-	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
-	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
-	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
-	at org.apache.maven.surefire.junit4.JUnit4TestSet.execute(JUnit4TestSet.java:53)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:123)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:104)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:164)
-	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:110)
-	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:175)
-	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
-	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
-findGuestWithNullRoom(hotel.AccommodationTest)  Time elapsed: 0.005 sec  <<< ERROR!
-java.lang.NullPointerException
-	at java.io.Reader.<init>(Reader.java:78)
-	at java.io.InputStreamReader.<init>(InputStreamReader.java:72)
-	at java.util.Scanner.<init>(Scanner.java:563)
-	at exception.DBUtils.executeSqlScript(DBUtils.java:51)
 	at hotel.AccommodationTest.tearDown(AccommodationTest.java:56)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
@@ -464,7 +464,7 @@ java.lang.NullPointerException
 	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:175)
 	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
-checkOutGuestWithSqlExceptionThrown(hotel.AccommodationTest)  Time elapsed: 0.015 sec  <<< ERROR!
+checkOutGuestWithSqlExceptionThrown(hotel.AccommodationTest)  Time elapsed: 0.045 sec  <<< ERROR!
 java.lang.NullPointerException
 	at java.io.Reader.<init>(Reader.java:78)
 	at java.io.InputStreamReader.<init>(InputStreamReader.java:72)
@@ -503,7 +503,7 @@ java.lang.NullPointerException
 	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:175)
 	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
-checkOutGuestWithSqlExceptionThrown(hotel.AccommodationTest)  Time elapsed: 0.015 sec  <<< ERROR!
+checkOutGuestWithSqlExceptionThrown(hotel.AccommodationTest)  Time elapsed: 0.045 sec  <<< ERROR!
 java.lang.NullPointerException
 	at java.io.Reader.<init>(Reader.java:78)
 	at java.io.InputStreamReader.<init>(InputStreamReader.java:72)
@@ -541,7 +541,7 @@ java.lang.NullPointerException
 	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:175)
 	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
-freeRooms(hotel.AccommodationTest)  Time elapsed: 0.007 sec  <<< ERROR!
+freeRooms(hotel.AccommodationTest)  Time elapsed: 0 sec  <<< ERROR!
 java.lang.NullPointerException
 	at java.io.Reader.<init>(Reader.java:78)
 	at java.io.InputStreamReader.<init>(InputStreamReader.java:72)
@@ -580,7 +580,7 @@ java.lang.NullPointerException
 	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:175)
 	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
-freeRooms(hotel.AccommodationTest)  Time elapsed: 0.008 sec  <<< ERROR!
+freeRooms(hotel.AccommodationTest)  Time elapsed: 0.001 sec  <<< ERROR!
 java.lang.NullPointerException
 	at java.io.Reader.<init>(Reader.java:78)
 	at java.io.InputStreamReader.<init>(InputStreamReader.java:72)
@@ -618,7 +618,7 @@ java.lang.NullPointerException
 	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:175)
 	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
-putGuestWithNullIdIntoRoom(hotel.AccommodationTest)  Time elapsed: 0.009 sec  <<< ERROR!
+putGuestWithNullIdIntoRoom(hotel.AccommodationTest)  Time elapsed: 0 sec  <<< ERROR!
 java.lang.NullPointerException
 	at java.io.Reader.<init>(Reader.java:78)
 	at java.io.InputStreamReader.<init>(InputStreamReader.java:72)
@@ -657,7 +657,7 @@ java.lang.NullPointerException
 	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:175)
 	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
-putGuestWithNullIdIntoRoom(hotel.AccommodationTest)  Time elapsed: 0.016 sec  <<< ERROR!
+putGuestWithNullIdIntoRoom(hotel.AccommodationTest)  Time elapsed: 0 sec  <<< ERROR!
 java.lang.NullPointerException
 	at java.io.Reader.<init>(Reader.java:78)
 	at java.io.InputStreamReader.<init>(InputStreamReader.java:72)
@@ -695,7 +695,7 @@ java.lang.NullPointerException
 	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:175)
 	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
-putGuestIntoRoomNotInDB(hotel.AccommodationTest)  Time elapsed: 0.01 sec  <<< ERROR!
+putGuestIntoRoomNotInDB(hotel.AccommodationTest)  Time elapsed: 0.023 sec  <<< ERROR!
 java.lang.NullPointerException
 	at java.io.Reader.<init>(Reader.java:78)
 	at java.io.InputStreamReader.<init>(InputStreamReader.java:72)
@@ -734,7 +734,7 @@ java.lang.NullPointerException
 	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:175)
 	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
-putGuestIntoRoomNotInDB(hotel.AccommodationTest)  Time elapsed: 0.011 sec  <<< ERROR!
+putGuestIntoRoomNotInDB(hotel.AccommodationTest)  Time elapsed: 0.023 sec  <<< ERROR!
 java.lang.NullPointerException
 	at java.io.Reader.<init>(Reader.java:78)
 	at java.io.InputStreamReader.<init>(InputStreamReader.java:72)
@@ -772,7 +772,7 @@ java.lang.NullPointerException
 	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:175)
 	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
-putGuestIntoRoomWithNullId(hotel.AccommodationTest)  Time elapsed: 0.05 sec  <<< ERROR!
+putGuestIntoRoomWithNullId(hotel.AccommodationTest)  Time elapsed: 0.012 sec  <<< ERROR!
 java.lang.NullPointerException
 	at java.io.Reader.<init>(Reader.java:78)
 	at java.io.InputStreamReader.<init>(InputStreamReader.java:72)
@@ -811,7 +811,7 @@ java.lang.NullPointerException
 	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:175)
 	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
-putGuestIntoRoomWithNullId(hotel.AccommodationTest)  Time elapsed: 0.051 sec  <<< ERROR!
+putGuestIntoRoomWithNullId(hotel.AccommodationTest)  Time elapsed: 0.013 sec  <<< ERROR!
 java.lang.NullPointerException
 	at java.io.Reader.<init>(Reader.java:78)
 	at java.io.InputStreamReader.<init>(InputStreamReader.java:72)
@@ -849,7 +849,7 @@ java.lang.NullPointerException
 	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:175)
 	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
-addGuestToFullRoom(hotel.AccommodationTest)  Time elapsed: 0 sec  <<< ERROR!
+addGuestToFullRoom(hotel.AccommodationTest)  Time elapsed: 0.006 sec  <<< ERROR!
 java.lang.NullPointerException
 	at java.io.Reader.<init>(Reader.java:78)
 	at java.io.InputStreamReader.<init>(InputStreamReader.java:72)
@@ -888,7 +888,7 @@ java.lang.NullPointerException
 	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:175)
 	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
-addGuestToFullRoom(hotel.AccommodationTest)  Time elapsed: 0 sec  <<< ERROR!
+addGuestToFullRoom(hotel.AccommodationTest)  Time elapsed: 0.007 sec  <<< ERROR!
 java.lang.NullPointerException
 	at java.io.Reader.<init>(Reader.java:78)
 	at java.io.InputStreamReader.<init>(InputStreamReader.java:72)
@@ -926,7 +926,7 @@ java.lang.NullPointerException
 	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:175)
 	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
-findGuestbyRoomWithNullId(hotel.AccommodationTest)  Time elapsed: 0.005 sec  <<< ERROR!
+findGuestbyRoomWithNullId(hotel.AccommodationTest)  Time elapsed: 0.01 sec  <<< ERROR!
 java.lang.NullPointerException
 	at java.io.Reader.<init>(Reader.java:78)
 	at java.io.InputStreamReader.<init>(InputStreamReader.java:72)
@@ -965,7 +965,7 @@ java.lang.NullPointerException
 	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:175)
 	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
-findGuestbyRoomWithNullId(hotel.AccommodationTest)  Time elapsed: 0.006 sec  <<< ERROR!
+findGuestbyRoomWithNullId(hotel.AccommodationTest)  Time elapsed: 0.011 sec  <<< ERROR!
 java.lang.NullPointerException
 	at java.io.Reader.<init>(Reader.java:78)
 	at java.io.InputStreamReader.<init>(InputStreamReader.java:72)
@@ -1003,7 +1003,7 @@ java.lang.NullPointerException
 	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:175)
 	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
-findGuestByRoomWithSqlExceptionThrown(hotel.AccommodationTest)  Time elapsed: 0.015 sec  <<< ERROR!
+findGuestByRoomWithSqlExceptionThrown(hotel.AccommodationTest)  Time elapsed: 0.006 sec  <<< ERROR!
 java.lang.NullPointerException
 	at java.io.Reader.<init>(Reader.java:78)
 	at java.io.InputStreamReader.<init>(InputStreamReader.java:72)
@@ -1042,7 +1042,7 @@ java.lang.NullPointerException
 	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:175)
 	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
-findGuestByRoomWithSqlExceptionThrown(hotel.AccommodationTest)  Time elapsed: 0.017 sec  <<< ERROR!
+findGuestByRoomWithSqlExceptionThrown(hotel.AccommodationTest)  Time elapsed: 0.008 sec  <<< ERROR!
 java.lang.NullPointerException
 	at java.io.Reader.<init>(Reader.java:78)
 	at java.io.InputStreamReader.<init>(InputStreamReader.java:72)
@@ -1080,7 +1080,7 @@ java.lang.NullPointerException
 	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:175)
 	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
-freeRoomsWithSqlExceptionThrown(hotel.AccommodationTest)  Time elapsed: 0.006 sec  <<< ERROR!
+freeRoomsWithSqlExceptionThrown(hotel.AccommodationTest)  Time elapsed: 0.016 sec  <<< ERROR!
 java.lang.NullPointerException
 	at java.io.Reader.<init>(Reader.java:78)
 	at java.io.InputStreamReader.<init>(InputStreamReader.java:72)
@@ -1119,7 +1119,7 @@ java.lang.NullPointerException
 	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:175)
 	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
-freeRoomsWithSqlExceptionThrown(hotel.AccommodationTest)  Time elapsed: 0.006 sec  <<< ERROR!
+freeRoomsWithSqlExceptionThrown(hotel.AccommodationTest)  Time elapsed: 0.018 sec  <<< ERROR!
 java.lang.NullPointerException
 	at java.io.Reader.<init>(Reader.java:78)
 	at java.io.InputStreamReader.<init>(InputStreamReader.java:72)
@@ -1157,7 +1157,7 @@ java.lang.NullPointerException
 	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:175)
 	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
-addGuestWithSqlExceptionThrown(hotel.AccommodationTest)  Time elapsed: 0.055 sec  <<< ERROR!
+addGuestWithSqlExceptionThrown(hotel.AccommodationTest)  Time elapsed: 0.028 sec  <<< ERROR!
 java.lang.NullPointerException
 	at java.io.Reader.<init>(Reader.java:78)
 	at java.io.InputStreamReader.<init>(InputStreamReader.java:72)
@@ -1196,7 +1196,7 @@ java.lang.NullPointerException
 	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:175)
 	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
-addGuestWithSqlExceptionThrown(hotel.AccommodationTest)  Time elapsed: 0.055 sec  <<< ERROR!
+addGuestWithSqlExceptionThrown(hotel.AccommodationTest)  Time elapsed: 0.03 sec  <<< ERROR!
 java.lang.NullPointerException
 	at java.io.Reader.<init>(Reader.java:78)
 	at java.io.InputStreamReader.<init>(InputStreamReader.java:72)
@@ -1234,7 +1234,7 @@ java.lang.NullPointerException
 	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:175)
 	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
-findGuestByRoom(hotel.AccommodationTest)  Time elapsed: 0.001 sec  <<< ERROR!
+findGuestByRoom(hotel.AccommodationTest)  Time elapsed: 0.005 sec  <<< ERROR!
 java.lang.NullPointerException
 	at java.io.Reader.<init>(Reader.java:78)
 	at java.io.InputStreamReader.<init>(InputStreamReader.java:72)
@@ -1272,7 +1272,7 @@ java.lang.NullPointerException
 	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:175)
 	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
-findGuestByRoom(hotel.AccommodationTest)  Time elapsed: 0.008 sec  <<< ERROR!
+findGuestByRoom(hotel.AccommodationTest)  Time elapsed: 0.007 sec  <<< ERROR!
 java.lang.NullPointerException
 	at java.io.Reader.<init>(Reader.java:78)
 	at java.io.InputStreamReader.<init>(InputStreamReader.java:72)

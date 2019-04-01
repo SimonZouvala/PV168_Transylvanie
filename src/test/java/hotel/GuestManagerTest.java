@@ -330,4 +330,6 @@ public class GuestManagerTest {
     public void findAllGuestsWithSqlExceptionThrown() throws SQLException {
         testExpectedServiceFailureException(GuestManager::findAllGuest);
     }
+    
+    
 }
