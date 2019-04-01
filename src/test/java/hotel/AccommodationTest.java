@@ -202,7 +202,6 @@ public class AccommodationTest {
                 .containsOnly(r1, r2, r3);
 
         manager.addGuest(g1, r3);
-        manager.addGuest(g2, r3);
         manager.addGuest(g3, r1);
 
         assertThat(manager.freeRooms())
@@ -211,7 +210,7 @@ public class AccommodationTest {
     }
 
     //--------------------------------------------------------------------------
-    // Tests if GraveManager methods throws ServiceFailureException in case of
+    // Tests if RoomManager methods throws ServiceFailureException in case of
     // DB operation failure
     //--------------------------------------------------------------------------
 

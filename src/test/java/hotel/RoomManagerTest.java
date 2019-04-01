@@ -105,7 +105,7 @@ public class RoomManagerTest {
     }
 
     @Test
-    public void createGraveWithNegativePrice() {
+    public void createRoomWithNegativePrice() {
         Room room = firstRoom().price(-100).build();
         assertThatThrownBy(() -> manager.createRoom(room))
                 .isInstanceOf(ValidationException.class);
