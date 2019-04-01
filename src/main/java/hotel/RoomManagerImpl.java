@@ -83,7 +83,7 @@ public class RoomManagerImpl implements RoomManager {
 
     }
 
-    private List<Room> executeQueryForMultipleRooms(PreparedStatement st) throws SQLException {
+    static List<Room> executeQueryForMultipleRooms(PreparedStatement st) throws SQLException {
         try (ResultSet rs = st.executeQuery()) {
             List<Room> result = new ArrayList<>();
             while (rs.next()) {
@@ -93,7 +93,7 @@ public class RoomManagerImpl implements RoomManager {
         }
     }
 
-    private Room rowToRoom(ResultSet rs) throws SQLException {
+    private static Room rowToRoom(ResultSet rs) throws SQLException {
         Room result = new Room();
         result.setId(rs.getLong("id"));
         result.setPrice(rs.getInt("price"));

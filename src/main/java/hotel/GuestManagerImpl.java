@@ -26,6 +26,7 @@ public class GuestManagerImpl implements GuestManager {
         this.clock = clock;
     }
 
+
     @Override
     public void deleteGuest(Guest guest) throws ServiceFailureException {
         if (guest == null) throw new IllegalArgumentException("guest is null");
@@ -45,7 +46,7 @@ public class GuestManagerImpl implements GuestManager {
     @Override
     public void createGuest(Guest guest) {
         validate(guest);
-        if (guest.getId() != null) throw new IllegalEntityException("body id is already set");
+        if (guest.getId() != null) throw new IllegalEntityException("Guest id is already set");
 
         try (Connection con = dataSource.getConnection();
              PreparedStatement st = con.prepareStatement(
@@ -91,6 +92,9 @@ public class GuestManagerImpl implements GuestManager {
         guest.setPhone(rs.getString("phone"));
         guest.setDateOfCheckIn(toLocalDate(rs.getDate("dateOfCheckIn")));
         guest.setDateOfCheckOut(toLocalDate(rs.getDate("dateOfCheckOut")));
+
+        //Pokus o pridani room
+        guest.setRoom((Room) rs.getObject("room"));
         //jak pridat room proc nefunguje toLocalDate
         return guest;
     }
@@ -108,7 +112,7 @@ public class GuestManagerImpl implements GuestManager {
                 }
             }
         } catch (SQLException ex) {
-            throw new ServiceFailureException("Error when getting body with name = " +name + " from DB", ex);
+            throw new ServiceFailureException("Error when getting guest with name = " +name + " from DB", ex);
         }
     }
     @Override
@@ -132,7 +136,7 @@ public class GuestManagerImpl implements GuestManager {
     
         private void validate(Guest guest) {
         if (guest == null) {
-            throw new IllegalArgumentException("body is null");
+            throw new IllegalArgumentException("guest is null");
         }
         if (guest.getName() == null) {
             throw new ValidationException("name is null");
@@ -160,4 +164,14 @@ public class GuestManagerImpl implements GuestManager {
         return date == null ? null : date.toLocalDate();
     }
 
+
+    public static Guest executeQueryForSingleGuests(PreparedStatement st) throws SQLException {
+        try (ResultSet rs = st.executeQuery()) {
+            if (rs.next()) {
+                return rowToGuest(rs);
+            } else {
+                return null;
+            }
+        }
+    }
 }
