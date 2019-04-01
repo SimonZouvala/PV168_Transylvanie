@@ -38,7 +38,7 @@ public class GuestManagerTest {
 
     private static DataSource prepareDataSource() throws SQLException {
         EmbeddedDataSource ds = new EmbeddedDataSource();
-        ds.setDatabaseName("guestmgr-test");
+        ds.setDatabaseName("memory:guestmgr-test");
         ds.setCreateDatabase("create");
         return ds;
     }
@@ -52,13 +52,13 @@ public class GuestManagerTest {
     @Before
     public void setUp() throws SQLException, IOException {
         ds = prepareDataSource();
-        DBUtils.executeSqlScript(ds,GuestManager.class.getResourceAsStream("createTables.sql"));
+        DBUtils.executeSqlScript(ds,GuestManager.class.getResourceAsStream("hotel/createTables.sql"));
         manager = new GuestManagerImpl(ds, prepareClockMock(NOW));
     }
 
     @After
     public void tearDown() throws Exception {
-        DBUtils.executeSqlScript(ds,GuestManager.class.getResourceAsStream("dropTables.sql"));
+        DBUtils.executeSqlScript(ds,GuestManager.class.getResourceAsStream("hotel/dropTables.sql"));
     }
     
     private GuestBuilder willyGuestBuilder() {

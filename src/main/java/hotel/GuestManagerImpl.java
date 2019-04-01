@@ -17,7 +17,7 @@ import javax.sql.DataSource;
  */
 //ODPOLEDNE jeste neco dodelam
 public class GuestManagerImpl implements GuestManager {
-    
+
     private final DataSource dataSource;
     private final Clock clock;
 
@@ -26,12 +26,12 @@ public class GuestManagerImpl implements GuestManager {
         this.dataSource = dataSource;
         this.clock = clock;
     }
-    
+
     @Override
     public void deleteGuest(Guest guest) throws ServiceFailureException {
         if (guest == null) throw new IllegalArgumentException("guest is null");
         if (guest.getId() == null) throw new IllegalEntityException("guest id is null");
-        
+
         try(Connection con = dataSource.getConnection();
                 PreparedStatement st = con.prepareStatement("DELETE FROM Guest WHERE id = ?")){
             st.setLong(1,guest.getId());
@@ -41,7 +41,7 @@ public class GuestManagerImpl implements GuestManager {
             throw new ServiceFailureException("Error when deleting guest from the db", ex);
         }
     }
-    
+
 
     @Override
     public void createGuest(Guest guest) {
@@ -66,7 +66,7 @@ public class GuestManagerImpl implements GuestManager {
             return result;
         }
     }
-    
+
         static private Guest rowToGuest(ResultSet rs) throws SQLException {
         Guest guest = new Guest();
         guest.setId(rs.getLong("id"));
@@ -85,5 +85,5 @@ public class GuestManagerImpl implements GuestManager {
     public Guest getGuest(Long id) {
         return null;
     }
-    
+
 }

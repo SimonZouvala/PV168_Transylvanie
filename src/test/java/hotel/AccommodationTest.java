@@ -44,7 +44,7 @@ public class AccommodationTest {
     @Before
     public void setUp() throws SQLException, IOException {
         ds = prepareDataSource();
-        DBUtils.executeSqlScript(ds, RoomManager.class.getResourceAsStream("createTables.sql"));
+        DBUtils.executeSqlScript(ds, RoomManager.class.getResourceAsStream("hotel/createTables.sql"));
         manager = new AccommodationImpl(ds);
         guestManager = new GuestManagerImpl(ds, Clock.fixed(NOW.toInstant(), NOW.getZone()));
         roomManager = new RoomManagerImpl(ds);
@@ -53,7 +53,7 @@ public class AccommodationTest {
 
     @After
     public void tearDown() throws SQLException, IOException {
-        DBUtils.executeSqlScript(ds, RoomManager.class.getResourceAsStream("dropTables.sql"));
+        DBUtils.executeSqlScript(ds, RoomManager.class.getResourceAsStream("hotel/dropTables.sql"));
     }
 
 
