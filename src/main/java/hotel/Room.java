@@ -10,7 +10,7 @@ public class Room {
     private Long id;
     private int price;
     private int capacity;
-    private int numberOfRoom;
+    private int number;
 
     public Long getId() {
         return id;
@@ -36,12 +36,12 @@ public class Room {
         this.capacity = capacity;
     }
 
-    public int getNumberOfRoom() {
-        return numberOfRoom;
+    public int getNumber() {
+        return number;
     }
 
-    public void setNumberOfRoom(int numberOfRoom) {
-        this.numberOfRoom = numberOfRoom;
+    public void setNumber(int numberOfRoom) {
+        this.number = numberOfRoom;
     }
 
     @Override
@@ -50,7 +50,7 @@ public class Room {
                 "id=" + id +
                 ", price=" + price +
                 ", capacity=" + capacity +
-                ", numberOfRoom=" + numberOfRoom +
+                ", number=" + number +
                 '}';
     }
 
@@ -59,12 +59,12 @@ public class Room {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Room room = (Room) o;
-        return numberOfRoom == room.numberOfRoom &&
+        return number == room.number &&
                 Objects.equals(id, room.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, numberOfRoom);
+        return Objects.hash(id, number);
     }
 }

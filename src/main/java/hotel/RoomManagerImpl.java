@@ -39,7 +39,7 @@ public class RoomManagerImpl implements RoomManager {
                      Statement.RETURN_GENERATED_KEYS)) {
             st.setInt(1, room.getPrice());
             st.setInt(2, room.getCapacity());
-            st.setInt(3, room.getNumberOfRoom());
+            st.setInt(3, room.getNumber());
             st.executeUpdate();
             room.setId(DBUtils.getId(st.getGeneratedKeys()));
 
@@ -98,7 +98,7 @@ public class RoomManagerImpl implements RoomManager {
         result.setId(rs.getLong("id"));
         result.setPrice(rs.getInt("price"));
         result.setCapacity(rs.getInt("capacity"));
-        result.setNumberOfRoom(rs.getInt("number of room"));
+        result.setNumber(rs.getInt("number of room"));
         return result;
     }
 
@@ -135,7 +135,7 @@ public class RoomManagerImpl implements RoomManager {
         if (room.getCapacity() < 0) {
             throw new ValidationException("capacity is negative number");
         }
-        if (room.getNumberOfRoom() < 0) {
+        if (room.getNumber() < 0) {
             throw new ValidationException("number of room is negative number");
         }
     }

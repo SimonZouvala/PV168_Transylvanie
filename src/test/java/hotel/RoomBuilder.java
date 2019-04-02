@@ -11,7 +11,7 @@ public class RoomBuilder {
     private Long id;
     private int price;
     private int capacity;
-    private int numberOfRoom;
+    private int number;
 
     public RoomBuilder id(Long id){
         this.id = id;
@@ -26,8 +26,8 @@ public class RoomBuilder {
         return this;
     }
 
-    public RoomBuilder numberOfRoom(int numberOfRoom){
-        this.numberOfRoom = numberOfRoom;
+    public RoomBuilder number(int number){
+        this.number = number;
         return this;
     }
 
@@ -36,7 +36,7 @@ public class RoomBuilder {
         room.setId(id);
         room.setPrice(price);
         room.setCapacity(capacity);
-        room.setNumberOfRoom(numberOfRoom);
+        room.setNumber(number);
         return room;
     }
 }

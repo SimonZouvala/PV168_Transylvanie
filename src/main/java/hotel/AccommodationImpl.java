@@ -33,7 +33,7 @@ public class AccommodationImpl implements Accommodation {
 
         try (Connection conn = dataSource.getConnection();
              PreparedStatement st = conn.prepareStatement(
-                     "SELECT Guest.id, name, phone, dateOfCheckIn, dateOfCheckOut, room " +
+                     "SELECT Guest.id, name, phone, dateOfCheckIn, dateOfCheckOut, room.id price, capacity, number " +
                              "FROM Guest JOIN Room ON Room.id = Guest.roomId " +
                              "WHERE Room.id = ?")) {
             st.setLong(1, room.getId());

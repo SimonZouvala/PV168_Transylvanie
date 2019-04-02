@@ -44,7 +44,7 @@ public class AccommodationTest {
     @Before
     public void setUp() throws SQLException, IOException {
         ds = prepareDataSource();
-        DBUtils.executeSqlScript(ds, RoomManager.class.getResourceAsStream("hotel/createTables.sql"));
+        DBUtils.executeSqlScript(ds, RoomManager.class.getResourceAsStream("createTables.sql"));
         manager = new AccommodationImpl(ds);
         guestManager = new GuestManagerImpl(ds, Clock.fixed(NOW.toInstant(), NOW.getZone()));
         roomManager = new RoomManagerImpl(ds);
@@ -53,7 +53,7 @@ public class AccommodationTest {
 
     @After
     public void tearDown() throws SQLException, IOException {
-        DBUtils.executeSqlScript(ds, RoomManager.class.getResourceAsStream("hotel/dropTables.sql"));
+        DBUtils.executeSqlScript(ds, RoomManager.class.getResourceAsStream("dropTables.sql"));
     }
 
 
@@ -62,9 +62,9 @@ public class AccommodationTest {
 
     private void prepareTestData() {
 
-        r1 = new RoomBuilder().price(500).capacity(5).numberOfRoom(1).build();
-        r2 = new RoomBuilder().price(500).capacity(5).numberOfRoom(2).build();
-        r3 = new RoomBuilder().price(500).capacity(5).numberOfRoom(3).build();
+        r1 = new RoomBuilder().price(500).capacity(5).number(1).build();
+        r2 = new RoomBuilder().price(500).capacity(5).number(2).build();
+        r3 = new RoomBuilder().price(500).capacity(5).number(3).build();
 
         g1 = new GuestBuilder().name("Willy").phone("205050150").dateOfCheckIn(2019, MARCH, 21).build();
         g2 = new GuestBuilder().name("Berta").phone("454875487").dateOfCheckIn(2019, MARCH, 19).build();

@@ -52,13 +52,13 @@ public class GuestManagerTest {
     @Before
     public void setUp() throws SQLException, IOException {
         ds = prepareDataSource();
-        DBUtils.executeSqlScript(ds,GuestManager.class.getResourceAsStream("hotel/createTables.sql"));
+        DBUtils.executeSqlScript(ds,GuestManager.class.getResourceAsStream("createTables.sql"));
         manager = new GuestManagerImpl(ds, prepareClockMock(NOW));
     }
 
     @After
     public void tearDown() throws Exception {
-        DBUtils.executeSqlScript(ds,GuestManager.class.getResourceAsStream("hotel/dropTables.sql"));
+        DBUtils.executeSqlScript(ds,GuestManager.class.getResourceAsStream("dropTables.sql"));
     }
     
     private GuestBuilder willyGuestBuilder() {

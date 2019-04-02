@@ -45,13 +45,13 @@ public class RoomManagerTest {
     @Before
     public void setUp() throws Exception {
         ds = prepareDataSource();
-        DBUtils.executeSqlScript(ds, RoomManager.class.getResourceAsStream("hotel/createTables.sql"));
+        DBUtils.executeSqlScript(ds, RoomManager.class.getResourceAsStream("createTables.sql"));
         manager = new RoomManagerImpl(ds);
     }
 
     @After
     public void tearDown() throws Exception {
-        DBUtils.executeSqlScript(ds, RoomManager.class.getResourceAsStream("hotel/dropTables.sql"));
+        DBUtils.executeSqlScript(ds, RoomManager.class.getResourceAsStream("dropTables.sql"));
     }
 
     private RoomBuilder firstRoom() {
@@ -59,7 +59,7 @@ public class RoomManagerTest {
                 .id(null)
                 .capacity(5)
                 .price(500)
-                .numberOfRoom(1);
+                .number(1);
 
     }
 
@@ -68,7 +68,7 @@ public class RoomManagerTest {
                 .id(null)
                 .capacity(5)
                 .price(500)
-                .numberOfRoom(2);
+                .number(2);
     }
 
 
@@ -114,7 +114,7 @@ public class RoomManagerTest {
 
     @Test
     public void createRoomWithNegativeNumberOfRoom() {
-        Room room = firstRoom().numberOfRoom(-1).build();
+        Room room = firstRoom().number(-1).build();
         assertThatThrownBy(() -> manager.createRoom(room))
                 .isInstanceOf(ValidationException.class);
 
@@ -123,7 +123,7 @@ public class RoomManagerTest {
     @Test
     public void createRoomWithSameNumberOfRoom() {
         Room r1 = firstRoom().build();
-        Room r2 = secondRoom().numberOfRoom(1).build();
+        Room r2 = secondRoom().number(1).build();
 
         manager.createRoom(r1);
 
