@@ -35,7 +35,7 @@ public class RoomManagerImpl implements RoomManager {
         }
 
         try (Connection conn = dataSource.getConnection();
-             PreparedStatement st = conn.prepareStatement("INSERT INTO Room (price,capacity,numberOfRoom) VALUES (?,?,?)",
+             PreparedStatement st = conn.prepareStatement("INSERT INTO Room (price,capacity,number) VALUES (?,?,?)",
                      Statement.RETURN_GENERATED_KEYS)) {
             st.setInt(1, room.getPrice());
             st.setInt(2, room.getCapacity());
@@ -75,7 +75,7 @@ public class RoomManagerImpl implements RoomManager {
     @Override
     public List<Room> findAllRooms() {
         try (Connection conn = dataSource.getConnection();
-             PreparedStatement st = conn.prepareStatement("SELECT id, price, capacity, numberOfRoom FROM Room")) {
+             PreparedStatement st = conn.prepareStatement("SELECT id, price, capacity, number FROM Room")) {
             return executeQueryForMultipleRooms(st);
         } catch (SQLException ex) {
             throw new ServiceFailureException("Error when getting all rooms from DB", ex);
@@ -98,7 +98,7 @@ public class RoomManagerImpl implements RoomManager {
         result.setId(rs.getLong("id"));
         result.setPrice(rs.getInt("price"));
         result.setCapacity(rs.getInt("capacity"));
-        result.setNumber(rs.getInt("number of room"));
+        result.setNumber(rs.getInt("number"));
         return result;
     }
 
@@ -108,7 +108,7 @@ public class RoomManagerImpl implements RoomManager {
             throw new IllegalArgumentException("id is null");
         }
         try (Connection conn = dataSource.getConnection();
-             PreparedStatement st = conn.prepareStatement("SELECT id, price, capacity, numberOfRoom FROM Room WHERE id = ?")) {
+             PreparedStatement st = conn.prepareStatement("SELECT id, price, capacity, number FROM Room WHERE id = ?")) {
             st.setLong(1, id);
             return executeQueryForSingleRoom(st);
         } catch (SQLException ex) {
@@ -138,6 +138,20 @@ public class RoomManagerImpl implements RoomManager {
         if (room.getNumber() < 0) {
             throw new ValidationException("number of room is negative number");
         }
+        if (isSameNumberInDataSourses(room.getNumber())){
+            throw new ValidationException("number of room " + room.getNumber() + " is in database");
+        }
+    }
+
+    private boolean isSameNumberInDataSourses(int number){
+        List<Room> rooms = findAllRooms();
+
+        for (Room room : rooms){
+            if (room.getNumber() == number){
+                return true;
+            }
+        }
+        return false;
     }
 
 }
