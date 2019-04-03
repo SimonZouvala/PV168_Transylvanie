@@ -60,7 +60,7 @@ public class GuestManagerTest {
     public void tearDown() throws Exception {
         DBUtils.executeSqlScript(ds,GuestManager.class.getResourceAsStream("dropTables.sql"));
     }
-    
+
     private GuestBuilder willyGuestBuilder() {
         return new GuestBuilder()
                 .name("Willy Werewolf")
@@ -202,7 +202,7 @@ public class GuestManagerTest {
                 .isNotNull()
                 .isEqualToComparingFieldByField(guest);
     }
-    
+
     //--------------------------------------------------------------------------
     // Test for GuestManager find methods
     //--------------------------------------------------------------------------
