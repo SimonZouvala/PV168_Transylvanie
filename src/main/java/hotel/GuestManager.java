@@ -19,4 +19,10 @@ public interface GuestManager {
     Guest getGuest(Long id);
 
     Guest findGuestByName(String name);
+
+    Guest findGuestByRoom(Room room);
+
+    int checkOutGuest(Guest guest);
+
+    List<Room> freeRooms();
 }

@@ -8,11 +8,5 @@ import java.util.List;
 
 public interface Accommodation {
 
-    Guest findGuestByRoom(Room room);
 
-    void addGuest(Guest guest, Room room);
-
-    int checkOutGuest(Room room);
-
-    List<Room> freeRooms();
 }

@@ -49,31 +49,37 @@ public class GuestManagerImpl implements GuestManager {
         validate(guest);
         if (guest.getId() != null) throw new IllegalEntityException("Guest id is already set");
 
+        List<Room> freeRooms = freeRooms();
+        if (freeRooms.size() == 0)
+            throw new IllegalEntityException("All rooms are full");
+        Room firstFreeRoom = freeRooms.get(0);
         try (Connection con = dataSource.getConnection();
              PreparedStatement st = con.prepareStatement(
-                     "INSERT INTO Guest (name,phone,dateOfCheckIn,dateOfCheckOut, Room.id, price, capacity, number) VALUES (?,?,?,?,?,?,?,?)",
+                     "INSERT INTO Guest (name,phone,dateOfCheckIn,dateOfCheckOut, roomId) VALUES (?,?,?,?,?)",
                      Statement.RETURN_GENERATED_KEYS)) {
             st.setString(1, guest.getName());
             st.setString(2, guest.getPhone());
+            guest.setDateOfCheckIn(LocalDate.now(clock));
+            guest.setDateOfCheckOut(null);
             st.setDate(3, toSqlDate(guest.getDateOfCheckIn()));
             st.setDate(4, toSqlDate(guest.getDateOfCheckOut()));
-            st.setLong(5, guest.getRoom().getId());
-            st.setInt(6,guest.getRoom().getPrice());
-            st.setInt(7, guest.getRoom().getCapacity());
-            st.setInt(8,guest.getRoom().getNumber());
+            st.setLong(5, firstFreeRoom.getId());
 
             st.executeUpdate();
             guest.setId(DBUtils.getId(st.getGeneratedKeys()));
 
         } catch (SQLException ex) {
-            throw new ServiceFailureException("Error when inserting room into db", ex);
+            throw new ServiceFailureException("Error when inserting guest into db", ex);
         }
+        connectionGuestWithRoom(guest, firstFreeRoom);
+
+
     }
 
     @Override
     public List<Guest> findAllGuest() {
         try (Connection con = dataSource.getConnection();
-             PreparedStatement st = con.prepareStatement("SELECT id, name, phone, dateOfCheckIn,dateOfCheckOut, Room.id, price, capacity, number  FROM Guest JOIN Room ON Room.id = Guest.roomId")) {
+             PreparedStatement st = con.prepareStatement("SELECT id, name, phone, dateOfCheckIn,dateOfCheckOut, roomId FROM Guest")) {
             return executeQueryForMultipleGuests(st);
         } catch (SQLException ex) {
             throw new ServiceFailureException("Error when getting all guests from DB", ex);
@@ -99,10 +105,6 @@ public class GuestManagerImpl implements GuestManager {
         guest.setDateOfCheckIn(toLocalDate(rs.getDate("dateOfCheckIn")));
         guest.setDateOfCheckOut(toLocalDate(rs.getDate("dateOfCheckOut")));
         room.setId(rs.getLong("RoomId"));
-        room.setPrice(rs.getInt("price"));
-        room.setCapacity(rs.getInt("capacity"));
-        room.setNumber(rs.getInt("number"));
-        guest.setRoom(room);
 
         return guest;
     }
@@ -112,7 +114,8 @@ public class GuestManagerImpl implements GuestManager {
         if (name == null) throw new IllegalArgumentException("name is null");
 
         try (Connection con = dataSource.getConnection();
-             PreparedStatement st = con.prepareStatement("SELECT id, name, phone,dateOfCheckIn, dateOfCheckOut,  Room.id, price, capacity,  number  FROM Guest JOIN Room ON Room.id = Guest.roomId WHERE name = ?")) {
+             PreparedStatement st = con.prepareStatement("SELECT id, name, phone,dateOfCheckIn, dateOfCheckOut,  roomId  FROM Guest WHERE name = ?")) {
+            st.setString(1,name);
             try (ResultSet rs = st.executeQuery()) {
                 if (rs.next()) {
                     return rowToGuest(rs);
@@ -126,11 +129,67 @@ public class GuestManagerImpl implements GuestManager {
     }
 
     @Override
+    public Guest findGuestByRoom(Room room) {
+        if (room == null) throw new IllegalArgumentException("room is null");
+        if (room.getId() == null) throw new IllegalEntityException("room id is null");
+
+        try (Connection conn = dataSource.getConnection();
+             PreparedStatement st = conn.prepareStatement(
+                     "SELECT Guest.id, name, phone, dateOfCheckIn, dateOfCheckOut, roomId " +
+                             "FROM Guest LEFT JOIN Room ON Room.id = Guest.roomId " +
+                             "WHERE Room.id = ?")) {
+            st.setLong(1, room.getId());
+            return GuestManagerImpl.executeQueryForSingleGuests(st);
+        } catch (SQLException ex) {
+            throw new ServiceFailureException("Error when trying to find guest by room " + room, ex);
+        }
+    }
+
+    @Override
+    public int checkOutGuest(Guest guest) {
+        if (guest == null) throw new IllegalArgumentException("guest is null");
+        if (guest.getId() == null) throw new IllegalEntityException("guest id is null");
+
+
+        try (Connection conn = dataSource.getConnection()) {
+            try (PreparedStatement st = conn.prepareStatement("UPDATE Guest SET roomId = ? WHERE id = roomId")) {
+                conn.setAutoCommit(false);
+
+                st.setLong(1, Long.parseLong(null));
+                conn.commit();
+            } catch (Exception ex) {
+
+                conn.rollback();
+                throw ex;
+            } finally {
+                conn.setAutoCommit(true);
+            }
+        } catch (SQLException ex) {
+            throw new ServiceFailureException("Error when adding guest into room", ex);
+        }
+        return 0;
+    }
+
+    @Override
+    public List<Room> freeRooms() {
+        try (Connection conn = dataSource.getConnection();
+             PreparedStatement st = conn.prepareStatement(
+                     "SELECT Room.id, price, capacity, number " +
+                             "FROM Room LEFT JOIN Guest ON Room.id = Guest.roomId " +
+                             "GROUP BY Room.id, price, capacity, number " +
+                             "HAVING COUNT(Guest.id) = 0")) {
+            return RoomManagerImpl.executeQueryForMultipleRooms(st);
+        } catch (SQLException ex) {
+            throw new ServiceFailureException("Error when trying to find empty rooms", ex);
+        }
+    }
+
+    @Override
     public Guest getGuest(Long id) throws ServiceFailureException {
         if (id == null) throw new IllegalArgumentException("id is null");
 
         try (Connection con = dataSource.getConnection();
-             PreparedStatement st = con.prepareStatement("SELECT id, name, phone, dateOfCheckIn, dateOfCheckOut,  Room.id, price, capacity, number  FROM Guest JOIN Room ON Room.id = Guest.roomId WHERE id = ?")) {
+             PreparedStatement st = con.prepareStatement("SELECT id, name, phone, dateOfCheckIn, dateOfCheckOut, roomId  FROM Guest  WHERE id = ?")) {
             st.setLong(1, id);
             try (ResultSet rs = st.executeQuery()) {
                 if (rs.next()) {
@@ -155,7 +214,7 @@ public class GuestManagerImpl implements GuestManager {
             throw new ValidationException("phone is null");
         }
         if (guest.getDateOfCheckIn() != null && guest.getDateOfCheckOut() != null && guest.getDateOfCheckOut().isBefore(guest.getDateOfCheckOut())) {
-            throw new ValidationException("dateOfCheckOut is before dateOfheckIn");
+            throw new ValidationException("dateOfCheckOut is before dateOfCheckIn");
         }
         LocalDate today = LocalDate.now(clock);
         if (guest.getDateOfCheckOut() != null && guest.getDateOfCheckIn().isAfter(today)) {
@@ -184,4 +243,30 @@ public class GuestManagerImpl implements GuestManager {
             }
         }
     }
+
+    private void connectionGuestWithRoom(Guest guest, Room firstFreeRoom){
+        try (Connection conn = dataSource.getConnection()) {
+            try (PreparedStatement st = conn.prepareStatement("UPDATE Guest SET roomId = ? WHERE id = ? AND roomId IS NULL")) {
+                conn.setAutoCommit(false);
+
+                st.setLong(1, firstFreeRoom.getId());
+                st.setLong(2, guest.getId());
+
+                conn.commit();
+            } catch (Exception ex) {
+
+                conn.rollback();
+                throw ex;
+            } finally {
+                conn.setAutoCommit(true);
+            }
+        } catch (SQLException ex) {
+            throw new ServiceFailureException("Error when adding guest into room", ex);
+        }
+    }
+
+    private Room getRoomByGuest(Guest guest){
+     return null;
+    }
+
 }

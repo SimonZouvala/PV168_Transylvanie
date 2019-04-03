@@ -26,7 +26,7 @@ public class AccommodationImpl implements Accommodation {
         this.dataSource = dataSource;
     }
 
-    @Override
+
     public Guest findGuestByRoom(Room room) {
         if (room == null) throw new IllegalArgumentException("room is null");
         if (room.getId() == null) throw new IllegalEntityException("room id is null");

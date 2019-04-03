@@ -13,7 +13,7 @@ public class Guest {
     private String phone;
     private LocalDate dateOfCheckIn;
     private LocalDate dateOfCheckOut;
-    private Room room;
+    private Long room;
 
     public Long getId() {
         return id;
@@ -55,11 +55,11 @@ public class Guest {
         this.dateOfCheckOut = dateOfCheckOut;
     }
 
-    public Room getRoom() {
+    public Long getRoomId() {
         return room;
     }
 
-    public void setRoom(Room room) {
+    public void setRoomId(Long room) {
         this.room = room;
     }
 

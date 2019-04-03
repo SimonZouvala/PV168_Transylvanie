@@ -14,7 +14,7 @@ public class GuestBuilder {
     private String phone;
     private LocalDate dateOfCheckIn;
     private LocalDate dateOfCheckOut;
-    private Room room;
+    private Long room;
 
 public GuestBuilder id(Long id) {
         this.id = id;
@@ -51,7 +51,7 @@ public GuestBuilder id(Long id) {
         return this;
     }
 
-    public GuestBuilder room(Room room) {
+    public GuestBuilder room(Long room) {
         this.room = room;
         return this;
     }
@@ -63,7 +63,7 @@ public GuestBuilder id(Long id) {
         guest.setPhone(phone);
         guest.setDateOfCheckIn(dateOfCheckIn);
         guest.setDateOfCheckOut(dateOfCheckOut);
-        guest.setRoom(room);
+        guest.setRoomId(room);
         return guest;
     }
 

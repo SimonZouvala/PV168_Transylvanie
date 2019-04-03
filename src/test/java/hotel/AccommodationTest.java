@@ -229,26 +229,6 @@ public class AccommodationTest {
                 .hasCause(sqlException);
     }
 
-    @Test
-    public void findGuestByRoomWithSqlExceptionThrown() throws SQLException {
-        testExpectedServiceFailureException((accommodationManager) -> accommodationManager.findGuestByRoom(r1));
-    }
-
-
-    @Test
-    public void addGuestWithSqlExceptionThrown() throws SQLException {
-        testExpectedServiceFailureException((accommodationManager) -> accommodationManager.addGuest(g1, r1));
-    }
-
-    @Test
-    public void checkOutGuestWithSqlExceptionThrown() throws SQLException {
-        testExpectedServiceFailureException((accommodationManager) -> accommodationManager.checkOutGuest(r1));
-    }
-
-    @Test
-    public void freeRoomsWithSqlExceptionThrown() throws SQLException {
-        testExpectedServiceFailureException(Accommodation::freeRooms);
-    }
 
 
 }

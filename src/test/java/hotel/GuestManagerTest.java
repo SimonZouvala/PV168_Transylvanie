@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.time.*;
 import javax.sql.DataSource;
 import javax.xml.bind.ValidationException;
+
 import org.apache.derby.jdbc.EmbeddedDataSource;
 
 import org.junit.rules.ExpectedException;
@@ -26,13 +27,14 @@ import static org.mockito.Mockito.*;
  */
 
 public class GuestManagerTest {
-    
+
+    private RoomManagerImpl roomManager;
     private GuestManagerImpl manager;
     private DataSource ds;
-    
+
     private final static ZonedDateTime NOW
             = LocalDateTime.of(2019, MARCH, 24, 16, 00).atZone(ZoneId.of("UTC"));
-    
+
     @Rule
     public ExpectedException expectedException = ExpectedException.none();
 
@@ -47,43 +49,63 @@ public class GuestManagerTest {
         return Clock.fixed(now.toInstant(), now.getZone());
     }
 
-    Room room = mock(Room.class);
 
     @Before
     public void setUp() throws SQLException, IOException {
         ds = prepareDataSource();
-        DBUtils.executeSqlScript(ds,GuestManager.class.getResourceAsStream("createTables.sql"));
+        DBUtils.executeSqlScript(ds, GuestManager.class.getResourceAsStream("createTables.sql"));
 
         manager = new GuestManagerImpl(ds, prepareClockMock(NOW));
+        roomManager = new RoomManagerImpl(ds);
+        prepareTestData();
     }
 
     @After
     public void tearDown() throws Exception {
-        DBUtils.executeSqlScript(ds,GuestManager.class.getResourceAsStream("dropTables.sql"));
+        DBUtils.executeSqlScript(ds, GuestManager.class.getResourceAsStream("dropTables.sql"));
+    }
+
+
+    private Room room1, room2, room3, roomWithNullId, roomNotInDB;
+
+
+    private void prepareTestData() {
+
+        room1 = new RoomBuilder().price(500).capacity(5).number(1).build();
+        room2 = new RoomBuilder().price(500).capacity(5).number(2).build();
+        room3 = new RoomBuilder().price(500).capacity(5).number(3).build();
+
+        roomManager.createRoom(room1);
+        roomManager.createRoom(room2);
+        roomManager.createRoom(room3);
+
+        roomWithNullId = new RoomBuilder().id(null).build();
+        roomNotInDB = new RoomBuilder().id(room3.getId() + 100).build();
+        assertThat(roomManager.getRoom(roomNotInDB.getId())).isNull();
     }
 
     private GuestBuilder willyGuestBuilder() {
         return new GuestBuilder()
                 .name("Willy Werewolf")
                 .phone("705052648")
-                .dateOfCheckIn(2019,JANUARY,21)
+                .dateOfCheckIn(2019, JANUARY, 21)
                 .dateOfCheckOut(null)
-                .room(room);
+                .room(null);
     }
 
     private GuestBuilder aliceGuestBuilder() {
         return new GuestBuilder()
-            .name("Alice Zombie")
-            .phone("605050689")
-            .dateOfCheckIn(2019,FEBRUARY,21)
-            .dateOfCheckOut(null)
-            .room(room);
+                .name("Alice Zombie")
+                .phone("605050689")
+                .dateOfCheckIn(2019, FEBRUARY, 21)
+                .dateOfCheckOut(null)
+                .room(null);
     }
 
     //--------------------------------------------------------------------------
     // Test for GuestManager.createGuest(Guest)
     //--------------------------------------------------------------------------
-    
+
     @Test
     public void createGuest() {
         Guest guest = willyGuestBuilder().build();
@@ -96,7 +118,7 @@ public class GuestManagerTest {
                 .isNotSameAs(guest)
                 .isEqualToComparingFieldByField(guest);
     }
-    
+
     @Test
     public void createGuestWithExistingId() {
         Guest guest = willyGuestBuilder()
@@ -105,7 +127,7 @@ public class GuestManagerTest {
         expectedException.expect(IllegalEntityException.class);
         manager.createGuest(guest);
     }
-    
+
     @Test
     public void createGuestWithNullName() {
         Guest guest = willyGuestBuilder()
@@ -127,8 +149,8 @@ public class GuestManagerTest {
     @Test
     public void createGuestCheckOutBeforeCheckIn() {
         Guest guest = willyGuestBuilder()
-                .dateOfCheckIn(2019,JANUARY,21)
-                .dateOfCheckOut(2019,JANUARY,20)
+                .dateOfCheckIn(2019, JANUARY, 21)
+                .dateOfCheckOut(2019, JANUARY, 20)
                 .build();
         expectedException.expect(ValidationException.class);
         manager.createGuest(guest);
@@ -163,9 +185,9 @@ public class GuestManagerTest {
     public void createGuestWithCheckInToday() {
         LocalDate today = NOW.toLocalDate();
         Guest guest = willyGuestBuilder()
-            .dateOfCheckIn(today)
-            .dateOfCheckOut(null)
-            .build();
+                .dateOfCheckIn(today)
+                .dateOfCheckOut(null)
+                .build();
         manager.createGuest(guest);
 
         assertThat(manager.getGuest(guest.getId()))
@@ -197,7 +219,7 @@ public class GuestManagerTest {
     @Test
     public void createGuestNullCheckOut() {
         Guest guest = willyGuestBuilder()
-            .build();
+                .build();
         manager.createGuest(guest);
         assertThat(manager.getGuest(guest.getId()))
                 .isNotNull()
@@ -207,7 +229,7 @@ public class GuestManagerTest {
     //--------------------------------------------------------------------------
     // Test for GuestManager find methods
     //--------------------------------------------------------------------------
-    
+
     @Test
     public void findAllGuest() {
         assertThat(manager.findAllGuest()).isEmpty();
@@ -220,7 +242,7 @@ public class GuestManagerTest {
 
         assertThat(manager.findAllGuest())
                 .usingFieldByFieldElementComparator()
-                .containsOnly(willy,alice);
+                .containsOnly(willy, alice);
     }
 
     @Test
@@ -233,12 +255,23 @@ public class GuestManagerTest {
                 .isNotNull()
                 .isEqualToComparingFieldByField(willy);
     }
-    
+
+    @Test(expected = IllegalArgumentException.class)
+    public void findGuestWithNullRoom() {
+        manager.findGuestByRoom(null);
+    }
+
+    @Test(expected = IllegalEntityException.class)
+    public void findGuestbyRoomWithNullId() {
+        manager.findGuestByRoom(roomWithNullId);
+    }
+
+
     //--------------------------------------------------------------------------
     // Test for GuestManager.deleteGuest(Guest)
     //--------------------------------------------------------------------------
-    
-     @Test
+
+    @Test
     public void deleteGuest() {
 
         Guest willy = willyGuestBuilder().build();
@@ -276,22 +309,51 @@ public class GuestManagerTest {
         manager.deleteGuest(guest);
     }
 
+    @Test
+    public void findGuestByRoom() {
+        assertThat(manager.findGuestByRoom(room1)).isNull();
+        assertThat(manager.findGuestByRoom(room2)).isNull();
+        assertThat(manager.findGuestByRoom(room3)).isNull();
+        Guest guest = willyGuestBuilder().build();
+        manager.createGuest(guest);
+
+        assertThat(manager.findGuestByRoom(room1))
+                .isEqualToComparingFieldByField(guest);
+        assertThat(manager.findGuestByRoom(room2)).isNull();
+        assertThat(manager.findGuestByRoom(room3)).isNull();
+    }
+
+    @Test
+    public void freeRooms() {
+        assertThat(manager.freeRooms())
+                .usingFieldByFieldElementComparator()
+                .containsOnly(room1, room2, room3);
+
+        manager.createGuest(aliceGuestBuilder().build());
+        manager.createGuest(willyGuestBuilder().build());
+
+        assertThat(manager.freeRooms())
+                .usingFieldByFieldElementComparator()
+                .containsOnly(room3);
+    }
 
 
-//    @Test
-//    public void checkOutGuest() {
-//        manager.createGuest(willyGuestBuilder().build());
-//        assertThat(manager.findGuestByRoom(r3))
-//                .isEqualToComparingFieldByField(g1);
-//        int day = NOW.getDayOfMonth() - g1.getDateOfCheckIn().getDayOfMonth();
-//        int price = day * r3.getPrice();
-//
-//        assertThat(manager.checkOutGuest(r3))
-//                .isEqualToComparingFieldByField(price);
-//        assertThat(manager.findGuestByRoom(r3))
-//                .isNull();
-//    }
-//
+    @Test
+    public void checkOutGuest() {
+
+        Guest guest = willyGuestBuilder().build();
+        manager.createGuest(guest);
+        assertThat(manager.findGuestByRoom(room1))
+                .isEqualToComparingFieldByField(guest);
+        int day = NOW.getDayOfMonth() - guest.getDateOfCheckIn().getDayOfMonth();
+        int price = day * room1.getPrice();
+
+        assertThat(manager.checkOutGuest(guest))
+                .isEqualToComparingFieldByField(price);
+        assertThat(manager.findGuestByRoom(room1))
+                .isNull();
+    }
+
     //--------------------------------------------------------------------------
     // Tests if GuestManager methods throws ServiceFailureException in case of
     // DB operation failure
@@ -308,7 +370,7 @@ public class GuestManagerTest {
         SQLException sqlException = new SQLException();
         DataSource failingDataSource = mock(DataSource.class);
         when(failingDataSource.getConnection()).thenThrow(sqlException);
-        manager = new GuestManagerImpl(failingDataSource,prepareClockMock(NOW));
+        manager = new GuestManagerImpl(failingDataSource, prepareClockMock(NOW));
 
         Guest guest = willyGuestBuilder().build();
 
@@ -322,7 +384,7 @@ public class GuestManagerTest {
         SQLException sqlException = new SQLException();
         DataSource failingDataSource = mock(DataSource.class);
         when(failingDataSource.getConnection()).thenThrow(sqlException);
-        manager = new GuestManagerImpl(failingDataSource,prepareClockMock(NOW));
+        manager = new GuestManagerImpl(failingDataSource, prepareClockMock(NOW));
         assertThatThrownBy(() -> operation.callOn(manager))
                 .isInstanceOf(ServiceFailureException.class)
                 .hasCause(sqlException);
@@ -333,20 +395,38 @@ public class GuestManagerTest {
     public void getGuestWithSqlExceptionThrown() throws SQLException {
         Guest guest = willyGuestBuilder().build();
         manager.createGuest(guest);
-        testExpectedServiceFailureException((GuestManager) -> manager.getGuest(guest.getId()));
+        testExpectedServiceFailureException((guestManager) -> guestManager.getGuest(guest.getId()));
     }
 
     @Test
     public void deleteGuestWithSqlExceptionThrown() throws SQLException {
         Guest guest = willyGuestBuilder().build();
         manager.createGuest(guest);
-        testExpectedServiceFailureException((GuestManager) -> manager.deleteGuest(guest));
+        testExpectedServiceFailureException((guestManager) -> guestManager.deleteGuest(guest));
     }
 
     @Test
     public void findAllGuestsWithSqlExceptionThrown() throws SQLException {
         testExpectedServiceFailureException(GuestManager::findAllGuest);
     }
-    
-    
+
+    @Test
+    public void findGuestByRoomWithSqlExceptionThrown() throws SQLException {
+        testExpectedServiceFailureException((guestManager) -> guestManager.findGuestByRoom(room1));
+    }
+
+
+    @Test
+    public void checkOutGuestWithSqlExceptionThrown() throws SQLException {
+        Guest guest = willyGuestBuilder().build();
+        manager.createGuest(guest);
+        testExpectedServiceFailureException((guestManager) -> guestManager.checkOutGuest(guest));
+    }
+
+    @Test
+    public void freeRoomsWithSqlExceptionThrown() throws SQLException {
+        testExpectedServiceFailureException(GuestManager::freeRooms);
+    }
+
+
 }
