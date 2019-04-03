@@ -16,6 +16,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.Rule;
 
+import static java.lang.StrictMath.abs;
 import static java.time.Month.*;
 import static org.assertj.core.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -33,7 +34,7 @@ public class GuestManagerTest {
     private DataSource ds;
 
     private final static ZonedDateTime NOW
-            = LocalDateTime.of(2019, MARCH, 24, 16, 00).atZone(ZoneId.of("UTC"));
+            = LocalDateTime.of(2019, APRIL, 3, 16, 00).atZone(ZoneId.of("UTC"));
 
     @Rule
     public ExpectedException expectedException = ExpectedException.none();
@@ -89,8 +90,7 @@ public class GuestManagerTest {
                 .name("Willy Werewolf")
                 .phone("705052648")
                 .dateOfCheckIn(2019, JANUARY, 21)
-                .dateOfCheckOut(null)
-                .room(null);
+                .dateOfCheckOut(null);
     }
 
     private GuestBuilder aliceGuestBuilder() {
@@ -98,8 +98,7 @@ public class GuestManagerTest {
                 .name("Alice Zombie")
                 .phone("605050689")
                 .dateOfCheckIn(2019, FEBRUARY, 21)
-                .dateOfCheckOut(null)
-                .room(null);
+                .dateOfCheckOut(null);
     }
 
     //--------------------------------------------------------------------------
@@ -345,11 +344,11 @@ public class GuestManagerTest {
         manager.createGuest(guest);
         assertThat(manager.findGuestByRoom(room1))
                 .isEqualToComparingFieldByField(guest);
-        int day = NOW.getDayOfMonth() - guest.getDateOfCheckIn().getDayOfMonth();
-        int price = day * room1.getPrice();
+        Period period = Period.between(NOW.toLocalDate(), guest.getDateOfCheckIn());
+        int price = period.getDays() * room1.getPrice();
 
         assertThat(manager.checkOutGuest(guest))
-                .isEqualToComparingFieldByField(price);
+                .isEqualTo(price);
         assertThat(manager.findGuestByRoom(room1))
                 .isNull();
     }

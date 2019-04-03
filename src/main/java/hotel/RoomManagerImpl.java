@@ -116,7 +116,7 @@ public class RoomManagerImpl implements RoomManager {
         }
     }
 
-    private Room executeQueryForSingleRoom(PreparedStatement st) throws SQLException {
+    static Room executeQueryForSingleRoom(PreparedStatement st) throws SQLException {
         try (ResultSet rs = st.executeQuery()) {
             if (rs.next()) {
                 return rowToRoom(rs);
