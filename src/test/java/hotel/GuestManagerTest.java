@@ -53,6 +53,7 @@ public class GuestManagerTest {
     public void setUp() throws SQLException, IOException {
         ds = prepareDataSource();
         DBUtils.executeSqlScript(ds,GuestManager.class.getResourceAsStream("createTables.sql"));
+
         manager = new GuestManagerImpl(ds, prepareClockMock(NOW));
     }
 
@@ -66,7 +67,7 @@ public class GuestManagerTest {
                 .name("Willy Werewolf")
                 .phone("705052648")
                 .dateOfCheckIn(2019,JANUARY,21)
-                .dateOfCheckOut(2019,FEBRUARY,8)
+                .dateOfCheckOut(null)
                 .room(room);
     }
 
@@ -75,7 +76,7 @@ public class GuestManagerTest {
             .name("Alice Zombie")
             .phone("605050689")
             .dateOfCheckIn(2019,FEBRUARY,21)
-            .dateOfCheckOut(2019,MARCH,8)
+            .dateOfCheckOut(null)
             .room(room);
     }
 
@@ -135,9 +136,10 @@ public class GuestManagerTest {
 
     @Test
     public void createGuestCheckInAndCheckOutInSameDay() {
+        LocalDate today = NOW.toLocalDate();
         Guest guest = willyGuestBuilder()
-                .dateOfCheckIn(2019,JANUARY,21)
-                .dateOfCheckOut(2019,JANUARY,21)
+                .dateOfCheckIn(today)
+                .dateOfCheckOut(today)
                 .build();
         manager.createGuest(guest);
 
@@ -161,8 +163,8 @@ public class GuestManagerTest {
     public void createGuestWithCheckInToday() {
         LocalDate today = NOW.toLocalDate();
         Guest guest = willyGuestBuilder()
-            .dateOfCheckIn(2019,JANUARY,21)
-            .dateOfCheckOut(2019,JANUARY,20)
+            .dateOfCheckIn(today)
+            .dateOfCheckOut(null)
             .build();
         manager.createGuest(guest);
 
@@ -195,7 +197,6 @@ public class GuestManagerTest {
     @Test
     public void createGuestNullCheckOut() {
         Guest guest = willyGuestBuilder()
-            .dateOfCheckOut(null)
             .build();
         manager.createGuest(guest);
         assertThat(manager.getGuest(guest.getId()))
@@ -274,7 +275,23 @@ public class GuestManagerTest {
         expectedException.expect(IllegalEntityException.class);
         manager.deleteGuest(guest);
     }
-    
+
+
+
+//    @Test
+//    public void checkOutGuest() {
+//        manager.createGuest(willyGuestBuilder().build());
+//        assertThat(manager.findGuestByRoom(r3))
+//                .isEqualToComparingFieldByField(g1);
+//        int day = NOW.getDayOfMonth() - g1.getDateOfCheckIn().getDayOfMonth();
+//        int price = day * r3.getPrice();
+//
+//        assertThat(manager.checkOutGuest(r3))
+//                .isEqualToComparingFieldByField(price);
+//        assertThat(manager.findGuestByRoom(r3))
+//                .isNull();
+//    }
+//
     //--------------------------------------------------------------------------
     // Tests if GuestManager methods throws ServiceFailureException in case of
     // DB operation failure
