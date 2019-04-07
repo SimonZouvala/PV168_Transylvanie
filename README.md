@@ -7,8 +7,8 @@ Evidence hostů v hotelu
 Aplikace PV168_Transylvanie je určena na evidenci hostu v hotelu, prihlaseni hostu do hotelu (pokoje) a odhlaseni hostu z hotelu (pokoje). 
 Evidenci hostu lze provadet pomoci seznamu hostu, kdy po zvolení hosta dostaneme informace o nem. Dalsi moznost evidence hosta lze podle vyhledani hosta podle jmena. 
 Evidence pokojů lze delat pomoci seznamu pokoju a nasledne zvolenim pokoje.
-Prihlasit hosta do pokoje lze pomoci vyplneni udaju. maximalni pocet hostu v jednom pokoji je 5.
-Odhlaseni hosta z hotelu lze pomoci zadani cisla pokoje. Automaticky tak odhlasi vechny hosty v danem pokoji a vypise se cena za stravene noci.
+Prihlasit hosta do pokoje lze pomoci vyplneni udaju.
+Odhlaseni hosta z hotelu lze pomoci zadani cisla pokoje. Automaticky se vypise cena za stravene noci.
 
 
 ### Use case diagram:
@@ -32,10 +32,10 @@ Kdyz uzivatel klikne na tlacitko "Hosti", objevi se seznam hostu. Pri kliknuti n
 Kdyz uzivatel klikne na tlacitko "Pokoje", objevi se seznam pokoju. Pri kliknuti na pokoj se vypisou informace o nem.
 ![alt text](Images/pokoje.png)
 
-Uzivatel muze pri kliknuti na tlacitko "Přihlásit pokoj", prihlasit urcity pocet hostu do pokoje. Pocet je omezen kapacitou (max 5 hostu v jednom pokoji).
+Uzivatel muze pri kliknuti na tlacitko "Ubytovat", ubytovat hosta do pokoje.
 ![alt text](Images/prihlasit.png)
 
-Uzivatel muze odhlasit pokoj. Po napsani cisla pokoje do kolonky, se uzivatli objevi cena za stravene noci.
+Uzivatel muze odhlasit hosta.Objevi se okno s jmenem hosta a s cenou za stravene noci.
 ![alt text](Images/odhlasit.png)
 
 
