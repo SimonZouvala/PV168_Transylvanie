@@ -33,7 +33,7 @@ public class GuestManagerTest {
     private DataSource ds;
 
     private final static ZonedDateTime NOW
-            = LocalDateTime.of(2019, APRIL, 7, 16, 00).atZone(ZoneId.of("UTC"));
+            = LocalDateTime.of(2019, APRIL, 8, 16, 00).atZone(ZoneId.of("UTC"));
 
     @Rule
     public ExpectedException expectedException = ExpectedException.none();

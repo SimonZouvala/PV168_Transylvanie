@@ -91,7 +91,7 @@ public class GuestManagerImpl implements GuestManager {
         }
     }
 
-    static List<Guest> executeQueryForMultipleGuests(PreparedStatement st) throws SQLException {
+    private static List<Guest> executeQueryForMultipleGuests(PreparedStatement st) throws SQLException {
         try (ResultSet rs = st.executeQuery()) {
             List<Guest> result = new ArrayList<>();
             while (rs.next()) {
