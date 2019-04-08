@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="16" failures="0" name="hotel.RoomManagerTest" time="0.371" errors="0" skipped="0">
+<testsuite tests="16" failures="0" name="hotel.RoomManagerTest" time="0.577" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_152\jre\bin"/>
@@ -61,20 +61,20 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="hotel.RoomManagerTest" name="createRoomWithSameNumberOfRoom" time="0"/>
-  <testcase classname="hotel.RoomManagerTest" name="getRoomWithSqlExceptionThrown" time="0.037"/>
-  <testcase classname="hotel.RoomManagerTest" name="createRoomWithSqlExceptionThrown" time="0.015"/>
-  <testcase classname="hotel.RoomManagerTest" name="deleteNonExistRoom" time="0.035"/>
-  <testcase classname="hotel.RoomManagerTest" name="createNullRoom" time="0.017"/>
-  <testcase classname="hotel.RoomManagerTest" name="deleteRoomWithSqlExceptionThrown" time="0.028"/>
-  <testcase classname="hotel.RoomManagerTest" name="createRoomWithNegativeCapacity" time="0.016"/>
-  <testcase classname="hotel.RoomManagerTest" name="createRoomWithNegativeNumberOfRoom" time="0.016"/>
-  <testcase classname="hotel.RoomManagerTest" name="deleteNullRoom" time="0.026"/>
-  <testcase classname="hotel.RoomManagerTest" name="createRoomWithNegativePrice" time="0.018"/>
-  <testcase classname="hotel.RoomManagerTest" name="findAllRoomsWithSqlExceptionThrown" time="0.024"/>
-  <testcase classname="hotel.RoomManagerTest" name="createRoom" time="0.036"/>
-  <testcase classname="hotel.RoomManagerTest" name="deleteRoom" time="0.022"/>
-  <testcase classname="hotel.RoomManagerTest" name="findAllRooms" time="0.036"/>
+  <testcase classname="hotel.RoomManagerTest" name="createRoomWithSameNumberOfRoom" time="0.062"/>
+  <testcase classname="hotel.RoomManagerTest" name="getRoomWithSqlExceptionThrown" time="0.113"/>
+  <testcase classname="hotel.RoomManagerTest" name="createRoomWithSqlExceptionThrown" time="0.027"/>
+  <testcase classname="hotel.RoomManagerTest" name="deleteNonExistRoom" time="0.025"/>
+  <testcase classname="hotel.RoomManagerTest" name="createNullRoom" time="0.022"/>
+  <testcase classname="hotel.RoomManagerTest" name="deleteRoomWithSqlExceptionThrown" time="0.036"/>
+  <testcase classname="hotel.RoomManagerTest" name="createRoomWithNegativeCapacity" time="0.019"/>
+  <testcase classname="hotel.RoomManagerTest" name="createRoomWithNegativeNumberOfRoom" time="0.028"/>
+  <testcase classname="hotel.RoomManagerTest" name="deleteNullRoom" time="0.025"/>
+  <testcase classname="hotel.RoomManagerTest" name="createRoomWithNegativePrice" time="0.02"/>
+  <testcase classname="hotel.RoomManagerTest" name="findAllRoomsWithSqlExceptionThrown" time="0.02"/>
+  <testcase classname="hotel.RoomManagerTest" name="createRoom" time="0.031"/>
+  <testcase classname="hotel.RoomManagerTest" name="deleteRoom" time="0.061"/>
+  <testcase classname="hotel.RoomManagerTest" name="findAllRooms" time="0.025"/>
   <testcase classname="hotel.RoomManagerTest" name="deleteRoomWithNullId" time="0.016"/>
-  <testcase classname="hotel.RoomManagerTest" name="createGuestWithExistingId" time="0.023"/>
+  <testcase classname="hotel.RoomManagerTest" name="createGuestWithExistingId" time="0.026"/>
 </testsuite>
