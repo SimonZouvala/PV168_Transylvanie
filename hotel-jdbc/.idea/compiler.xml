@@ -7,8 +7,10 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="hotel-jdbc" />
-        <module name="hotel-web" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="hotel-jdbc" target="8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

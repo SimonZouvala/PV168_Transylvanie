@@ -2,20 +2,188 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ddb6bbe9-5791-45e0-ab15-4af7ef00c160" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/hotel-app.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotel-jdbc/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotel-jdbc/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotel-jdbc/.idea/libraries/Maven__junit_junit_4_12.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotel-jdbc/.idea/libraries/Maven__org_apache_derby_derby_10_14_1_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotel-jdbc/.idea/libraries/Maven__org_assertj_assertj_core_3_9_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotel-jdbc/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotel-jdbc/.idea/libraries/Maven__org_mockito_mockito_core_1_10_19.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotel-jdbc/.idea/libraries/Maven__org_objenesis_objenesis_2_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotel-jdbc/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotel-jdbc/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotel-jdbc/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotel-jdbc/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotel-jdbc/hotel-jdbc.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotel-jdbc/src/main/java/cz/muni/fi/pv168/hotel/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotel-jdbc/src/main/resources/cz.muni.fi.pv168/hotel/jdbc.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotel-web/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotel-web/.idea/libraries/Maven__cz_muni_fi_pv168_hotel_jdbc_1_4_SNAPSHOT.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotel-web/.idea/libraries/Maven__org_apache_taglibs_taglibs_standard_impl_1_2_5.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotel-web/.idea/libraries/Maven__org_apache_taglibs_taglibs_standard_spec_1_2_5.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotel-web/.idea/libraries/Maven__org_apache_tomcat_tomcat_api_9_0_14.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotel-web/.idea/libraries/Maven__org_apache_tomcat_tomcat_servlet_api_9_0_14.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotel-web/.idea/libraries/Maven__org_slf4j_slf4j_api_1_5_6.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotel-web/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotel-web/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotel-web/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotel-web/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hotel-web/src/main/java/cz/muni/fi/pv168/web/HotelServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/derby.log" beforeDir="false" afterPath="$PROJECT_DIR$/derby.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hotel/GuestManagerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hotel/GuestManagerImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/hotel/GuestManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/hotel/GuestManagerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hotel/GuestManagerImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/hotel/GuestManagerImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/hotel/GuestManagerTest$Operation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/hotel/GuestManagerTest$Operation.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/Class_Diagram_Transylvanie.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/Use_Case_Transylvanie.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/hosti.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/odhlasit.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/pokoje.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/prihlasit.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Images/uvodni_strana.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/derby.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guestmgr-test/README_DO_NOT_TOUCH_FILES.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guestmgr-test/db.lck" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guestmgr-test/dbex.lck" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guestmgr-test/log/README_DO_NOT_TOUCH_FILES.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guestmgr-test/log/log.ctrl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guestmgr-test/log/log1.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guestmgr-test/log/logmirror.ctrl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guestmgr-test/seg0/README_DO_NOT_TOUCH_FILES.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guestmgr-test/seg0/c10.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guestmgr-test/seg0/c101.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guestmgr-test/seg0/c111.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guestmgr-test/seg0/c121.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guestmgr-test/seg0/c130.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guestmgr-test/seg0/c141.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guestmgr-test/seg0/c150.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guestmgr-test/seg0/c161.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guestmgr-test/seg0/c171.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guestmgr-test/seg0/c180.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guestmgr-test/seg0/c191.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guestmgr-test/seg0/c1a1.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guestmgr-test/seg0/c1b1.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guestmgr-test/seg0/c1c0.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guestmgr-test/seg0/c1d1.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guestmgr-test/seg0/c1e0.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guestmgr-test/seg0/c1f1.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guestmgr-test/seg0/c20.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guestmgr-test/seg0/c200.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guestmgr-test/seg0/c211.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guestmgr-test/seg0/c221.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guestmgr-test/seg0/c230.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guestmgr-test/seg0/c241.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guestmgr-test/seg0/c251.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guestmgr-test/seg0/c260.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guestmgr-test/seg0/c271.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guestmgr-test/seg0/c281.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guestmgr-test/seg0/c290.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guestmgr-test/seg0/c2a1.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guestmgr-test/seg0/c2b1.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guestmgr-test/seg0/c2c1.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guestmgr-test/seg0/c2d0.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guestmgr-test/seg0/c2e1.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guestmgr-test/seg0/c2f0.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guestmgr-test/seg0/c300.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guestmgr-test/seg0/c31.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guestmgr-test/seg0/c311.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guestmgr-test/seg0/c321.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guestmgr-test/seg0/c331.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guestmgr-test/seg0/c340.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guestmgr-test/seg0/c351.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guestmgr-test/seg0/c361.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guestmgr-test/seg0/c371.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guestmgr-test/seg0/c380.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guestmgr-test/seg0/c391.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guestmgr-test/seg0/c3a1.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guestmgr-test/seg0/c3b1.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guestmgr-test/seg0/c3c0.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guestmgr-test/seg0/c3d1.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guestmgr-test/seg0/c3e1.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guestmgr-test/seg0/c3f1.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guestmgr-test/seg0/c400.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guestmgr-test/seg0/c41.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guestmgr-test/seg0/c411.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guestmgr-test/seg0/c421.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guestmgr-test/seg0/c430.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guestmgr-test/seg0/c441.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guestmgr-test/seg0/c451.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guestmgr-test/seg0/c461.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guestmgr-test/seg0/c470.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guestmgr-test/seg0/c481.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guestmgr-test/seg0/c51.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guestmgr-test/seg0/c60.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guestmgr-test/seg0/c71.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guestmgr-test/seg0/c81.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guestmgr-test/seg0/c90.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guestmgr-test/seg0/ca1.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guestmgr-test/seg0/cb1.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guestmgr-test/seg0/cc0.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guestmgr-test/seg0/cd1.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guestmgr-test/seg0/ce1.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guestmgr-test/seg0/cf0.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/guestmgr-test/service.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pv168_transylvanie.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cz/muni/fi/pv168/hotel/Guest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cz/muni/fi/pv168/hotel/GuestManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cz/muni/fi/pv168/hotel/GuestManagerImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cz/muni/fi/pv168/hotel/Room.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cz/muni/fi/pv168/hotel/RoomManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cz/muni/fi/pv168/hotel/RoomManagerImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cz/muni/fi/pv168/hotel/exception/DBUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cz/muni/fi/pv168/hotel/exception/IllegalEntityException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cz/muni/fi/pv168/hotel/exception/ServiceFailureException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cz/muni/fi/pv168/hotel/exception/ValidationException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/hotel/createTables.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/hotel/dropTables.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/cz/muni/fi/pv168/hotel/GuestBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/cz/muni/fi/pv168/hotel/GuestManagerTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/cz/muni/fi/pv168/hotel/RoomBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/cz/muni/fi/pv168/hotel/RoomManagerTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/.netbeans_automatic_build" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/exception/DBUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/exception/IllegalEntityException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/exception/ServiceFailureException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/exception/ValidationException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/hotel/Guest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/hotel/GuestManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/hotel/GuestManagerImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/hotel/Room.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/hotel/RoomManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/hotel/RoomManagerImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/hotel/createTables.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/hotel/dropTables.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/pv168_transylvanie-1.0-SNAPSHOT.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-hotel.AccommodationTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-hotel.GuestManagerTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-hotel.RoomManagerTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/hotel.AccommodationTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/hotel.GuestManagerTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/hotel.RoomManagerTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/.netbeans_automatic_build" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/hotel/GuestBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/hotel/GuestManagerTest$Operation.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/hotel/GuestManagerTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/hotel/RoomBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/hotel/RoomManagerTest$Operation.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/hotel/RoomManagerTest.class" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
+    <ignored path="$PROJECT_DIR$/hotel-web/target/" />
+    <ignored path="$PROJECT_DIR$/hotel-jdbc/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/pv168_transylvanie$hotel_in_pv168_transylvanie.ic" NAME="hotel in pv168_transylvanie Coverage Results" MODIFIED="1554729556638" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
@@ -40,32 +208,36 @@
     <session id="1558764501">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="11" />
-          <entry key="project.open.time.38" value="1" />
+          <entry key="project.closed" value="14" />
+          <entry key="project.open.time.3" value="1" />
+          <entry key="project.open.time.38" value="2" />
           <entry key="project.open.time.4" value="1" />
           <entry key="project.open.time.40" value="1" />
           <entry key="project.open.time.41" value="1" />
           <entry key="project.open.time.43" value="3" />
           <entry key="project.open.time.44" value="2" />
-          <entry key="project.open.time.46" value="1" />
+          <entry key="project.open.time.46" value="2" />
           <entry key="project.open.time.49" value="1" />
-          <entry key="project.opened" value="11" />
+          <entry key="project.opened" value="14" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CLASS" value="1" />
-          <entry key="JAVA" value="65" />
+          <entry key="IDEA_MODULE" value="4" />
+          <entry key="JAVA" value="86" />
+          <entry key="Log" value="1" />
           <entry key="PLAIN_TEXT" value="3" />
-          <entry key="SQL" value="6" />
-          <entry key="XML" value="4" />
+          <entry key="Properties" value="1" />
+          <entry key="SQL" value="7" />
+          <entry key="XML" value="11" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="5761" />
+          <entry key="JAVA" value="6045" />
           <entry key="SQL" value="88" />
-          <entry key="XML" value="1" />
+          <entry key="XML" value="230" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages">
@@ -79,20 +251,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/hotel/GuestManager.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="24" column="35" selection-start-line="24" selection-start-column="35" selection-end-line="24" selection-end-column="35" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/test/java/hotel/GuestManagerTest.java">
+        <entry file="file://$PROJECT_DIR$/hotel-web/src/main/java/cz/muni/fi/pv168/web/HotelServlet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" />
+            <state relative-caret-position="600">
+              <caret line="40" column="45" selection-start-line="40" selection-start-column="45" selection-end-line="40" selection-end-column="45" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -101,10 +264,42 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/hotel/RoomManagerTest.java">
+        <entry file="file://$PROJECT_DIR$/hotel-jdbc/src/main/java/cz/muni/fi/pv168/hotel/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1635">
-              <caret line="129" selection-start-line="129" selection-end-line="129" />
+            <state relative-caret-position="210">
+              <caret line="14" column="21" lean-forward="true" selection-start-line="14" selection-start-column="21" selection-end-line="14" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/hotel-jdbc/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="765">
+              <caret line="51" column="35" selection-start-line="51" selection-start-column="35" selection-end-line="51" selection-end-column="35" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/hotel-jdbc/src/main/resources/cz.muni.fi.pv168/hotel/jdbc.properties">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="645">
+              <caret line="43" column="46" selection-start-line="43" selection-start-column="46" selection-end-line="43" selection-end-column="46" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/hotel-jdbc/src/test/java/cz/muni/fi/pv168/hotel/GuestManagerTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="369">
+              <caret line="77" lean-forward="true" selection-start-line="77" selection-end-line="77" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -113,31 +308,13 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/hotel/RoomManagerImpl.java">
+        <entry file="file://$PROJECT_DIR$/hotel-jdbc/src/test/java/cz/muni/fi/pv168/hotel/RoomManagerTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1560">
-              <caret line="118" column="10" selection-start-line="118" selection-start-column="10" selection-end-line="118" selection-end-column="10" />
+            <state relative-caret-position="240">
+              <caret line="34" column="9" lean-forward="true" selection-start-line="34" selection-start-column="9" selection-end-line="34" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/hotel/RoomBuilder.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="28" column="40" selection-start-line="28" selection-start-column="40" selection-end-line="28" selection-end-column="40" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/hotel/GuestManagerImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="23" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -179,8 +356,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/hotel/RoomManager.java" />
         <option value="$PROJECT_DIR$/src/main/resources/createTables.sql" />
         <option value="$PROJECT_DIR$/src/main/resources/dropTables.sql" />
         <option value="$PROJECT_DIR$/src/main/java/exception/DBUtils.java" />
@@ -193,10 +368,24 @@
         <option value="$PROJECT_DIR$/src/main/java/hotel/Accommodation.java" />
         <option value="$PROJECT_DIR$/src/main/java/hotel/AccommodationImpl.java" />
         <option value="$PROJECT_DIR$/src/test/java/hotel/AccommodationTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/hotel/GuestManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/hotel/RoomManagerImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/hotel/GuestManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/hotel/GuestManagerImpl.java" />
         <option value="$PROJECT_DIR$/src/test/java/hotel/GuestManagerTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/hotel/RoomManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cz/muni/fi/pv168/hotel/GuestManagerImpl.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/hotel-web/pom.xml" />
+        <option value="$PROJECT_DIR$/hotel-jdbc/src/test/java/cz/muni/fi/pv168/hotel/GuestManagerImplTest.java" />
+        <option value="$PROJECT_DIR$/hotel-jdbc/src/main/java/cz/muni/fi/pv168/hotel/RoomManagerImpl.java" />
+        <option value="$PROJECT_DIR$/hotel-jdbc/src/main/java/cz/muni/fi/pv168/hotel/GuestManagerImpl.java" />
+        <option value="$PROJECT_DIR$/hotel-web/src/main/java/cz.fi.pv168.web/HotelServlet.java" />
+        <option value="$PROJECT_DIR$/hotel-web/src/main/java/cz.fi.pv168.web/StartListener.java" />
+        <option value="$PROJECT_DIR$/hotel-web/src/main/java/cz/muni/fi/pv168/web/StartListener.java" />
+        <option value="$PROJECT_DIR$/hotel-jdbc/pom.xml" />
+        <option value="$PROJECT_DIR$/hotel-jdbc/src/main/java/cz/muni/fi/pv168/hotel/Main.java" />
+        <option value="$PROJECT_DIR$/hotel-jdbc/src/test/java/cz/muni/fi/pv168/hotel/GuestManagerTest.java" />
+        <option value="$PROJECT_DIR$/hotel-jdbc/src/test/java/cz/muni/fi/pv168/hotel/RoomManagerTest.java" />
       </list>
     </option>
   </component>
@@ -238,8 +427,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -250,17 +437,25 @@
             <path>
               <item name="pv168_transylvanie" type="b2602c69:ProjectViewProjectNode" />
               <item name="pv168_transylvanie" type="462c0819:PsiDirectoryNode" />
+              <item name="hotel-jdbc" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="pv168_transylvanie" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pv168_transylvanie" type="462c0819:PsiDirectoryNode" />
+              <item name="hotel-jdbc" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="pv168_transylvanie" type="b2602c69:ProjectViewProjectNode" />
               <item name="pv168_transylvanie" type="462c0819:PsiDirectoryNode" />
+              <item name="hotel-jdbc" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="pv168_transylvanie" type="b2602c69:ProjectViewProjectNode" />
               <item name="pv168_transylvanie" type="462c0819:PsiDirectoryNode" />
+              <item name="hotel-jdbc" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
@@ -268,22 +463,26 @@
             <path>
               <item name="pv168_transylvanie" type="b2602c69:ProjectViewProjectNode" />
               <item name="pv168_transylvanie" type="462c0819:PsiDirectoryNode" />
+              <item name="hotel-jdbc" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="hotel" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="pv168_transylvanie" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pv168_transylvanie" type="462c0819:PsiDirectoryNode" />
+              <item name="hotel-jdbc" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="hotel" type="462c0819:PsiDirectoryNode" />
               <item name="exception" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="pv168_transylvanie" type="b2602c69:ProjectViewProjectNode" />
               <item name="pv168_transylvanie" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="hotel" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="pv168_transylvanie" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pv168_transylvanie" type="462c0819:PsiDirectoryNode" />
+              <item name="hotel-jdbc" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
@@ -291,6 +490,7 @@
             <path>
               <item name="pv168_transylvanie" type="b2602c69:ProjectViewProjectNode" />
               <item name="pv168_transylvanie" type="462c0819:PsiDirectoryNode" />
+              <item name="hotel-jdbc" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
@@ -299,12 +499,14 @@
             <path>
               <item name="pv168_transylvanie" type="b2602c69:ProjectViewProjectNode" />
               <item name="pv168_transylvanie" type="462c0819:PsiDirectoryNode" />
+              <item name="hotel-jdbc" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="pv168_transylvanie" type="b2602c69:ProjectViewProjectNode" />
               <item name="pv168_transylvanie" type="462c0819:PsiDirectoryNode" />
+              <item name="hotel-jdbc" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
@@ -312,47 +514,99 @@
             <path>
               <item name="pv168_transylvanie" type="b2602c69:ProjectViewProjectNode" />
               <item name="pv168_transylvanie" type="462c0819:PsiDirectoryNode" />
+              <item name="hotel-jdbc" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="hotel" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="pv168_transylvanie" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pv168_transylvanie" type="462c0819:PsiDirectoryNode" />
+              <item name="hotel-web" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="pv168_transylvanie" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pv168_transylvanie" type="462c0819:PsiDirectoryNode" />
+              <item name="hotel-web" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="pv168_transylvanie" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pv168_transylvanie" type="462c0819:PsiDirectoryNode" />
+              <item name="hotel-web" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="pv168_transylvanie" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pv168_transylvanie" type="462c0819:PsiDirectoryNode" />
+              <item name="hotel-web" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="pv168_transylvanie" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pv168_transylvanie" type="462c0819:PsiDirectoryNode" />
+              <item name="hotel-web" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554729554153" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555332503712" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/SQL Dialect" value="Derby&#10;ClickHouse" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../přiklady/PV168/GraveManager-Backend" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../přiklady/PV168/Books-webapp" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="File.Encoding" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="cz.muni.fi.pv168.hotel" />
       <recent name="hotel" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/main/resources" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="cz.muni.fi.pv168.hotel" />
+      <recent name="cz.muni.fi.pv168" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="cz.muni.fi.pv168.hotel" />
+      <recent name="cz.fi.pv168.web" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/hotel-jdbc/src/main/resources/cz.muni.fi.pv168/hotel" />
+      <recent name="$PROJECT_DIR$/hotel-web" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/src/main/resources" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/hotel-jdbc/src/main/resources/cz.muni.fi.pv168/hotel" />
+      <recent name="$PROJECT_DIR$/hotel-jdbc/src/main/resources" />
+      <recent name="$PROJECT_DIR$/hotel-jdbc/src/main/resources/cz.muni.fi.pv168" />
       <recent name="$PROJECT_DIR$/src/main/resources/hotel" />
       <recent name="$PROJECT_DIR$/src/test/java/hotel" />
-      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -367,53 +621,94 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.hotel in pv168_transylvanie">
-    <configuration name="All in pv168_transylvanie" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="pv168_transylvanie" />
+  <component name="RunManager" selected="JUnit.All in hotel-jdbc (1)">
+    <configuration name="All Features in: hotel-web" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+      <option name="CUCUMBER_CORE_VERSION" value="3" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/hotel-web" />
+      <option name="MAIN_CLASS_NAME" value="cucumber.api.cli.Main" />
+      <module name="hotel-web" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm3SMFormatter" />
+      <option name="SUGGESTED_NAME" value="All Features in: hotel-web" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cucumber.api.cli.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="All Features in: src" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+      <option name="CUCUMBER_CORE_VERSION" value="3" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/hotel-jdbc/src" />
+      <option name="MAIN_CLASS_NAME" value="cucumber.api.cli.Main" />
+      <module name="hotel-jdbc" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm3SMFormatter" />
+      <option name="SUGGESTED_NAME" value="All Features in: src" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cucumber.api.cli.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="All Features in: test" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+      <option name="CUCUMBER_CORE_VERSION" value="3" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/hotel-jdbc/src/test" />
+      <option name="MAIN_CLASS_NAME" value="cucumber.api.cli.Main" />
+      <module name="hotel-jdbc" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm3SMFormatter" />
+      <option name="SUGGESTED_NAME" value="All Features in: test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cucumber.api.cli.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="All in hotel-jdbc (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="hotel-jdbc" />
       <option name="PACKAGE_NAME" value="" />
       <option name="TEST_OBJECT" value="package" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RoomManagerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="pv168_transylvanie" />
+    <configuration name="GuestManagerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="hotel-jdbc" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="hotel.*" />
+          <option name="PATTERN" value="cz.muni.fi.pv168.hotel.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="hotel" />
-      <option name="MAIN_CLASS_NAME" value="hotel.RoomManagerTest" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="hotel in pv168_transylvanie" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="pv168_transylvanie" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="hotel.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="hotel" />
-      <option name="TEST_OBJECT" value="package" />
+      <option name="PACKAGE_NAME" value="cz.muni.fi.pv168.hotel" />
+      <option name="MAIN_CLASS_NAME" value="cz.muni.fi.pv168.hotel.GuestManagerTest" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.All in pv168_transylvanie" />
-      <item itemvalue="JUnit.RoomManagerTest" />
-      <item itemvalue="JUnit.hotel in pv168_transylvanie" />
+      <item itemvalue="Cucumber java.All Features in: hotel-web" />
+      <item itemvalue="JUnit.All in hotel-jdbc (1)" />
+      <item itemvalue="JUnit.GuestManagerTest" />
+      <item itemvalue="Cucumber java.All Features in: src" />
+      <item itemvalue="Cucumber java.All Features in: test" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.hotel in pv168_transylvanie" />
-        <item itemvalue="JUnit.All in pv168_transylvanie" />
-        <item itemvalue="JUnit.RoomManagerTest" />
+        <item itemvalue="JUnit.All in hotel-jdbc (1)" />
+        <item itemvalue="Cucumber java.All Features in: test" />
+        <item itemvalue="Cucumber java.All Features in: src" />
+        <item itemvalue="JUnit.GuestManagerTest" />
+        <item itemvalue="Cucumber java.All Features in: hotel-web" />
       </list>
     </recent_temporary>
   </component>
@@ -438,59 +733,62 @@
       <workItem from="1554310008003" duration="7742000" />
       <workItem from="1554702361395" duration="132000" />
       <workItem from="1554725758714" duration="1727000" />
-      <workItem from="1554738976529" duration="23000" />
+      <workItem from="1554738976529" duration="3137000" />
+      <workItem from="1555306041652" duration="4264000" />
+      <workItem from="1555313318105" duration="5473000" />
+      <workItem from="1555331739829" duration="597000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="hotel_in_pv168_transylvanie - 2019.04.03 at 21h 07m 12s.xml">
-      <configuration name="hotel in pv168_transylvanie" configurationId="JUnit" />
+    <history-entry file="All_in_hotel-jdbc_(1) - 2019.04.15 at 10h 12m 02s.xml">
+      <configuration name="All in hotel-jdbc (1)" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="hotel_in_pv168_transylvanie - 2019.04.03 at 21h 09m 06s.xml">
-      <configuration name="hotel in pv168_transylvanie" configurationId="JUnit" />
+    <history-entry file="All_in_hotel-jdbc_(1) - 2019.04.15 at 10h 12m 35s.xml">
+      <configuration name="All in hotel-jdbc (1)" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="hotel_in_pv168_transylvanie - 2019.04.03 at 21h 10m 14s.xml">
-      <configuration name="hotel in pv168_transylvanie" configurationId="JUnit" />
+    <history-entry file="All_in_hotel-jdbc_(1) - 2019.04.15 at 10h 14m 22s.xml">
+      <configuration name="All in hotel-jdbc (1)" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="hotel_in_pv168_transylvanie - 2019.04.03 at 21h 11m 24s.xml">
-      <configuration name="hotel in pv168_transylvanie" configurationId="JUnit" />
+    <history-entry file="All_in_hotel-jdbc_(1) - 2019.04.15 at 10h 22m 43s.xml">
+      <configuration name="All in hotel-jdbc (1)" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="hotel_in_pv168_transylvanie - 2019.04.03 at 21h 12m 30s.xml">
-      <configuration name="hotel in pv168_transylvanie" configurationId="JUnit" />
+    <history-entry file="All_in_hotel-jdbc_(1) - 2019.04.15 at 10h 23m 12s.xml">
+      <configuration name="All in hotel-jdbc (1)" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="hotel_in_pv168_transylvanie - 2019.04.03 at 21h 13m 15s.xml">
-      <configuration name="hotel in pv168_transylvanie" configurationId="JUnit" />
+    <history-entry file="All_in_hotel-jdbc_(1) - 2019.04.15 at 10h 24m 21s.xml">
+      <configuration name="All in hotel-jdbc (1)" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="hotel_in_pv168_transylvanie - 2019.04.03 at 21h 18m 59s.xml">
-      <configuration name="hotel in pv168_transylvanie" configurationId="JUnit" />
+    <history-entry file="All_in_hotel-jdbc_(1) - 2019.04.15 at 14h 41m 37s.xml">
+      <configuration name="All in hotel-jdbc (1)" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="hotel_in_pv168_transylvanie - 2019.04.03 at 21h 19m 36s.xml">
-      <configuration name="hotel in pv168_transylvanie" configurationId="JUnit" />
+    <history-entry file="All_in_hotel-jdbc_(1) - 2019.04.15 at 14h 42m 28s.xml">
+      <configuration name="All in hotel-jdbc (1)" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="hotel_in_pv168_transylvanie - 2019.04.03 at 21h 20m 12s.xml">
-      <configuration name="hotel in pv168_transylvanie" configurationId="JUnit" />
+    <history-entry file="All_in_hotel-jdbc_(1) - 2019.04.15 at 14h 42m 54s.xml">
+      <configuration name="All in hotel-jdbc (1)" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="hotel_in_pv168_transylvanie - 2019.04.08 at 15h 19m 33s.xml">
-      <configuration name="hotel in pv168_transylvanie" configurationId="JUnit" />
+    <history-entry file="All_in_hotel-jdbc_(1) - 2019.04.15 at 14h 43m 23s.xml">
+      <configuration name="All in hotel-jdbc (1)" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="62846000" />
+    <option name="totallyTimeSpent" value="76294000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18815717" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4983871" visible="true" weight="0.19479801" />
+      <window_info id="Structure" order="1" sideWeight="0.5016129" side_tool="true" weight="0.1925844" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Image Layers" order="3" />
       <window_info id="Designer" order="4" />
       <window_info id="UI Designer" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32972974" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32972974" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32972974" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -500,6 +798,7 @@
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" weight="0.32972974" />
       <window_info anchor="bottom" id="Version Control" order="10" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.32972974" />
+      <window_info anchor="bottom" id="Java Enterprise" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -553,30 +852,10 @@
     </ignored-roots>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/guestmgr-test/seg0/cf0.dat">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/exception/IllegalEntityException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/exception/ServiceFailureException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/exception/ValidationException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/guestmgr-test/seg0/cf0.dat" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/pv168/hotel/exception/IllegalEntityException.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/pv168/hotel/exception/ServiceFailureException.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/pv168/hotel/exception/ValidationException.java" />
     <entry file="jar://$MAVEN_REPOSITORY$/org/assertj/assertj-core/3.9.1/assertj-core-3.9.1-sources.jar!/org/assertj/core/api/Assertions.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
@@ -584,27 +863,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/derby.log">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="13" lean-forward="true" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/hotel/dropTables.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="18" selection-start-line="1" selection-start-column="18" selection-end-line="1" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="31" selection-start-line="14" selection-start-column="31" selection-end-line="14" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/derby.log" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/hotel/dropTables.sql" />
     <entry file="jrt:///usr/lib/jvm/java-1.11.0-openjdk-amd64!/java.base/java/io/Reader.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="197">
@@ -612,118 +872,142 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/exception/DBUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="298">
-          <caret line="50" selection-start-line="50" selection-end-line="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/hotel/RoomManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="30" selection-start-line="15" selection-start-column="30" selection-end-line="15" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/hotel/GuestBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/hotel/Room.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="563">
-          <caret line="67" column="38" selection-start-line="67" selection-start-column="38" selection-end-line="67" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/hotel/Guest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="62" column="22" selection-start-line="62" selection-start-column="22" selection-end-line="62" selection-end-column="22" />
-          <folding>
-            <element signature="e#343#344#0" expanded="true" />
-            <element signature="e#368#369#0" expanded="true" />
-            <element signature="e#402#403#0" expanded="true" />
-            <element signature="e#430#431#0" expanded="true" />
-            <element signature="e#461#462#0" expanded="true" />
-            <element signature="e#488#489#0" expanded="true" />
-            <element signature="e#528#529#0" expanded="true" />
-            <element signature="e#560#561#0" expanded="true" />
-            <element signature="e#592#593#0" expanded="true" />
-            <element signature="e#620#621#0" expanded="true" />
-            <element signature="e#662#663#0" expanded="true" />
-            <element signature="e#696#697#0" expanded="true" />
-            <element signature="e#739#740#0" expanded="true" />
-            <element signature="e#775#776#0" expanded="true" />
-            <element signature="e#836#837#0" expanded="true" />
-            <element signature="e#886#887#0" expanded="true" />
-            <element signature="e#930#931#0" expanded="true" />
-            <element signature="e#967#968#0" expanded="true" />
-            <element signature="e#1030#1031#0" expanded="true" />
-            <element signature="e#1082#1083#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/pv168/hotel/exception/DBUtils.java" />
+    <entry file="file://$PROJECT_DIR$/src/test/java/cz/muni/fi/pv168/hotel/GuestBuilder.java" />
     <entry file="file://$PROJECT_DIR$/src/test/java/hotel/AccommodationTest.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/hotel/AccommodationImpl.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/hotel/Accommodation.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/resources/hotel/createTables.sql">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/hotel/createTables.sql" />
+    <entry file="file://$PROJECT_DIR$/src/test/java/cz/muni/fi/pv168/hotel/RoomBuilder.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/pv168/hotel/Room.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/pv168/hotel/RoomManager.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/pv168/hotel/GuestManager.java" />
+    <entry file="file://$PROJECT_DIR$/src/test/java/cz/muni/fi/pv168/hotel/GuestManagerTest.java" />
+    <entry file="file://$PROJECT_DIR$/src/test/java/cz/muni/fi/pv168/hotel/RoomManagerTest.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/pv168/hotel/Guest.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/pv168/hotel/GuestManagerImpl.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/pv168/hotel/RoomManagerImpl.java" />
+    <entry file="file://$PROJECT_DIR$/hotel-jdbc/src/main/java/cz/muni/fi/pv168/hotel/GuestManager.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hotel-web/hotel-web.iml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="20" selection-start-line="13" selection-start-column="20" selection-end-line="13" selection-end-column="30" />
+        <state relative-caret-position="-82" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hotel-app.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="9" lean-forward="true" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/hotel/GuestManager.java">
+    <entry file="file://$PROJECT_DIR$/hotel-jdbc/src/test/test.iml" />
+    <entry file="file://$PROJECT_DIR$/hotel-jdbc/.idea/libraries/pv168_transylvanie_1_0_SNAPSHOT.xml" />
+    <entry file="file://$PROJECT_DIR$/hotel-jdbc/src/main/main.iml" />
+    <entry file="file://$PROJECT_DIR$/hotel-jdbc/derby.log">
+      <provider selected="true" editor-type-id="LogFileEditorProvider" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hotel-web/src/main/java/cz/muni/fi/pv168/web/BooksServlet.java" />
+    <entry file="file://$PROJECT_DIR$/hotel-jdbc/src/test/java/cz/muni/fi/pv168/hotel/GuestManagerImplTest.java" />
+    <entry file="file://$PROJECT_DIR$/hotel-web/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="35" selection-start-line="24" selection-start-column="35" selection-end-line="24" selection-end-column="35" />
+        <state relative-caret-position="135">
+          <caret line="9" column="39" selection-start-line="9" selection-start-column="39" selection-end-line="9" selection-end-column="39" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/hotel/RoomManagerTest.java">
+    <entry file="file://$PROJECT_DIR$/hotel-jdbc/src/main/resources/cz.muni.fi.pv168/hotel/createTables.sql">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hotel-jdbc/src/main/resources/cz.muni.fi.pv168/hotel/jdbc.properties">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1635">
-          <caret line="129" selection-start-line="129" selection-end-line="129" />
+        <state relative-caret-position="645">
+          <caret line="43" column="46" selection-start-line="43" selection-start-column="46" selection-end-line="43" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hotel-jdbc/src/main/java/cz/muni/fi/pv168/hotel/GuestManagerImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="27" column="25" selection-start-line="27" selection-start-column="25" selection-end-line="27" selection-end-column="25" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/hotel/RoomManagerImpl.java">
+    <entry file="file://$PROJECT_DIR$/hotel-jdbc/src/main/java/cz/muni/fi/pv168/hotel/exception/DBUtils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1560">
-          <caret line="118" column="10" selection-start-line="118" selection-start-column="10" selection-end-line="118" selection-end-column="10" />
+        <state relative-caret-position="645">
+          <caret line="50" selection-start-line="50" selection-end-line="50" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/hotel/RoomBuilder.java">
+    <entry file="file://$PROJECT_DIR$/hotel-jdbc/src/main/java/cz/muni/fi/pv168/hotel/RoomManagerImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="28" column="40" selection-start-line="28" selection-start-column="40" selection-end-line="28" selection-end-column="40" />
+        <state relative-caret-position="165">
+          <caret line="23" selection-start-line="23" selection-end-line="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/hotel/GuestManagerImpl.java">
+    <entry file="file://$PROJECT_DIR$/hotel-web/src/main/java/cz/muni/fi/pv168/web/StartListener.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="23" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
+        <state relative-caret-position="225">
+          <caret line="15" column="12" lean-forward="true" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="12" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/hotel/GuestManagerTest.java">
+    <entry file="file://$PROJECT_DIR$/hotel-jdbc/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" />
+        <state relative-caret-position="765">
+          <caret line="51" column="35" selection-start-line="51" selection-start-column="35" selection-end-line="51" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hotel-jdbc/src/main/java/cz/muni/fi/pv168/hotel/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="21" lean-forward="true" selection-start-line="14" selection-start-column="21" selection-end-line="14" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hotel-jdbc/src/test/java/cz/muni/fi/pv168/hotel/GuestManagerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="369">
+          <caret line="77" lean-forward="true" selection-start-line="77" selection-end-line="77" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hotel-jdbc/src/test/java/cz/muni/fi/pv168/hotel/RoomManagerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="34" column="9" lean-forward="true" selection-start-line="34" selection-start-column="9" selection-end-line="34" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hotel-web/src/main/java/cz/muni/fi/pv168/web/HotelServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="40" column="45" selection-start-line="40" selection-start-column="45" selection-end-line="40" selection-end-column="45" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -736,10 +1020,12 @@
       <state key="ArtifactsStructureConfigurable.UI">
         <settings>
           <artifact-editor />
+          <last-edited>hotel-web:war</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>
@@ -747,7 +1033,7 @@
       </state>
       <state key="FacetStructureConfigurable.UI">
         <settings>
-          <last-edited>No facets are configured</last-edited>
+          <last-edited>Web</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -782,7 +1068,7 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>pv168_transylvanie</last-edited>
+          <last-edited>hotel-web</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

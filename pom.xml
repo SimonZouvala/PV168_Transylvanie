@@ -4,56 +4,67 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>pv168_transylvanie</groupId>
-    <artifactId>pv168_transylvanie</artifactId>
-    <version>1.0-SNAPSHOT</version>
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>8</source>
-                    <target>8</target>
-                    <encoding>${project.build.sourceEncoding}</encoding>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-resources-plugin</artifactId>
-                <version>2.4.3</version>
-                <configuration>
-                    <encoding>${project.build.sourceEncoding}</encoding>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
+    <groupId>cz.muni.fi.pv168</groupId>
+    <artifactId>hotel-app</artifactId>
+    <version>1.4-SNAPSHOT</version>
+    <name>Hotel parent project</name>
+    <packaging>pom</packaging>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.apache.derby</groupId>
-            <artifactId>derby</artifactId>
-            <version>10.14.1.0</version>
-        </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.12</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>3.9.1</version>
-        </dependency>
-                <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-core</artifactId>
-            <version>1.10.19</version>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
+    <!-- define child projects -->
+    <modules>
+        <module>hotel-jdbc</module>
+        <module>hotel-web</module>
+    </modules>
+
     <properties>
+        <!-- Use UTF-8 in the whole project -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+        <!-- define java version used for compilation -->
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+
+        <!-- define versions of libraries in a single place -->
+        <slf4j.version>1.7.25</slf4j.version>
+        <logback.version>1.2.3</logback.version>
+        <junit.version>4.12</junit.version>
+        <derby.version>10.14.2.0</derby.version>
+        <hikaricp.version>3.3.1</hikaricp.version>
+        <spring.version>5.1.4.RELEASE</spring.version>
+        <tomcat.version>9.0.14</tomcat.version>
+        <taglibs-standard.version>1.2.5</taglibs-standard.version>
     </properties>
+
+    <!-- just optional metadata about the project -->
+    <description>Example for PV168 course at Masaryk University</description>
+    <developers>
+        <developer>
+            <name>Lýdie Hemalová</name>
+            <email>433757@mail.muni.cz</email>
+            <organization>Masaryk University</organization>
+            <organizationUrl>http://www.muni.cz</organizationUrl>
+        </developer>
+        <developer>
+            <name>Šimon Zouvala</name>
+            <email>445475@mail.muni.cz</email>
+            <organization>Masaryk University</organization>
+            <organizationUrl>http://www.muni.cz</organizationUrl>
+        </developer>
+    </developers>
+    <organization>
+        <name>Masaryk University</name>
+        <url>http://www.muni.cz</url>
+    </organization>
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+        </license>
+    </licenses>
+    <scm>
+        <connection>scm:git@gitlab.fi.muni.cz:x445475/pv168_transylvanie.git</connection>
+        <url>https://gitlab.fi.muni.cz/x445475/pv168_transylvanie.git</url>
+    </scm>
+
 </project>
