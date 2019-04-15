@@ -23,7 +23,7 @@ public class HotelServlet extends HttpServlet {
 
     public static final String URL_MAPPING = "/";
     private static final String LIST_JSP = "/list.jsp";
-
+ 
     private final static Logger log = LoggerFactory.getLogger(HotelServlet.class);
 
     @Override
