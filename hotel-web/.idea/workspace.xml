@@ -2,176 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7fff6acb-1781-45ec-9c8f-2bb3c5fde959" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../hotel-app.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../hotel-jdbc/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../hotel-jdbc/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../hotel-jdbc/.idea/libraries/Maven__junit_junit_4_12.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../hotel-jdbc/.idea/libraries/Maven__org_apache_derby_derby_10_14_1_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../hotel-jdbc/.idea/libraries/Maven__org_assertj_assertj_core_3_9_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../hotel-jdbc/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../hotel-jdbc/.idea/libraries/Maven__org_mockito_mockito_core_1_10_19.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../hotel-jdbc/.idea/libraries/Maven__org_objenesis_objenesis_2_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../hotel-jdbc/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../hotel-jdbc/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../hotel-jdbc/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../hotel-jdbc/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../hotel-jdbc/hotel-jdbc.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../hotel-jdbc/src/main/java/cz/muni/fi/pv168/hotel/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../hotel-jdbc/src/main/resources/cz.muni.fi.pv168/hotel/jdbc.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__cz_muni_fi_pv168_hotel_jdbc_1_4_SNAPSHOT.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_taglibs_taglibs_standard_impl_1_2_5.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_taglibs_taglibs_standard_spec_1_2_5.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_tomcat_api_9_0_14.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_tomcat_servlet_api_9_0_14.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_api_1_5_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cz/muni/fi/pv168/web/HotelServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cz/muni/fi/pv168/web/StartListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/sqldialects.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Images/Class_Diagram_Transylvanie.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Images/Use_Case_Transylvanie.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Images/hosti.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Images/odhlasit.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Images/pokoje.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Images/prihlasit.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Images/uvodni_strana.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../derby.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../guestmgr-test/README_DO_NOT_TOUCH_FILES.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../guestmgr-test/db.lck" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../guestmgr-test/dbex.lck" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../guestmgr-test/log/README_DO_NOT_TOUCH_FILES.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../guestmgr-test/log/log.ctrl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../guestmgr-test/log/log1.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../guestmgr-test/log/logmirror.ctrl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../guestmgr-test/seg0/README_DO_NOT_TOUCH_FILES.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../guestmgr-test/seg0/c10.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../guestmgr-test/seg0/c101.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../guestmgr-test/seg0/c111.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../guestmgr-test/seg0/c121.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../guestmgr-test/seg0/c130.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../guestmgr-test/seg0/c141.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../guestmgr-test/seg0/c150.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../guestmgr-test/seg0/c161.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../guestmgr-test/seg0/c171.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../guestmgr-test/seg0/c180.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../guestmgr-test/seg0/c191.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../guestmgr-test/seg0/c1a1.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../guestmgr-test/seg0/c1b1.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../guestmgr-test/seg0/c1c0.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../guestmgr-test/seg0/c1d1.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../guestmgr-test/seg0/c1e0.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../guestmgr-test/seg0/c1f1.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../guestmgr-test/seg0/c20.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../guestmgr-test/seg0/c200.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../guestmgr-test/seg0/c211.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../guestmgr-test/seg0/c221.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../guestmgr-test/seg0/c230.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../guestmgr-test/seg0/c241.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../guestmgr-test/seg0/c251.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../guestmgr-test/seg0/c260.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../guestmgr-test/seg0/c271.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../guestmgr-test/seg0/c281.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../guestmgr-test/seg0/c290.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../guestmgr-test/seg0/c2a1.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../guestmgr-test/seg0/c2b1.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../guestmgr-test/seg0/c2c1.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../guestmgr-test/seg0/c2d0.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../guestmgr-test/seg0/c2e1.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../guestmgr-test/seg0/c2f0.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../guestmgr-test/seg0/c300.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../guestmgr-test/seg0/c31.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../guestmgr-test/seg0/c311.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../guestmgr-test/seg0/c321.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../guestmgr-test/seg0/c331.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../guestmgr-test/seg0/c340.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../guestmgr-test/seg0/c351.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../guestmgr-test/seg0/c361.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../guestmgr-test/seg0/c371.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../guestmgr-test/seg0/c380.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../guestmgr-test/seg0/c391.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../guestmgr-test/seg0/c3a1.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../guestmgr-test/seg0/c3b1.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../guestmgr-test/seg0/c3c0.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../guestmgr-test/seg0/c3d1.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../guestmgr-test/seg0/c3e1.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../guestmgr-test/seg0/c3f1.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../guestmgr-test/seg0/c400.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../guestmgr-test/seg0/c41.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../guestmgr-test/seg0/c411.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../guestmgr-test/seg0/c421.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../guestmgr-test/seg0/c430.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../guestmgr-test/seg0/c441.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../guestmgr-test/seg0/c451.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../guestmgr-test/seg0/c461.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../guestmgr-test/seg0/c470.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../guestmgr-test/seg0/c481.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../guestmgr-test/seg0/c51.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../guestmgr-test/seg0/c60.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../guestmgr-test/seg0/c71.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../guestmgr-test/seg0/c81.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../guestmgr-test/seg0/c90.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../guestmgr-test/seg0/ca1.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../guestmgr-test/seg0/cb1.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../guestmgr-test/seg0/cc0.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../guestmgr-test/seg0/cd1.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../guestmgr-test/seg0/ce1.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../guestmgr-test/seg0/cf0.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../guestmgr-test/service.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pv168_transylvanie.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/cz/muni/fi/pv168/hotel/Guest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/cz/muni/fi/pv168/hotel/GuestManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/cz/muni/fi/pv168/hotel/GuestManagerImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/cz/muni/fi/pv168/hotel/Room.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/cz/muni/fi/pv168/hotel/RoomManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/cz/muni/fi/pv168/hotel/RoomManagerImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/cz/muni/fi/pv168/hotel/exception/DBUtils.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/cz/muni/fi/pv168/hotel/exception/IllegalEntityException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/cz/muni/fi/pv168/hotel/exception/ServiceFailureException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/java/cz/muni/fi/pv168/hotel/exception/ValidationException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/resources/hotel/createTables.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/main/resources/hotel/dropTables.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/test/java/cz/muni/fi/pv168/hotel/GuestBuilder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/test/java/cz/muni/fi/pv168/hotel/GuestManagerTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/test/java/cz/muni/fi/pv168/hotel/RoomBuilder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/test/java/cz/muni/fi/pv168/hotel/RoomManagerTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../target/classes/.netbeans_automatic_build" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../target/classes/exception/DBUtils.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../target/classes/exception/IllegalEntityException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../target/classes/exception/ServiceFailureException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../target/classes/exception/ValidationException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../target/classes/hotel/Guest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../target/classes/hotel/GuestManager.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../target/classes/hotel/GuestManagerImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../target/classes/hotel/Room.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../target/classes/hotel/RoomManager.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../target/classes/hotel/RoomManagerImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../target/classes/hotel/createTables.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../target/classes/hotel/dropTables.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../target/maven-archiver/pom.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../target/pv168_transylvanie-1.0-SNAPSHOT.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../target/surefire-reports/TEST-hotel.AccommodationTest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../target/surefire-reports/TEST-hotel.GuestManagerTest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../target/surefire-reports/TEST-hotel.RoomManagerTest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../target/surefire-reports/hotel.AccommodationTest.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../target/surefire-reports/hotel.GuestManagerTest.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../target/surefire-reports/hotel.RoomManagerTest.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../target/test-classes/.netbeans_automatic_build" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../target/test-classes/hotel/GuestBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../target/test-classes/hotel/GuestManagerTest$Operation.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../target/test-classes/hotel/GuestManagerTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../target/test-classes/hotel/RoomBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../target/test-classes/hotel/RoomManagerTest$Operation.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../target/test-classes/hotel/RoomManagerTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cz/muni/fi/pv168/web/HotelServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cz/muni/fi/pv168/web/GuestServlet.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -184,10 +16,11 @@
     <session id="1051546496">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="2" />
+          <entry key="project.closed" value="3" />
+          <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.2" value="1" />
           <entry key="project.open.time.35" value="1" />
-          <entry key="project.opened" value="2" />
+          <entry key="project.opened" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
@@ -203,22 +36,7 @@
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/pv168/web/HotelServlet.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="29" lean-forward="true" selection-start-line="16" selection-start-column="29" selection-end-line="16" selection-end-column="29" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1584#1585#0" expanded="true" />
-                <element signature="e#1611#1612#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -245,7 +63,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="993" />
     <option name="y" value="27" />
     <option name="width" value="917" />
@@ -257,6 +75,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -273,15 +93,13 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555318987658" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../přiklady/PV168/Books-webapp" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -309,17 +127,17 @@
       <updated>1555310227972</updated>
       <workItem from="1555310231210" duration="579000" />
       <workItem from="1555313030213" duration="1971000" />
+      <workItem from="1555345838205" duration="7000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2550000" />
+    <option name="totallyTimeSpent" value="2557000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="67" y="25" width="1853" height="1055" extended-state="7" />
-    <editor active="true" />
+    <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25235197" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.255119" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Web" order="2" side_tool="true" />
       <window_info id="Image Layers" order="3" />
@@ -357,18 +175,7 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/pv168/web/HotelServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="29" lean-forward="true" selection-start-line="16" selection-start-column="29" selection-end-line="16" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1584#1585#0" expanded="true" />
-            <element signature="e#1611#1612#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cz/muni/fi/pv168/web/HotelServlet.java" />
   </component>
   <component name="masterDetails">
     <states>

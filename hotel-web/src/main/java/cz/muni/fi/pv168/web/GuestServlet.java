@@ -18,13 +18,13 @@ import java.io.IOException;
  *
  * @author Šimon Zouvala {445475@mail.muni.cz}
  */
-@WebServlet(HotelServlet.URL_MAPPING + "/*")
-public class HotelServlet extends HttpServlet {
+@WebServlet(GuestServlet.URL_MAPPING + "/*")
+public class GuestServlet extends HttpServlet {
 
     public static final String URL_MAPPING = "/";
     private static final String LIST_JSP = "/list.jsp";
  
-    private final static Logger log = LoggerFactory.getLogger(HotelServlet.class);
+    private final static Logger log = LoggerFactory.getLogger(GuestServlet.class);
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
