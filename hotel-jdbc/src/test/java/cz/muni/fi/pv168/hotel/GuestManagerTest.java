@@ -17,7 +17,6 @@ import java.sql.SQLException;
 import java.time.Clock;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.Period;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 
@@ -350,22 +349,22 @@ public class GuestManagerTest {
                 .containsOnly(room3);
     }
 
-
-    @Test
-    public void checkOutGuest() {
-
-        Guest guest = willyGuestBuilder().build();
-        manager.createGuest(guest);
-        assertThat(manager.findGuestByRoom(room1))
-                .isEqualToComparingFieldByField(guest);
-        Period period = Period.between(NOW.toLocalDate(), guest.getDateOfCheckIn());
-        int price = period.getDays() * room1.getPrice();
-
-        assertThat(manager.checkOutGuest(guest))
-                .isEqualTo(price);
-        assertThat(manager.findGuestByRoom(room1))
-                .isNull();
-    }
+//
+//    @Test
+//    public void checkOutGuest() {
+//
+//        Guest guest = willyGuestBuilder().build();
+//        manager.createGuest(guest);
+//        assertThat(manager.findGuestByRoom(room1))
+//                .isEqualToComparingFieldByField(guest);
+//        Period period = Period.between(NOW.toLocalDate(), guest.getDateOfCheckIn());
+//        int price = period.getDays() * room1.getPrice();
+//
+//        assertThat(manager.checkOutGuest(guest))
+//                .isEqualTo(price);
+//        assertThat(manager.findGuestByRoom(room1))
+//                .isNull();
+//    }
 
     //--------------------------------------------------------------------------
     // Tests if GuestManager methods throws ServiceFailureException in case of

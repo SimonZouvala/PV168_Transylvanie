@@ -15,6 +15,15 @@ public class Guest {
     private LocalDate dateOfCheckOut;
     private Long room;
 
+    public Guest() {
+    }
+
+    public Guest(Long id, String name, String phone) {
+        this.id = id;
+        this.name = name;
+        this.phone = phone;
+    }
+
     public Long getId() {
         return id;
     }
