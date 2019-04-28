@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 public class RoomServlet extends HttpServlet {
 
     public static final String URL_MAPPING = "/room";
-    private static final String LIST_JSP = "/list_1.jsp";
+    private static final String LIST_JSP = "/list.jsp";
  
     private final static Logger log = LoggerFactory.getLogger(RoomServlet.class);
 

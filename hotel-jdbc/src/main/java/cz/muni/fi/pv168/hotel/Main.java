@@ -30,7 +30,7 @@ public class Main {
 
         //populate db with tables and data
         new ResourceDatabasePopulator(
-                new ClassPathResource("createTable.sql"),
+                new ClassPathResource("createTables.sql"),
                 new ClassPathResource("test-data.sql"))
                 .execute(ds);
         return ds;
