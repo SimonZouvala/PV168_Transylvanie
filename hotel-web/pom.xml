@@ -16,7 +16,7 @@
     <packaging>war</packaging>
 
     <properties>
-        <netbeans.hint.deploy.server>Tomcat</netbeans.hint.deploy.server>
+        <netbeans.hint.deploy.server>tomcat</netbeans.hint.deploy.server>
     </properties>
     <!-- needed libraries; their versions are specified using properties inherited from the parent project -->
     <dependencies>
@@ -33,7 +33,7 @@
             <version>${tomcat.version}</version>
             <scope>provided</scope>
         </dependency>
-
+        
         <!-- JSTL API -->
         <dependency>
             <groupId>org.apache.taglibs</groupId>
@@ -45,11 +45,6 @@
             <groupId>org.apache.taglibs</groupId>
             <artifactId>taglibs-standard-impl</artifactId>
             <version>${taglibs-standard.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>1.5.6</version>
         </dependency>
     </dependencies>
 

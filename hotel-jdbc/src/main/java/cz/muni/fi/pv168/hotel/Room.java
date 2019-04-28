@@ -12,6 +12,15 @@ public class Room {
     private int capacity;
     private int number;
 
+    public Room() {
+         }
+
+    public Room(int price, int capacity, int number) {
+       this.price = price;
+       this.capacity = capacity;
+       this.number = number;
+    }
+
     public Long getId() {
         return id;
     }
