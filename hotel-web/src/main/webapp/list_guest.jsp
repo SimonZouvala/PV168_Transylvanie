@@ -43,6 +43,6 @@
     <input type="Submit" value="Zadat" />
 </form>
 <br>
-<a href="index.jsp">Zpět na rozcesník</a>
+<a href="/hotel-web/index.jsp">Zpět na rozcesník</a>
 </body>
 </html>

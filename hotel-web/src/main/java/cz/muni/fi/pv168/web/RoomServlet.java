@@ -1,5 +1,6 @@
 package cz.muni.fi.pv168.web;
 
+import cz.muni.fi.pv168.hotel.GuestManager;
 import cz.muni.fi.pv168.hotel.Room;
 import cz.muni.fi.pv168.hotel.RoomManager;
 import cz.muni.fi.pv168.hotel.exception.ServiceFailureException;
@@ -130,7 +131,14 @@ public class RoomServlet extends HttpServlet {
                 try {
                     Long id = Long.valueOf(request.getParameter("id"));
                     Room room = getRoomManager().getRoom(id);
+                    if (!getGustManager().freeRooms().contains(room)){
+                        request.setAttribute("chyba", "Pokoj je obsazený, nelze vymazat.");
+                        log.debug("Room is full");
+                        showRoomList(request, response);
+                        return;
+                    }
                     getRoomManager().deleteRoom(room);
+
                     log.debug("redirecting after POST");
                     response.sendRedirect(request.getContextPath()+URL_MAPPING);
                     return;
@@ -169,4 +177,10 @@ public class RoomServlet extends HttpServlet {
     private RoomManager getRoomManager() {
         return (RoomManager) getServletContext().getAttribute("roomManager");
     }
+
+    private GuestManager getGustManager() {
+        return (GuestManager) getServletContext().getAttribute("guestManager");
+    }
+
+
 }
