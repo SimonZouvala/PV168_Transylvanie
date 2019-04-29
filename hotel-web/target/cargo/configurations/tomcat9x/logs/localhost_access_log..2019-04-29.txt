@@ -1,7 +1,10 @@
-127.0.0.1 - - [29/Apr/2019:16:42:41 +0200] "GET /hotel-web HTTP/1.1" 302 -
-127.0.0.1 - - [29/Apr/2019:16:42:41 +0200] "GET /cargocpc/index.html HTTP/1.1" 200 124
-127.0.0.1 - - [29/Apr/2019:16:42:42 +0200] "GET /hotel-web/ HTTP/1.1" 200 143
-127.0.0.1 - - [29/Apr/2019:16:42:44 +0200] "GET /hotel-web/index_guest.jsp HTTP/1.1" 302 -
-127.0.0.1 - - [29/Apr/2019:16:42:44 +0200] "GET /hotel-web/guests HTTP/1.1" 200 834
-127.0.0.1 - - [29/Apr/2019:16:42:51 +0200] "POST /hotel-web/guests/add HTTP/1.1" 302 -
-127.0.0.1 - - [29/Apr/2019:16:42:51 +0200] "GET /hotel-web/guests HTTP/1.1" 200 1101
+127.0.0.1 - - [29/Apr/2019:16:51:18 +0200] "GET /cargocpc/index.html HTTP/1.1" 200 124
+31.169.24.158 - - [29/Apr/2019:16:51:41 +0200] "GET / HTTP/1.1" 404 1078
+127.0.0.1 - - [29/Apr/2019:16:51:55 +0200] "GET /hotel-web HTTP/1.1" 302 -
+127.0.0.1 - - [29/Apr/2019:16:51:55 +0200] "GET /hotel-web/ HTTP/1.1" 200 143
+127.0.0.1 - - [29/Apr/2019:16:51:57 +0200] "GET /hotel-web/index_guest.jsp HTTP/1.1" 302 -
+127.0.0.1 - - [29/Apr/2019:16:51:57 +0200] "GET /hotel-web/guests HTTP/1.1" 200 834
+127.0.0.1 - - [29/Apr/2019:16:52:24 +0200] "POST /hotel-web/guests/add HTTP/1.1" 302 -
+127.0.0.1 - - [29/Apr/2019:16:52:24 +0200] "GET /hotel-web/guests HTTP/1.1" 200 1101
+127.0.0.1 - - [29/Apr/2019:16:52:35 +0200] "POST /hotel-web/guests/add HTTP/1.1" 500 1251
+127.0.0.1 - - [29/Apr/2019:16:52:39 +0200] "POST /hotel-web/guests/add HTTP/1.1" 500 1251

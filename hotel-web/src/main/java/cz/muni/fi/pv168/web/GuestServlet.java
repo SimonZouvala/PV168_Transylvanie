@@ -2,6 +2,7 @@ package cz.muni.fi.pv168.web;
 
 import cz.muni.fi.pv168.hotel.Guest;
 import cz.muni.fi.pv168.hotel.GuestManager;
+import cz.muni.fi.pv168.hotel.exception.IllegalEntityException;
 import cz.muni.fi.pv168.hotel.exception.ServiceFailureException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -60,9 +61,13 @@ public class GuestServlet extends HttpServlet {
                     response.sendRedirect(request.getContextPath()+URL_MAPPING);
                     return;
                 } catch (ServiceFailureException e) {
-                    log.error("Cannot add book", e);
+                    log.error("Cannot add guest", e);
                     response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, e.getMessage());
                     return;
+                }catch (IllegalEntityException iee){
+                    request.setAttribute("chyba", "Všechny pokoje jsou plné!");
+                    log.debug("all rooms are full");
+                    showGuestList(request,response);
                 }
             case "/delete":
                 try {
@@ -73,7 +78,7 @@ public class GuestServlet extends HttpServlet {
                     response.sendRedirect(request.getContextPath()+URL_MAPPING);
                     return;
                 } catch (ServiceFailureException e) {
-                    log.error("Cannot delete book", e);
+                    log.error("Cannot delete guest", e);
                     response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, e.getMessage());
                     return;
                 }

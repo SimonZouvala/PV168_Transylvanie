@@ -22,7 +22,7 @@
 
 <h2>Zadejte hosta</h2>
 <c:if test="${not empty chyba}">
-    <div style="border: solid 1px red; background-color: yellow; padding: 10px">
+    <div style="border: solid 1px lightgoldenrodyellow; background-color: red; padding: 10px">
         <c:out value="${chyba}"/>
     </div>
 </c:if>
