@@ -26,7 +26,7 @@
         <c:out value="${chyba}"/>
     </div>
 </c:if>
-<form action="${pageContext.request.contextPath}/guests//add" method="post">
+<form action="${pageContext.request.contextPath}/guests/add" method="post">
     <table>
         <tr>
             <th>Jméno hosta:</th>

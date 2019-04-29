@@ -8,10 +8,12 @@ import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
 
 import javax.sql.DataSource;
 import java.io.IOException;
+import java.time.Clock;
 import java.util.List;
 import java.util.Properties;
 
 public class Main {
+    private static Clock clock = Clock.systemDefaultZone();
 
     private final static Logger log = LoggerFactory.getLogger(Main.class);
 
@@ -38,13 +40,19 @@ public class Main {
 
     public static void main(String[] args) throws Exception, IOException {
 
+
         log.info("start");
 
         DataSource dataSource = getDataSource();
-        RoomManagerImpl roomManager = new RoomManagerImpl(dataSource);
+        RoomManager roomManager = new RoomManagerImpl(dataSource);
+        GuestManager guestManager = new GuestManagerImpl(dataSource, clock);
 
         List<Room> allRooms = roomManager.findAllRooms();
         System.out.println("allRooms = " + allRooms);
+
+        List<Guest> allGuests = guestManager.findAllGuest();
+        System.out.println("All guests = " + allGuests);
+
     }
 
 }
