@@ -2,49 +2,50 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <body>
-
+<h3>Vytvořené pokoje</h3>
 <table border="1">
     <thead>
-    <tr>
+    <tr>      
+        <th>Číslo pokoje</th>
         <th>Cena</th>
         <th>Kapacita</th>
-        <th>Cena</th>
     </tr>
     </thead>
-    <c:forEach items="${rooms}" var="room">
+    <c:forEach items="${room}" var="room">
         <tr>
+            <td><c:out value="${room.number}"/></td>
             <td><c:out value="${room.price}"/></td>
             <td><c:out value="${room.capacity}"/></td>
-            <td><c:out value="${room.number}"/></td>
+            
             <td><form method="post" action="${pageContext.request.contextPath}/room/delete?id=${room.id}"
                       style="margin-bottom: 0;"><input type="submit" value="Smazat"></form></td>
         </tr>
     </c:forEach>
 </table>
 
-<h2>Zadejte pokoj</h2>
+<h3>Zadejte pokoj</h3>
 <c:if test="${not empty chyba}">
-    <div style="border: solid 1px red; background-color: yellow; padding: 10px">
+    <div style="border: solid 1px black; background-color: yellow; padding: 10px">
         <c:out value="${chyba}"/>
     </div>
 </c:if>
 <form action="${pageContext.request.contextPath}/room//add" method="post">
     <table>
         <tr>
+            <th>Číslo pokoje:</th>
+            <td><input type="text" name="number" value="<c:out value='${param.number}'/>"/></td>
+        </tr>
+        <tr>
             <th>Cena:</th>
-            <td><input type="text" name="name" value="<c:out value='${param.price}'/>"/></td>
+            <td><input type="text" name="price" value="<c:out value='${param.price}'/>"/></td>
         </tr>
         <tr>
             <th>Kapacita:</th>
-            <td><input type="text" name="phone" value="<c:out value='${param.capacity}'/>"/></td>
+            <td><input type="text" name="capacity" value="<c:out value='${param.capacity}'/>"/></td>
         </tr>
-         <tr>
-            <th>Číslo pokoje:</th>
-            <td><input type="text" name="phone" value="<c:out value='${param.number}'/>"/></td>
-        </tr>
+
     </table>
     <input type="Submit" value="Zadat" />
 </form>
-
 </body>
 </html>

@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -44,28 +45,29 @@ public class RoomServlet extends HttpServlet {
                 String price = request.getParameter("price");
                 String capacity = request.getParameter("capacity");
                 String number = request.getParameter("number");
-                //form data validity check
-                if (price == null || price.length() == 0) {
-                    request.setAttribute("chyba", "Je nutné vyplnit všechny hodnoty !");
-                    log.debug("form data invalid - price is empty");
-                    showRoomList(request, response);
-                    return;
-                }
                 
+                //form data validity check
                 int price_int;
                 try {
-                    price_int = Integer.parseInt(price);
+                    price_int = Integer.valueOf(price);
                 } catch (NumberFormatException e) {
-                    request.setAttribute("chyba", "Zadaná hodnota není validní číslo");
+                    request.setAttribute("chyba", "Zadaná hodnota Ceny není validní číslo");
                     log.debug("form data invalid - price can not parse");
                     showRoomList(request, response);
                     return;
                 } catch (NullPointerException e ) {
-                    request.setAttribute("chyba", "Je nutné vyplnit všechny hodnoty !");
+                    request.setAttribute("chyba", "Je nutné vyplnit všechny hodnoty! - Cena není vypněna.");
                     log.debug("form data invalid - price is empty");
                     showRoomList(request, response);
                     return;
-                }          
+                }  
+                if(price_int <= 0){
+                    request.setAttribute("chyba", "Zadaná hodnota Ceny není kladné číslo");
+                    log.debug("form data invalid - price is negative");
+                    showRoomList(request, response);
+                    return;
+                }
+                
                 int capacity_int;
                 try {
                     capacity_int = Integer.parseInt(capacity);
@@ -75,11 +77,18 @@ public class RoomServlet extends HttpServlet {
                     showRoomList(request, response);
                     return;
                 } catch (NullPointerException e ) {
-                    request.setAttribute("chyba", "Je nutné vyplnit všechny hodnoty !");
+                    request.setAttribute("chyba", "Je nutné vyplnit všechny hodnoty! - Kapacita není vypněna.");
                     log.debug("form data invalid - capacity is empty");
                     showRoomList(request, response);
                     return;
                 }
+                if(capacity_int <= 0){
+                    request.setAttribute("chyba", "Zadaná hodnota Kapacity není kladné číslo");
+                    log.debug("form data invalid - capacity is negative");
+                    showRoomList(request, response);
+                    return;
+                }
+                
                 int number_int;
                 try {
                     number_int = Integer.parseInt(number);
@@ -94,20 +103,32 @@ public class RoomServlet extends HttpServlet {
                     showRoomList(request, response);
                     return;
                 }
-                       
+                if(number_int <= 0){
+                    request.setAttribute("chyba", "Zadaná hodnota čísla pokoje není kladná");
+                    log.debug("form data invalid - number is negative");
+                    showRoomList(request, response);
+                    return;
+                }
                 
-                //form data processing - storing to database
-                try {
-                    Room room = new Room(price_int, capacity_int, number_int);
-                    getRoomManager().createRoom(room);
-                    //redirect-after-POST protects from multiple submission
-                    log.debug("redirecting after POST");
-                    response.sendRedirect(request.getContextPath()+URL_MAPPING);
-                    return;
-                } catch (ServiceFailureException e) {
-                    log.error("Cannot add room", e);
-                    response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, e.getMessage());
-                    return;
+                Room rooms = getRoomManager().findRoom(number_int);
+                if(rooms == null){
+                    try {
+                        Room room = new Room(price_int, capacity_int, number_int);              
+                            getRoomManager().createRoom(room);
+                            //redirect-after-POST protects from multiple submission
+                            log.debug("redirecting after POST");
+                            response.sendRedirect(request.getContextPath()+URL_MAPPING);
+                            return;
+                    } catch (ServiceFailureException e) {
+                        log.error("Cannot add room", e);
+                        response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, e.getMessage());
+                        return;
+                    }
+                } else {
+                        log.debug("Room with" + String.valueOf(number) + " exists");
+                        request.setAttribute("chyba", "Pokoj se zadaným číslem již existuje.");
+                        showRoomList(request, response);
+                        return;
                 }
             case "/delete":
                 try {
@@ -122,9 +143,6 @@ public class RoomServlet extends HttpServlet {
                     response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, e.getMessage());
                     return;
                 }
-            case "/update":
-                //TODO
-                return;
             default:
                 log.error("Unknown action " + action);
                 response.sendError(HttpServletResponse.SC_NOT_FOUND, "Unknown action " + action);
@@ -138,8 +156,8 @@ public class RoomServlet extends HttpServlet {
      */
     @Override
     public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
+        return "Servlet for creating and deleting rooms in database";
+    }
 
     private void showRoomList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {

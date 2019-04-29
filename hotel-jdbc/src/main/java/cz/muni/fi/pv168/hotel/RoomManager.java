@@ -16,4 +16,6 @@ public interface RoomManager {
     List<Room> findAllRooms();
 
     Room getRoom(Long id);
+    
+    Room findRoom(int number);
 }
