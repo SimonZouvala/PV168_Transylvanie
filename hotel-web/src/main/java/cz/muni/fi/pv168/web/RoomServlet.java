@@ -3,6 +3,7 @@ package cz.muni.fi.pv168.web;
 import cz.muni.fi.pv168.hotel.Room;
 import cz.muni.fi.pv168.hotel.RoomManager;
 import cz.muni.fi.pv168.hotel.exception.ServiceFailureException;
+import cz.muni.fi.pv168.hotel.exception.ValidationException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -108,10 +109,7 @@ public class RoomServlet extends HttpServlet {
                     showRoomList(request, response);
                     return;
                 }
-                
-                Room rooms = getRoomManager().findRoom(number_int);
-                if(rooms == null){
-                    try {
+                try {
                         Room room = new Room(price_int, capacity_int, number_int);              
                             getRoomManager().createRoom(room);
                             //redirect-after-POST protects from multiple submission
@@ -122,13 +120,12 @@ public class RoomServlet extends HttpServlet {
                         log.error("Cannot add room", e);
                         response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, e.getMessage());
                         return;
-                    }
-                } else {
+                    } catch (ValidationException e) {
                         log.debug("Room with" + String.valueOf(number) + " exists");
                         request.setAttribute("chyba", "Pokoj se zadaným číslem již existuje.");
                         showRoomList(request, response);
                         return;
-                }
+                    }
             case "/delete":
                 try {
                     Long id = Long.valueOf(request.getParameter("id"));
