@@ -82,16 +82,6 @@ public class RoomManagerImpl implements RoomManager {
         }
     }
     
-    public Room findRoom(int number){
-        try (Connection conn = dataSource.getConnection();
-             PreparedStatement st = conn.prepareStatement("SELECT id, price, capacity, number FROM Room WHERE number = ?")) {
-            st.setInt(1, number);
-            return executeQueryForSingleRoom(st);
-        } catch (SQLException ex) {
-            throw new ServiceFailureException("Error when getting room with number = " + number + " from DB", ex);
-        }
-    }
-
     static List<Room> executeQueryForMultipleRooms(PreparedStatement st) throws SQLException {
         try (ResultSet rs = st.executeQuery()) {
             List<Room> result = new ArrayList<>();
