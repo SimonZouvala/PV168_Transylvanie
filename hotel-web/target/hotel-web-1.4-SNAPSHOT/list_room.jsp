@@ -47,5 +47,7 @@
     </table>
     <input type="Submit" value="Zadat" />
 </form>
+<br>
+<a href="index.jsp">Zpět na rozcesník</a>
 </body>
 </html>

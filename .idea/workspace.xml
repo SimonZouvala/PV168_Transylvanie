@@ -2,10 +2,39 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ddb6bbe9-5791-45e0-ab15-4af7ef00c160" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hotel-jdbc/derby.log" beforeDir="false" afterPath="$PROJECT_DIR$/hotel-jdbc/derby.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hotel-jdbc/src/main/resources/createTables.sql" beforeDir="false" afterPath="$PROJECT_DIR$/hotel-jdbc/src/main/resources/createTables.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hotel-jdbc/src/main/resources/cz.muni.fi.pv168/hotel/createTables.sql" beforeDir="false" afterPath="$PROJECT_DIR$/hotel-jdbc/src/main/resources/cz.muni.fi.pv168/hotel/createTables.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hotel-web/src/main/java/cz/muni/fi/pv168/web/GuestServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/hotel-web/src/main/java/cz/muni/fi/pv168/web/GuestServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotel-jdbc/target/hotel-jdbc-1.4-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/hotel-jdbc/target/hotel-jdbc-1.4-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotel-jdbc/target/surefire-reports/TEST-cz.muni.fi.pv168.hotel.GuestManagerTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hotel-jdbc/target/surefire-reports/TEST-cz.muni.fi.pv168.hotel.GuestManagerTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotel-jdbc/target/surefire-reports/TEST-cz.muni.fi.pv168.hotel.RoomManagerTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hotel-jdbc/target/surefire-reports/TEST-cz.muni.fi.pv168.hotel.RoomManagerTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotel-jdbc/target/surefire-reports/cz.muni.fi.pv168.hotel.GuestManagerTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/hotel-jdbc/target/surefire-reports/cz.muni.fi.pv168.hotel.GuestManagerTest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotel-jdbc/target/surefire-reports/cz.muni.fi.pv168.hotel.RoomManagerTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/hotel-jdbc/target/surefire-reports/cz.muni.fi.pv168.hotel.RoomManagerTest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotel-web/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/hotel-web/src/main/webapp/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotel-web/src/main/webapp/list_guest.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/hotel-web/src/main/webapp/list_guest.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotel-web/src/main/webapp/list_room.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/hotel-web/src/main/webapp/list_room.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotel-web/target/cargo/configurations/tomcat9x/derby.log" beforeDir="false" afterPath="$PROJECT_DIR$/hotel-web/target/cargo/configurations/tomcat9x/derby.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotel-web/target/cargo/configurations/tomcat9x/logs/localhost_access_log..2019-04-29.txt" beforeDir="false" afterPath="$PROJECT_DIR$/hotel-web/target/cargo/configurations/tomcat9x/logs/localhost_access_log..2019-04-29.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotel-web/target/cargo/configurations/tomcat9x/webapps/hotel-web.war" beforeDir="false" afterPath="$PROJECT_DIR$/hotel-web/target/cargo/configurations/tomcat9x/webapps/hotel-web.war" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotel-web/target/cargo/configurations/tomcat9x/webapps/hotel-web/WEB-INF/classes/cz/muni/fi/pv168/web/RoomServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/hotel-web/target/cargo/configurations/tomcat9x/webapps/hotel-web/WEB-INF/classes/cz/muni/fi/pv168/web/RoomServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotel-web/target/cargo/configurations/tomcat9x/webapps/hotel-web/WEB-INF/classes/cz/muni/fi/pv168/web/StartListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/hotel-web/target/cargo/configurations/tomcat9x/webapps/hotel-web/WEB-INF/classes/cz/muni/fi/pv168/web/StartListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotel-web/target/cargo/configurations/tomcat9x/webapps/hotel-web/WEB-INF/lib/hotel-jdbc-1.4-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/hotel-web/target/cargo/configurations/tomcat9x/webapps/hotel-web/WEB-INF/lib/hotel-jdbc-1.4-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotel-web/target/cargo/configurations/tomcat9x/webapps/hotel-web/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/hotel-web/target/cargo/configurations/tomcat9x/webapps/hotel-web/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotel-web/target/cargo/configurations/tomcat9x/webapps/hotel-web/list_guest.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/hotel-web/target/cargo/configurations/tomcat9x/webapps/hotel-web/list_guest.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotel-web/target/cargo/configurations/tomcat9x/webapps/hotel-web/list_room.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/hotel-web/target/cargo/configurations/tomcat9x/webapps/hotel-web/list_room.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotel-web/target/cargo/configurations/tomcat9x/work/Catalina/localhost/hotel-web/SESSIONS.ser" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotel-web/target/cargo/configurations/tomcat9x/work/Catalina/localhost/hotel-web/org/apache/jsp/index_005fguest_jsp.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotel-web/target/cargo/configurations/tomcat9x/work/Catalina/localhost/hotel-web/org/apache/jsp/index_005fguest_jsp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotel-web/target/cargo/configurations/tomcat9x/work/Catalina/localhost/hotel-web/org/apache/jsp/index_jsp.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotel-web/target/cargo/configurations/tomcat9x/work/Catalina/localhost/hotel-web/org/apache/jsp/index_jsp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotel-web/target/cargo/configurations/tomcat9x/work/Catalina/localhost/hotel-web/org/apache/jsp/list_005fguest_jsp.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotel-web/target/cargo/configurations/tomcat9x/work/Catalina/localhost/hotel-web/org/apache/jsp/list_005fguest_jsp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotel-web/target/hotel-web-1.4-SNAPSHOT.war" beforeDir="false" afterPath="$PROJECT_DIR$/hotel-web/target/hotel-web-1.4-SNAPSHOT.war" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotel-web/target/hotel-web-1.4-SNAPSHOT/WEB-INF/classes/cz/muni/fi/pv168/web/RoomServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/hotel-web/target/hotel-web-1.4-SNAPSHOT/WEB-INF/classes/cz/muni/fi/pv168/web/RoomServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotel-web/target/hotel-web-1.4-SNAPSHOT/WEB-INF/classes/cz/muni/fi/pv168/web/StartListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/hotel-web/target/hotel-web-1.4-SNAPSHOT/WEB-INF/classes/cz/muni/fi/pv168/web/StartListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotel-web/target/hotel-web-1.4-SNAPSHOT/WEB-INF/lib/hotel-jdbc-1.4-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/hotel-web/target/hotel-web-1.4-SNAPSHOT/WEB-INF/lib/hotel-jdbc-1.4-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotel-web/target/hotel-web-1.4-SNAPSHOT/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/hotel-web/target/hotel-web-1.4-SNAPSHOT/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotel-web/target/hotel-web-1.4-SNAPSHOT/list_guest.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/hotel-web/target/hotel-web-1.4-SNAPSHOT/list_guest.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hotel-web/target/hotel-web-1.4-SNAPSHOT/list_room.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/hotel-web/target/hotel-web-1.4-SNAPSHOT/list_room.jsp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -54,23 +83,24 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/hotel-web/src/main/java/cz/muni/fi/pv168/web/RoomServlet.java">
+        <entry file="file://$PROJECT_DIR$/hotel-web/src/main/webapp/list_room.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-315">
-              <caret line="12" column="46" lean-forward="true" selection-start-line="12" selection-start-column="46" selection-end-line="12" selection-end-column="46" />
-              <folding>
-                <element signature="e#7158#7159#0" expanded="true" />
-                <element signature="e#7234#7235#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="105">
+              <caret line="7" column="14" lean-forward="true" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/hotel-jdbc/src/main/java/cz/muni/fi/pv168/hotel/Guest.java">
+        <entry file="file://$PROJECT_DIR$/hotel-web/src/main/java/cz/muni/fi/pv168/web/RoomServlet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="21" column="8" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="21" />
+            <state relative-caret-position="-1206">
+              <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#7158#7159#0" expanded="true" />
+                <element signature="e#7234#7235#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -84,32 +114,21 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/hotel-web/src/main/webapp/index_guest.jsp">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/hotel-web/src/main/webapp/index_room.jsp">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/hotel-jdbc/src/main/resources/cz.muni.fi.pv168/hotel/createTables.sql">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="150">
               <caret line="10" column="23" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/hotel-jdbc/src/main/resources/test-data.sql">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" column="105" lean-forward="true" selection-start-line="5" selection-start-column="105" selection-end-line="5" selection-end-column="105" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/hotel-jdbc/src/main/java/cz/muni/fi/pv168/hotel/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="15" column="59" selection-start-line="15" selection-start-column="59" selection-end-line="15" selection-end-column="59" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -126,22 +145,28 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/hotel-web/src/main/webapp/list_guest.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="28" selection-start-line="28" selection-end-line="29" />
+            <state relative-caret-position="120">
+              <caret line="8" column="26" lean-forward="true" selection-start-line="8" selection-start-column="26" selection-end-line="8" selection-end-column="26" />
+              <folding>
+                <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#form#0;n#td#2;n#tr#0;n#table#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#table#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/hotel-web/src/main/java/cz/muni/fi/pv168/web/StartListener.java">
+        <entry file="file://$PROJECT_DIR$/hotel-web/src/main/webapp/index.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="18" column="24" lean-forward="true" selection-start-line="18" selection-start-column="24" selection-end-line="18" selection-end-column="52" />
+            <state relative-caret-position="165">
+              <caret line="11" column="7" lean-forward="true" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -219,15 +244,16 @@
         <option value="$PROJECT_DIR$/hotel-jdbc/src/main/resources/cz.muni.fi.pv168/hotel/jdbc.properties" />
         <option value="$PROJECT_DIR$/hotel-web/src/main/java/cz/muni/fi/pv168/web/GuestsServlet.java" />
         <option value="$PROJECT_DIR$/hotel-web/src/main/java/Web pages/index.jsp" />
-        <option value="$PROJECT_DIR$/hotel-web/src/main/webapp/index.jsp" />
         <option value="$PROJECT_DIR$/hotel-web/src/main/java/cz/muni/fi/pv168/web/RoomServlet.java" />
         <option value="$PROJECT_DIR$/hotel-web/src/main/java/cz/muni/fi/pv168/web/StartListener.java" />
         <option value="$PROJECT_DIR$/hotel-jdbc/src/main/java/cz/muni/fi/pv168/hotel/Main.java" />
         <option value="$PROJECT_DIR$/hotel-jdbc/src/main/resources/test-data.sql" />
-        <option value="$PROJECT_DIR$/hotel-web/src/main/webapp/list_guest.jsp" />
         <option value="$PROJECT_DIR$/hotel-web/src/main/java/cz/muni/fi/pv168/web/GuestServlet.java" />
         <option value="$PROJECT_DIR$/hotel-jdbc/src/main/resources/createTables.sql" />
         <option value="$PROJECT_DIR$/hotel-jdbc/src/main/resources/cz.muni.fi.pv168/hotel/createTables.sql" />
+        <option value="$PROJECT_DIR$/hotel-web/src/main/webapp/list_room.jsp" />
+        <option value="$PROJECT_DIR$/hotel-web/src/main/webapp/index.jsp" />
+        <option value="$PROJECT_DIR$/hotel-web/src/main/webapp/list_guest.jsp" />
       </list>
     </option>
   </component>
@@ -238,10 +264,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="993" />
-    <option name="y" value="27" />
-    <option name="width" value="917" />
-    <option name="height" value="1053" />
+    <option name="x" value="67" />
+    <option name="y" value="25" />
+    <option name="width" value="927" />
+    <option name="height" value="1055" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -415,12 +441,12 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556549512336" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556553990902" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/SQL Dialect" value="Derby&#10;ClickHouse" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/www.sigrs.cz" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -626,11 +652,10 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="91714000" />
+    <option name="totallyTimeSpent" value="96080000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="67" y="25" width="1853" height="1055" extended-state="7" />
-    <editor active="true" />
+    <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4983871" visible="true" weight="0.20586608" />
       <window_info id="Structure" order="1" sideWeight="0.5016129" side_tool="true" weight="0.1925844" />
@@ -710,8 +735,6 @@
     </ignored-roots>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/test/java/cz/muni/fi/pv168/hotel/GuestBuilder.java" />
-    <entry file="file://$PROJECT_DIR$/src/test/java/hotel/AccommodationTest.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/hotel/AccommodationImpl.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/hotel/Accommodation.java" />
     <entry file="file://$PROJECT_DIR$/src/main/resources/hotel/createTables.sql" />
@@ -842,16 +865,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hotel-web/src/main/webapp/index_guest.jsp">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hotel-web/src/main/webapp/index.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="7" lean-forward="true" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/hotel-jdbc/src/main/java/cz/muni/fi/pv168/hotel/Guest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -886,38 +899,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hotel-web/src/main/webapp/list_guest.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="28" selection-start-line="28" selection-end-line="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/hotel-jdbc/src/main/java/cz/muni/fi/pv168/hotel/GuestManagerImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="189">
           <caret line="61" column="32" selection-start-line="61" selection-start-column="32" selection-end-line="61" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hotel-web/src/main/java/cz/muni/fi/pv168/web/RoomServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-315">
-          <caret line="12" column="46" lean-forward="true" selection-start-line="12" selection-start-column="46" selection-end-line="12" selection-end-column="46" />
-          <folding>
-            <element signature="e#7158#7159#0" expanded="true" />
-            <element signature="e#7234#7235#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hotel-web/src/main/java/cz/muni/fi/pv168/web/GuestServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="598">
-          <caret line="69" column="51" selection-start-line="69" selection-start-column="51" selection-end-line="69" selection-end-column="51" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -935,6 +920,64 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="10" column="23" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hotel-web/src/main/java/cz/muni/fi/pv168/web/GuestServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="598">
+          <caret line="69" column="51" selection-start-line="69" selection-start-column="51" selection-end-line="69" selection-end-column="51" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hotel-web/src/main/java/cz/muni/fi/pv168/web/RoomServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1206">
+          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#7158#7159#0" expanded="true" />
+            <element signature="e#7234#7235#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hotel-web/src/main/webapp/index_room.jsp">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hotel-web/src/main/webapp/index_guest.jsp">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hotel-web/src/main/webapp/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="7" lean-forward="true" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
+          <folding>
+            <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hotel-web/src/main/webapp/list_room.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="14" lean-forward="true" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hotel-web/src/main/webapp/list_guest.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="26" lean-forward="true" selection-start-line="8" selection-start-column="26" selection-end-line="8" selection-end-column="26" />
+          <folding>
+            <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#form#0;n#td#2;n#tr#0;n#table#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#table#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

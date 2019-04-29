@@ -1,9 +1,12 @@
 <%@page contentType="text/html;charset=utf-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
-<body>
+<head title="Guest">
 
-<table border="1">
+</head>
+<body style="background: lightpink;text-align: center;">
+<h2>Hosté v hotelu</h2>
+<table style="border: solid 2px black;border-radius: 2px; padding: 20px; margin: auto;">
     <thead>
     <tr>
         <th>Jméno</th>
@@ -22,12 +25,12 @@
 
 <h2>Zadejte hosta</h2>
 <c:if test="${not empty chyba}">
-    <div style="border: solid 1px red; background-color: yellow; padding: 10px">
+    <div style="border: solid 1px lightgoldenrodyellow; background-color: red; padding: 10px; width: 400px; margin: auto; font-weight: bolder">
         <c:out value="${chyba}"/>
     </div>
 </c:if>
 <form action="${pageContext.request.contextPath}/guests/add" method="post">
-    <table>
+    <table style="margin: auto; text-align: center">
         <tr>
             <th>Jméno hosta:</th>
             <td><input type="text" name="name" value="<c:out value='${param.name}'/>"/></td>
@@ -39,6 +42,7 @@
     </table>
     <input type="Submit" value="Zadat" />
 </form>
-
+<br>
+<a href="index.jsp">Zpět na rozcesník</a>
 </body>
 </html>

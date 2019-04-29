@@ -4,9 +4,9 @@
 
 
 <html>
-<body>
-Ahoj, tady si vyber kam chceš jít :)
-<a href="index_room.jsp">ROOM</a>
-<a href="index_guest.jsp">GUEST</a>
+<body style="text-align: center; background-color: lightcoral">
+<h2>Ahoj, tady si vyber kam chceš jít :)</h2>
+<div><a href="index_room.jsp"><h2>ROOM</h2></a></div>
+<div><a href="index_guest.jsp"><h2>GUEST</h2></a></div>
 </body>
 </html>
