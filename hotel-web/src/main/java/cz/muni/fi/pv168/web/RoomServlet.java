@@ -6,13 +6,12 @@ import cz.muni.fi.pv168.hotel.exception.ServiceFailureException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.IOException;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 /**
  *
@@ -22,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 public class RoomServlet extends HttpServlet {
 
     public static final String URL_MAPPING = "/room";
-    private static final String LIST_JSP = "/list.jsp";
+    private static final String LIST_JSP = "/list_room.jsp";
  
     private final static Logger log = LoggerFactory.getLogger(RoomServlet.class);
 

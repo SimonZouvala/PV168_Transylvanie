@@ -1,0 +1,18 @@
+----------------------------------------------------------------
+Mon Apr 29 16:09:39 CEST 2019:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.1.0 - (1808820): instance a816c00e-016a-696e-0466-000005b524d8 
+on database directory memory:/home/simon/JAVA/PV168/pv168_transylvanie/hotel-web/target/cargo/configurations/tomcat9x/hotelDB with class loader ParallelWebappClassLoader
+  context: hotel-web
+  delegate: false
+----------> Parent Classloader:
+java.net.URLClassLoader@6ec8211c
+ 
+Loaded from file:/home/simon/JAVA/PV168/pv168_transylvanie/hotel-web/target/cargo/configurations/tomcat9x/webapps/hotel-web/WEB-INF/lib/derby-10.14.1.0.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_201-b09
+user.dir=/home/simon/JAVA/PV168/pv168_transylvanie/hotel-web/target/cargo/configurations/tomcat9x
+os.name=Linux
+os.arch=amd64
+os.version=4.15.0-48-generic
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''

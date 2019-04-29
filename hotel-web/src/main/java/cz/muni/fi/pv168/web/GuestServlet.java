@@ -23,7 +23,7 @@ import java.io.IOException;
 public class GuestServlet extends HttpServlet {
 
     public static final String URL_MAPPING = "/guests";
-    private static final String LIST_JSP = "/list.jsp";
+    private static final String LIST_JSP = "/list_guest.jsp";
  
     private final static Logger log = LoggerFactory.getLogger(GuestServlet.class);
 
