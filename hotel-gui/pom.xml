@@ -9,4 +9,11 @@
     <artifactId>hotel-gui</artifactId>
     <name>Hotel Gui interface</name>
     <packaging>jar</packaging>
+        <dependencies>
+        <dependency>
+            <groupId>cz.muni.fi.pv168</groupId>
+            <artifactId>hotel-jdbc</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+    </dependencies>
 </project>
