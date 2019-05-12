@@ -5,8 +5,16 @@
  */
 package cz.muni.fi.pv168.hotel.gui;
 
+import cz.muni.fi.pv168.hotel.GuestManager;
+import cz.muni.fi.pv168.hotel.GuestManagerImpl;
+import cz.muni.fi.pv168.hotel.RoomManager;
+import cz.muni.fi.pv168.hotel.RoomManagerImpl;
 import java.awt.EventQueue;
-import javax.swing.JFrame;
+import java.io.IOException;
+import java.time.Clock;
+import javax.sql.DataSource;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  *
@@ -14,18 +22,27 @@ import javax.swing.JFrame;
  */
 public class Main {
 
-    /**
-     * @param args the command line arguments
-     */
+    private final static Clock clock = Clock.systemDefaultZone();
+
+    private final static Logger log = LoggerFactory.getLogger(Main.class);
+    
     public static void main(String[] args) {
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                JFrame frame = new JFrame();
-                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                frame.setTitle("Hotel");
-                frame.setVisible(true);
-            }
-        });
+
+        try {
+            DataSource dataSource = cz.muni.fi.pv168.hotel.Main.getDataSource();
+            RoomManager rmanager = new RoomManagerImpl(dataSource);
+            GuestManager gmanager = new GuestManagerImpl(dataSource, clock);
+            log.info("vytvořeny manažery");
+        } catch (IOException e) {
+            log.error("Nepovedlo se vytvořit databázi", e);
+        }
+        
+        EventQueue.invokeLater(() -> {
+            new MainWindow().setVisible(true);
+        });        
+        
     }
     
 }
+    
+
