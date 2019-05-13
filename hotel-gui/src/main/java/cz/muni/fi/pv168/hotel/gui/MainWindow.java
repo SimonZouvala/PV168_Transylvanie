@@ -167,10 +167,23 @@ public class MainWindow extends javax.swing.JFrame {
     private void selectionTabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_selectionTabelMouseClicked
         // TODO add your handling code here:
         showTextArea.setText("");
-        Object value = selectionTabel.getSelectedValue();
-            int indexOfValue = selectionTabel.getSelectedIndex();
-            showTextArea.append(Integer.toString(indexOfValue) + "\n");
-            showTextArea.append(value);
+        int indexOfValue = selectionTabel.getSelectedIndex();
+        if ((selectionTabel.getModel() instanceof RoomListModel)) {
+            
+            showTextArea.append( "ID: " + roomManager.findAllRooms().get(indexOfValue).getId()+ "\n");
+            showTextArea.append( "Číslo pokoje: " + roomManager.findAllRooms().get(indexOfValue).getNumber()+ "\n");
+            showTextArea.append( "Cena: " + roomManager.findAllRooms().get(indexOfValue).getPrice()+ "\n");
+            showTextArea.append( "Kapacita: " + roomManager.findAllRooms().get(indexOfValue).getCapacity()+ "\n");
+            
+        }
+        if ((selectionTabel.getModel() instanceof GuestListModel)) {
+            showTextArea.append("ID: " + guestManager.findAllGuest().get(indexOfValue).getId() + "\n");
+            showTextArea.append("Jméno: " + guestManager.findAllGuest().get(indexOfValue).getName() + "\n");
+            showTextArea.append("Telefoní číslo: " + guestManager.findAllGuest().get(indexOfValue).getPhone() + "\n");
+            showTextArea.append("Datum přihlášení: " + guestManager.findAllGuest().get(indexOfValue).getDateOfCheckIn() + "\n");
+            showTextArea.append("Datum odhlášení: " + guestManager.findAllGuest().get(indexOfValue).getDateOfCheckOut() + "\n");
+            showTextArea.append("Číslo pokoje: " + guestManager.findAllGuest().get(indexOfValue).getRoomId() + "\n");
+        }
         
         
         

@@ -78,7 +78,7 @@ public class GuestManagerImpl implements GuestManager {
         } catch (SQLException ex) {
             throw new ServiceFailureException("Error when inserting guest into db", ex);
         }
-        connectionGuestWithRoom(guest, firstFreeRoom);
+        
     }
 
     @Override
@@ -249,27 +249,7 @@ public class GuestManagerImpl implements GuestManager {
         }
     }
 
-    private void connectionGuestWithRoom(Guest guest, Room firstFreeRoom) {
-        try (Connection conn = dataSource.getConnection()) {
-            try (PreparedStatement st = conn.prepareStatement(
-                    "UPDATE Guest SET roomId = ? WHERE id = ? AND roomId IS NULL")) {
-                conn.setAutoCommit(false);
 
-                st.setLong(1, firstFreeRoom.getId());
-                st.setLong(2, guest.getId());
-
-                conn.commit();
-            } catch (Exception ex) {
-
-                conn.rollback();
-                throw ex;
-            } finally {
-                conn.setAutoCommit(true);
-            }
-        } catch (SQLException ex) {
-            throw new ServiceFailureException("Error when adding guest into room", ex);
-        }
-    }
 
     private Room getRoomByGuest(Guest guest) {
         try (Connection conn = dataSource.getConnection();
