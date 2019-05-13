@@ -175,7 +175,8 @@ public class MainWindow extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void accommodationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accommodationActionPerformed
-        // TODO add your handling code here:
+        CheckIn checkIn = new CheckIn(roomManager, guestManager);
+        checkIn.setVisible(true);
     }//GEN-LAST:event_accommodationActionPerformed
 
     private void guestButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guestButtonActionPerformed

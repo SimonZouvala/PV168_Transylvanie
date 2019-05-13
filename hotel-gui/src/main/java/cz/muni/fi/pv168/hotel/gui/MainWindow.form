@@ -79,13 +79,10 @@
                           <Component id="roomButton" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="guestButton" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
-                  <Group type="102" attributes="0">
-                      <Component id="checkoutButton" min="-2" pref="44" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="85" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="checkoutButton" min="-2" pref="44" max="-2" attributes="0"/>
               </Group>
+              <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="addRoom" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="removeRoom" alignment="3" max="32767" attributes="0"/>
