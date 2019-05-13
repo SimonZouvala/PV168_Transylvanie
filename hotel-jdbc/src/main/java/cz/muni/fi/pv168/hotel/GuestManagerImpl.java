@@ -71,6 +71,7 @@ public class GuestManagerImpl implements GuestManager {
             guest.setDateOfCheckOut(null);
             st.setDate(3, toSqlDate(guest.getDateOfCheckIn()));
             st.setDate(4, toSqlDate(guest.getDateOfCheckOut()));
+            guest.setRoomId(firstFreeRoom.getId());
             st.setLong(5, firstFreeRoom.getId());
 
             st.executeUpdate();
