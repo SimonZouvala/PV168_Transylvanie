@@ -5,16 +5,23 @@
  */
 package cz.muni.fi.pv168.hotel.gui;
 
+import cz.muni.fi.pv168.hotel.GuestManager;
+import cz.muni.fi.pv168.hotel.RoomManager;
+import javax.swing.ListModel;
+
 /**
  *
  * @author Lydie
  */
 public class MainWindow extends javax.swing.JFrame {
-
+    private final RoomManager roomManager;
+    private final GuestManager guestManager;
     /**
      * Creates new form MainWindow
      */
-    public MainWindow() {
+    public MainWindow(RoomManager roomManager, GuestManager guestManager) {
+        this.roomManager = roomManager;
+        this.guestManager = guestManager;
         initComponents();
     }
 
@@ -28,42 +35,60 @@ public class MainWindow extends javax.swing.JFrame {
     private void initComponents() {
 
         accommodation = new javax.swing.JButton();
-        tabPane = new javax.swing.JTabbedPane();
+        roomButton = new javax.swing.JButton();
+        guestButton = new javax.swing.JButton();
+        checkoutButton = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        selectionTabel = new javax.swing.JList<>();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        panel1 = new java.awt.Panel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
+        showTextArea = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        accommodation.setText("jButton1");
+        accommodation.setText("Ubytovat");
+        accommodation.setToolTipText("");
         accommodation.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 accommodationActionPerformed(evt);
             }
         });
 
-        jTable1.setModel(cz.muni.fi.pv168.hotel.gui.RoomTableModel);
-        jScrollPane1.setViewportView(jTable1);
+        roomButton.setText("Pokoje");
+        roomButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                roomButtonMouseClicked(evt);
+            }
+        });
+        roomButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                roomButtonActionPerformed(evt);
+            }
+        });
 
-        tabPane.addTab("tab1", jScrollPane1);
+        guestButton.setText("Hoste");
+        guestButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                guestButtonMouseClicked(evt);
+            }
+        });
+        guestButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                guestButtonActionPerformed(evt);
+            }
+        });
 
-        jTable3.setModel(cz.muni.fi.pv168.hotel.gui.GuestTableModel);
-        jScrollPane3.setViewportView(jTable3);
+        checkoutButton.setText("Odhlasit hosta");
 
-        javax.swing.GroupLayout panel1Layout = new javax.swing.GroupLayout(panel1);
-        panel1.setLayout(panel1Layout);
-        panel1Layout.setHorizontalGroup(
-            panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 365, Short.MAX_VALUE)
-        );
-        panel1Layout.setVerticalGroup(
-            panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
-        );
+        selectionTabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                selectionTabelMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(selectionTabel);
 
-        tabPane.addTab("tab2", panel1);
+        showTextArea.setColumns(20);
+        showTextArea.setRows(5);
+        jScrollPane1.setViewportView(showTextArea);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -72,19 +97,43 @@ public class MainWindow extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tabPane, javax.swing.GroupLayout.DEFAULT_SIZE, 370, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(accommodation, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(accommodation, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(roomButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(guestButton)))
+                        .addGap(187, 187, 187))
+                    .addComponent(jScrollPane2))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 182, Short.MAX_VALUE)
+                        .addComponent(checkoutButton)
+                        .addGap(24, 24, 24))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(accommodation, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tabPane, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(accommodation, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(roomButton)
+                            .addComponent(guestButton))
+                        .addGap(24, 24, 24))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(checkoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(61, 61, 61)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1))
                 .addContainerGap())
         );
 
@@ -95,48 +144,49 @@ public class MainWindow extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_accommodationActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void guestButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guestButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_guestButtonActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new MainWindow().setVisible(true);
-            }
-        });
-    }
+    private void roomButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_roomButtonActionPerformed
+        // TODO add your handling code here:
+        
+                
+    }//GEN-LAST:event_roomButtonActionPerformed
+
+    private void roomButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_roomButtonMouseClicked
+        // TODO add your handling code here:
+        selectionTabel.setModel((ListModel<String>) new RoomListModel(roomManager.findAllRooms()));
+    }//GEN-LAST:event_roomButtonMouseClicked
+
+    private void guestButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guestButtonMouseClicked
+        // TODO add your handling code here:
+        selectionTabel.setModel((ListModel<String>) new GuestListModel(guestManager.findAllGuest()));
+    }//GEN-LAST:event_guestButtonMouseClicked
+
+    private void selectionTabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_selectionTabelMouseClicked
+        // TODO add your handling code here:
+        showTextArea.setText("");
+        Object value = selectionTabel.getSelectedValue();
+            int indexOfValue = selectionTabel.getSelectedIndex();
+            showTextArea.append(Integer.toString(indexOfValue) + "\n");
+            showTextArea.append(value);
+        
+        
+        
+        
+    }//GEN-LAST:event_selectionTabelMouseClicked
+
+ 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton accommodation;
+    private javax.swing.JButton checkoutButton;
+    private javax.swing.JButton guestButton;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable3;
-    private java.awt.Panel panel1;
-    private javax.swing.JTabbedPane tabPane;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JButton roomButton;
+    private javax.swing.JList<String> selectionTabel;
+    private javax.swing.JTextArea showTextArea;
     // End of variables declaration//GEN-END:variables
 }

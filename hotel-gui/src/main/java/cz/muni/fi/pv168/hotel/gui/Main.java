@@ -27,19 +27,25 @@ public class Main {
     private final static Logger log = LoggerFactory.getLogger(Main.class);
     
     public static void main(String[] args) {
+        
+    
+        
 
         try {
             DataSource dataSource = cz.muni.fi.pv168.hotel.Main.getDataSource();
             RoomManager rmanager = new RoomManagerImpl(dataSource);
             GuestManager gmanager = new GuestManagerImpl(dataSource, clock);
+            
             log.info("vytvořeny manažery");
+            EventQueue.invokeLater(() -> {
+            new MainWindow(rmanager, gmanager).setVisible(true);
+            });        
         } catch (IOException e) {
             log.error("Nepovedlo se vytvořit databázi", e);
         }
         
-        EventQueue.invokeLater(() -> {
-            new MainWindow().setVisible(true);
-        });        
+        
+        
         
     }
     

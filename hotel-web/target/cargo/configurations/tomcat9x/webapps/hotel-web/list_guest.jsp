@@ -11,12 +11,14 @@
     <tr>
         <th>Jméno</th>
         <th>Tel. číslo</th>
+        <th>Room id</th>
     </tr>
     </thead>
     <c:forEach items="${guests}" var="guest">
         <tr>
             <td><c:out value="${guest.name}"/></td>
             <td><c:out value="${guest.phone}"/></td>
+            <td><c:out value="${guest.roomId}"/></td>
             <td><form method="post" action="${pageContext.request.contextPath}/guests/delete?id=${guest.id}"
                       style="margin-bottom: 0;"><input type="submit" value="Smazat"></form></td>
         </tr>
@@ -43,6 +45,6 @@
     <input type="Submit" value="Zadat" />
 </form>
 <br>
-<a href="index.jsp">Zpět na rozcesník</a>
+<a href="/hotel-web/index.jsp">Zpět na rozcesník</a>
 </body>
 </html>
