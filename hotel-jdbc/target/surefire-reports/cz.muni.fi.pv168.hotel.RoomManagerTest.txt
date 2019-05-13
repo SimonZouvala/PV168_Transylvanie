@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: cz.muni.fi.pv168.hotel.RoomManagerTest
 -------------------------------------------------------------------------------
-Tests run: 16, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.453 sec
+Tests run: 16, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.388 sec

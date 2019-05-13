@@ -112,7 +112,7 @@ public class GuestManagerTest {
 
     @Test
     public void createGuest() {
-        Guest guest = willyGuestBuilder().build();
+        Guest guest = willyGuestBuilder().room(1L).build();
         manager.createGuest(guest);
 
         Long guestId = guest.getId();
@@ -125,7 +125,7 @@ public class GuestManagerTest {
 
     @Test
     public void createGuestWithExistingId() {
-        Guest guest = willyGuestBuilder()
+        Guest guest = willyGuestBuilder().room(1L)
                 .id(1L)
                 .build();
         expectedException.expect(IllegalEntityException.class);
@@ -138,7 +138,7 @@ public class GuestManagerTest {
     }
 
     @Test
-    public void createBodyWithNullName() {
+    public void createGuestWithNullName() {
         Guest guest = willyGuestBuilder()
                 .name(null)
                 .build();
@@ -170,6 +170,7 @@ public class GuestManagerTest {
     public void createGuestCheckInAndCheckOutInSameDay() {
         LocalDate today = NOW.toLocalDate();
         Guest guest = willyGuestBuilder()
+                .room(1L)
                 .dateOfCheckIn(today)
                 .dateOfCheckOut(today)
                 .build();
@@ -196,6 +197,7 @@ public class GuestManagerTest {
     public void createGuestWithCheckInToday() {
         LocalDate today = NOW.toLocalDate();
         Guest guest = willyGuestBuilder()
+                .room(1L)
                 .dateOfCheckIn(today)
                 .dateOfCheckOut(null)
                 .build();
@@ -220,6 +222,7 @@ public class GuestManagerTest {
     @Test
     public void createGuestNullCheckIn() {
         Guest guest = willyGuestBuilder()
+                .room(1L)
                 .dateOfCheckIn(null)
                 .build();
         manager.createGuest(guest);
@@ -231,6 +234,7 @@ public class GuestManagerTest {
     @Test
     public void createGuestNullCheckOut() {
         Guest guest = willyGuestBuilder()
+                .room(1L)
                 .build();
         manager.createGuest(guest);
         assertThat(manager.getGuest(guest.getId()))
@@ -246,8 +250,8 @@ public class GuestManagerTest {
     public void findAllGuest() {
         assertThat(manager.findAllGuest()).isEmpty();
 
-        Guest willy = willyGuestBuilder().build();
-        Guest alice = aliceGuestBuilder().build();
+        Guest willy = willyGuestBuilder().room(1L).build();
+        Guest alice = aliceGuestBuilder().room(2L).build();
 
         manager.createGuest(willy);
         manager.createGuest(alice);
@@ -259,7 +263,7 @@ public class GuestManagerTest {
 
     @Test
     public void findGuestByName() {
-        Guest willy = willyGuestBuilder().build();
+        Guest willy = willyGuestBuilder().room(1L).build();
 
         manager.createGuest(willy);
 
@@ -326,7 +330,7 @@ public class GuestManagerTest {
         assertThat(manager.findGuestByRoom(room1)).isNull();
         assertThat(manager.findGuestByRoom(room2)).isNull();
         assertThat(manager.findGuestByRoom(room3)).isNull();
-        Guest guest = willyGuestBuilder().build();
+        Guest guest = willyGuestBuilder().room(1L).build();
         manager.createGuest(guest);
 
         assertThat(manager.findGuestByRoom(room1))
