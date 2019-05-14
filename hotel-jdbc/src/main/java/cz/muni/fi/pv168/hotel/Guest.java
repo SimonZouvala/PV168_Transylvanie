@@ -74,16 +74,13 @@ public class Guest {
 
     @Override
     public String toString() {
-        return "Guest{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", phone='" + phone + '\'' +
-                ", dateOfCheckIn=" + dateOfCheckIn +
-                ", dateOfCheckOut=" + dateOfCheckOut +
-                ", room=" + room +
-                '}';
+        return " ID: " + id + 
+                "\n Name: " + name +
+                "\n Phone: " + phone +
+                "\n Date of check in: " + dateOfCheckIn +
+                "\n Date of check out: " + dateOfCheckOut +
+                "\n Room: " + room;
     }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

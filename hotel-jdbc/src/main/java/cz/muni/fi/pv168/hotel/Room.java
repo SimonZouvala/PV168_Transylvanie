@@ -55,12 +55,10 @@ public class Room {
 
     @Override
     public String toString() {
-        return "Guest{" +
-                "id=" + id +
-                ", price=" + price +
-                ", capacity=" + capacity +
-                ", number=" + number +
-                '}';
+        return " ID: " + id +
+                "\n Price: " + price +
+                "\n Capacity: " + capacity +
+                "\n Number: " + number;
     }
 
     @Override

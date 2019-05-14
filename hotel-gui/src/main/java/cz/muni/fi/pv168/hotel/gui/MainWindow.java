@@ -16,6 +16,7 @@ import cz.muni.fi.pv168.hotel.exception.ValidationException;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 import javax.swing.ListModel;
@@ -198,17 +199,26 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void guestButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guestButtonActionPerformed
         // TODO add your handling code here:
-        selectionTabel.setModel((ListModel<String>) new GuestListModel(guestManager.findAllGuest()));
+        GuestListSwingWorker guestListSwingWorker = new GuestListSwingWorker(guestManager);
+        guestListSwingWorker.execute();
+
+        showTextArea.setText("");
         findTextField.setVisible(true);
         addRoom.setVisible(false);
         removeRoom.setVisible(false);
+
 
     }//GEN-LAST:event_guestButtonActionPerformed
 
     private void roomButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_roomButtonActionPerformed
         // TODO add your handling code here:
-        selectionTabel.setModel((ListModel<String>) new RoomListModel(roomManager.findAllRooms()));
+        RoomListSwingWorker roomListSwingWorker = new RoomListSwingWorker(roomManager);
+        roomListSwingWorker.execute();
+
+        showTextArea.setText("");
         addRoom.setVisible(true);
+        removeRoom.setVisible(true);
+        removeRoom.setEnabled(false);
         findTextField.setVisible(false);
 
 
@@ -217,24 +227,15 @@ public class MainWindow extends javax.swing.JFrame {
     private void selectionTabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_selectionTabelMouseClicked
         // TODO add your handling code here:
         showTextArea.setText("");
+        PrintSwingWorker printSwingWorker;
         int indexOfValue = selectionTabel.getSelectedIndex();
-        if ((selectionTabel.getModel() instanceof RoomListModel)) {
-            showTextArea.append("ID: " + roomManager.findAllRooms().get(indexOfValue).getId() + "\n");
-            showTextArea.append("Číslo pokoje: " + roomManager.findAllRooms().get(indexOfValue).getNumber() + "\n");
-            showTextArea.append("Cena: " + roomManager.findAllRooms().get(indexOfValue).getPrice() + "\n");
-            showTextArea.append("Kapacita: " + roomManager.findAllRooms().get(indexOfValue).getCapacity() + "\n");
-            removeRoom.setVisible(true);
-        }
         if ((selectionTabel.getModel() instanceof GuestListModel)) {
-            guestID = guestManager.findAllGuest().get(indexOfValue).getId();
-            showTextArea.append("ID: " + guestManager.findAllGuest().get(indexOfValue).getId() + "\n");
-            showTextArea.append("Jméno: " + guestManager.findAllGuest().get(indexOfValue).getName() + "\n");
-            showTextArea.append("Telefoní číslo: " + guestManager.findAllGuest().get(indexOfValue).getPhone() + "\n");
-            showTextArea.append("Datum přihlášení: " + guestManager.findAllGuest().get(indexOfValue).getDateOfCheckIn() + "\n");
-            showTextArea.append("Datum odhlášení: " + guestManager.findAllGuest().get(indexOfValue).getDateOfCheckOut() + "\n");
-            showTextArea.append("Číslo pokoje: " + guestManager.findAllGuest().get(indexOfValue).getRoomId() + "\n");
-        }
+            printSwingWorker = new PrintSwingWorker(guestManager, indexOfValue);
+        } else {
+            printSwingWorker = new PrintSwingWorker(roomManager, indexOfValue);
 
+        }
+        printSwingWorker.execute();
 
     }//GEN-LAST:event_selectionTabelMouseClicked
 
@@ -261,13 +262,121 @@ public class MainWindow extends javax.swing.JFrame {
         checkOutSwingWorker.execute();
     }//GEN-LAST:event_checkoutButtonActionPerformed
 
-     private class CheckOutSwingWorker extends SwingWorker<Integer, Integer> {
+    private class PrintSwingWorker extends SwingWorker<Object, Object> {
 
-        
+        private final RoomManager roomManager;
+        private final GuestManager guestManager;
+        private final int index;
+
+        public PrintSwingWorker(GuestManager guestManager, int index) {
+            this.guestManager = guestManager;
+            this.index = index;
+            this.roomManager = null;
+        }
+
+        public PrintSwingWorker(RoomManager roomManager, int index) {
+            this.roomManager = roomManager;
+            this.index = index;
+            this.guestManager = null;
+        }
+
+        @Override
+        protected Object doInBackground() throws Exception {
+
+//            Room room = roomManager.findAllRooms().get(index);
+//            showTextArea.append("ID: " + room.getId() + "\n");
+//            showTextArea.append("Číslo pokoje: " + room.getNumber() + "\n");
+//            showTextArea.append("Cena: " + room.getPrice() + "\n");
+//            showTextArea.append("Kapacita: " + room.getCapacity() + "\n");
+//            
+//
+//            
+//            showTextArea.append("ID: " + guestID + "\n");
+//            showTextArea.append("Jméno: " + guest.getName() + "\n");
+//            showTextArea.append("Telefoní číslo: " + guest.getPhone() + "\n");
+//            showTextArea.append("Datum přihlášení: " + guest.getDateOfCheckIn() + "\n");
+//            showTextArea.append("Datum odhlášení: " + guest.getDateOfCheckOut() + "\n");
+//            showTextArea.append("Číslo pokoje: " + guest.getRoomId() + "\n");
+            if (guestManager != null) {
+                Guest guest = guestManager.findAllGuest().get(index);
+                guestID = guest.getId();
+                return guest;
+
+            } else {
+                removeRoom.setEnabled(true);
+                return roomManager.findAllRooms().get(index);
+            }
+
+        }
+
+        @Override
+        protected void done() {
+            try {
+                showTextArea.append(get().toString());
+            } catch (InterruptedException ex) {
+                Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ExecutionException ex) {
+                Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+
+    private class RoomListSwingWorker extends SwingWorker<List<Room>, List<Room>> {
+
+        @Override
+        protected void done() {
+            try {
+                selectionTabel.setModel((ListModel<String>) new RoomListModel(get()));
+            } catch (InterruptedException | ExecutionException ex) {
+                Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+        private final RoomManager roomManager;
+
+        public RoomListSwingWorker(RoomManager roomManager) {
+            this.roomManager = roomManager;
+        }
+
+        @Override
+        protected List<Room> doInBackground() throws Exception {
+            List<Room> roomList = roomManager.findAllRooms();
+            return roomList;
+        }
+
+    }
+
+    private class GuestListSwingWorker extends SwingWorker<List<Guest>, List<Guest>> {
+
+        @Override
+        protected void done() {
+            try {
+                selectionTabel.setModel((ListModel<String>) new GuestListModel(get()));
+            } catch (InterruptedException | ExecutionException ex) {
+                Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+        private final GuestManager guestManager;
+
+        public GuestListSwingWorker(GuestManager guestManager) {
+            this.guestManager = guestManager;
+        }
+
+        @Override
+        protected List<Guest> doInBackground() throws Exception {
+            List<Guest> guestList = guestManager.findAllGuest();
+            return guestList;
+        }
+
+    }
+
+    private class CheckOutSwingWorker extends SwingWorker<Integer, Integer> {
+
         private final GuestManager guestManager;
         private final Long guestId;
 
-        public CheckOutSwingWorker( GuestManager guestManager, Long guestId) {
+        public CheckOutSwingWorker(GuestManager guestManager, Long guestId) {
 
             this.guestManager = guestManager;
             this.guestId = guestId;
@@ -280,7 +389,8 @@ public class MainWindow extends javax.swing.JFrame {
             guestManager.checkOutGuest(guest);
             return null;
         }
-     }
+    }
+
     private class AccommodationSwingWorker extends SwingWorker<Integer, Integer> {
 
         private final RoomManager roomManager;
