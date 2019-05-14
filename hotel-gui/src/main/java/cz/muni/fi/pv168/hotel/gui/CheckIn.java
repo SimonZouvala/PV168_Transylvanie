@@ -7,15 +7,26 @@ package cz.muni.fi.pv168.hotel.gui;
 
 import cz.muni.fi.pv168.hotel.Guest;
 import cz.muni.fi.pv168.hotel.GuestManager;
+import cz.muni.fi.pv168.hotel.Room;
 import cz.muni.fi.pv168.hotel.RoomManager;
+import cz.muni.fi.pv168.hotel.exception.IllegalEntityException;
+import cz.muni.fi.pv168.hotel.exception.ServiceFailureException;
+import java.util.List;
+import java.util.concurrent.ExecutionException;
+import java.util.logging.Level;
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.SwingWorker;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  *
  * @author Lydie
  */
 public class CheckIn extends javax.swing.JFrame {
+
+    private final static Logger log = LoggerFactory.getLogger(CheckIn.class);
     private final RoomManager roomManager;
     private final GuestManager guestManager;
 
@@ -39,23 +50,20 @@ public class CheckIn extends javax.swing.JFrame {
 
         name = new javax.swing.JTextField();
         phone = new javax.swing.JTextField();
-        comfirm = new javax.swing.JButton();
+        confirm = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        name.setText("jméno");
-        name.addActionListener(new java.awt.event.ActionListener() {
+        name.setText("jmeno");
+        name.setToolTipText("jmeno");
+
+        phone.setText("phone");
+        phone.setToolTipText("telefon");
+
+        confirm.setText("ubytovat");
+        confirm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nameActionPerformed(evt);
-            }
-        });
-
-        phone.setText("telefon");
-
-        comfirm.setText("ubytovat");
-        comfirm.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comfirmActionPerformed(evt);
+                confirmActionPerformed(evt);
             }
         });
 
@@ -66,68 +74,95 @@ public class CheckIn extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(65, 65, 65)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(phone, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
-                    .addComponent(name))
-                .addGap(18, 40, Short.MAX_VALUE)
-                .addComponent(comfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38))
+                    .addComponent(phone)
+                    .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(40, 40, 40)
+                .addComponent(confirm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(74, 74, 74)
-                .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42)
+                .addGap(71, 71, 71)
+                .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(49, 49, 49)
                 .addComponent(phone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(51, 51, 51)
-                .addComponent(comfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(47, 47, 47)
+                .addComponent(confirm, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(27, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nameActionPerformed
-
-    private void comfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comfirmActionPerformed
+    private void confirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmActionPerformed
         String nameText = name.getText();
         String phoneText = phone.getText();
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-       ConfirmSwingWorker confirmSwingWorker = new ConfirmSwingWorker(nameText,phoneText,roomManager,guestManager);
-        confirmSwingWorker.execute();
-       
+                ConfirmSwingWorker confirmSwingWorker = new ConfirmSwingWorker(nameText, phoneText, roomManager, guestManager);
+                confirmSwingWorker.execute();
+                setVisible(false); //you can't see me!
+                dispose();
             }
         });
-        
-    }//GEN-LAST:event_comfirmActionPerformed
-
-    
+    }//GEN-LAST:event_confirmActionPerformed
     private class ConfirmSwingWorker extends SwingWorker {
+
         private final String name;
         private final String phone;
         private final RoomManager roomManager;
         private final GuestManager guestManager;
-        
+
         public ConfirmSwingWorker(String name, String phone, RoomManager roomManager, GuestManager guestManager) {
             this.name = name;
             this.phone = phone;
             this.roomManager = roomManager;
             this.guestManager = guestManager;
         }
-        
-        @Override    
+
+        @Override
         protected Integer doInBackground() throws Exception {
-            Guest guest = new Guest(null, name, phone);
-            guestManager.createGuest(guest);         
-            return null;
+            try {
+                Guest guest = new Guest(null, name, phone);
+                guestManager.createGuest(guest);
+            } catch (ServiceFailureException e) {
+                log.error("Cannot add guest", e);
+                return 3;
+            } catch (IllegalEntityException iee) {
+                log.debug("all rooms are full");
+                return 2;
+            }
+            return 1;
+        }
+        @Override
+        protected void done() {
+            int result = 0;
+            try {
+                result = (int) get();
+            } catch (InterruptedException ex) {
+                java.util.logging.Logger.getLogger(AddRoom.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ExecutionException ex) {
+                java.util.logging.Logger.getLogger(AddRoom.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            switch (result) {
+                case 1:
+                    setVisible(false); //you can't see me!
+                    dispose();
+                    break;
+                case 2:
+                    JOptionPane.showMessageDialog(null, "Všechny pokoje jsou plné ");
+                    break;
+                case 3:
+                    JOptionPane.showMessageDialog(null, "Nejde přidat hosta");
+                    break;
+            }
         }
     }
 
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton comfirm;
+    private javax.swing.JButton confirm;
     private javax.swing.JTextField name;
     private javax.swing.JTextField phone;
     // End of variables declaration//GEN-END:variables

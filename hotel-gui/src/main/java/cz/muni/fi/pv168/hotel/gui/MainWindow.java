@@ -5,18 +5,32 @@
  */
 package cz.muni.fi.pv168.hotel.gui;
 
+import cz.muni.fi.pv168.hotel.Guest;
 import cz.muni.fi.pv168.hotel.GuestManager;
+import cz.muni.fi.pv168.hotel.GuestManagerImpl;
+import cz.muni.fi.pv168.hotel.Room;
 import cz.muni.fi.pv168.hotel.RoomManager;
+import cz.muni.fi.pv168.hotel.RoomManagerImpl;
+import cz.muni.fi.pv168.hotel.exception.ServiceFailureException;
+import cz.muni.fi.pv168.hotel.exception.ValidationException;
+import java.util.List;
+import java.util.concurrent.ExecutionException;
+import java.util.logging.Level;
+import javax.swing.JOptionPane;
 
 import javax.swing.ListModel;
+import javax.swing.SwingWorker;
 
 /**
  *
  * @author Lydie
  */
 public class MainWindow extends javax.swing.JFrame {
+
     private final RoomManager roomManager;
     private final GuestManager guestManager;
+    private Long guestID;
+
     /**
      * Creates new form MainWindow
      */
@@ -24,7 +38,7 @@ public class MainWindow extends javax.swing.JFrame {
         this.roomManager = roomManager;
         this.guestManager = guestManager;
         initComponents();
-        
+
     }
 
     /**
@@ -84,6 +98,11 @@ public class MainWindow extends javax.swing.JFrame {
         });
 
         checkoutButton.setText("Odhlasit hosta");
+        checkoutButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkoutButtonActionPerformed(evt);
+            }
+        });
 
         showTextArea.setColumns(20);
         showTextArea.setRows(5);
@@ -155,11 +174,9 @@ public class MainWindow extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(roomButton)
-                            .addComponent(guestButton))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(checkoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(85, 85, 85)))
+                            .addComponent(guestButton)))
+                    .addComponent(checkoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addRoom)
                     .addComponent(removeRoom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -175,26 +192,26 @@ public class MainWindow extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void accommodationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accommodationActionPerformed
-        CheckIn checkIn = new CheckIn(roomManager, guestManager);
-        checkIn.setVisible(true);
+        AccommodationSwingWorker accommodationSwingWorker = new AccommodationSwingWorker(roomManager, guestManager);
+        accommodationSwingWorker.execute();
     }//GEN-LAST:event_accommodationActionPerformed
 
     private void guestButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guestButtonActionPerformed
         // TODO add your handling code here:
-         selectionTabel.setModel((ListModel<String>) new GuestListModel(guestManager.findAllGuest()));
+        selectionTabel.setModel((ListModel<String>) new GuestListModel(guestManager.findAllGuest()));
         findTextField.setVisible(true);
         addRoom.setVisible(false);
         removeRoom.setVisible(false);
-        
+
     }//GEN-LAST:event_guestButtonActionPerformed
 
     private void roomButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_roomButtonActionPerformed
         // TODO add your handling code here:
-          selectionTabel.setModel((ListModel<String>) new RoomListModel(roomManager.findAllRooms()));
+        selectionTabel.setModel((ListModel<String>) new RoomListModel(roomManager.findAllRooms()));
         addRoom.setVisible(true);
         findTextField.setVisible(false);
-        
-                
+
+
     }//GEN-LAST:event_roomButtonActionPerformed
 
     private void selectionTabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_selectionTabelMouseClicked
@@ -202,14 +219,14 @@ public class MainWindow extends javax.swing.JFrame {
         showTextArea.setText("");
         int indexOfValue = selectionTabel.getSelectedIndex();
         if ((selectionTabel.getModel() instanceof RoomListModel)) {
-            
-            showTextArea.append( "ID: " + roomManager.findAllRooms().get(indexOfValue).getId()+ "\n");
-            showTextArea.append( "Číslo pokoje: " + roomManager.findAllRooms().get(indexOfValue).getNumber()+ "\n");
-            showTextArea.append( "Cena: " + roomManager.findAllRooms().get(indexOfValue).getPrice()+ "\n");
-            showTextArea.append( "Kapacita: " + roomManager.findAllRooms().get(indexOfValue).getCapacity()+ "\n");
+            showTextArea.append("ID: " + roomManager.findAllRooms().get(indexOfValue).getId() + "\n");
+            showTextArea.append("Číslo pokoje: " + roomManager.findAllRooms().get(indexOfValue).getNumber() + "\n");
+            showTextArea.append("Cena: " + roomManager.findAllRooms().get(indexOfValue).getPrice() + "\n");
+            showTextArea.append("Kapacita: " + roomManager.findAllRooms().get(indexOfValue).getCapacity() + "\n");
             removeRoom.setVisible(true);
         }
         if ((selectionTabel.getModel() instanceof GuestListModel)) {
+            guestID = guestManager.findAllGuest().get(indexOfValue).getId();
             showTextArea.append("ID: " + guestManager.findAllGuest().get(indexOfValue).getId() + "\n");
             showTextArea.append("Jméno: " + guestManager.findAllGuest().get(indexOfValue).getName() + "\n");
             showTextArea.append("Telefoní číslo: " + guestManager.findAllGuest().get(indexOfValue).getPhone() + "\n");
@@ -217,15 +234,14 @@ public class MainWindow extends javax.swing.JFrame {
             showTextArea.append("Datum odhlášení: " + guestManager.findAllGuest().get(indexOfValue).getDateOfCheckOut() + "\n");
             showTextArea.append("Číslo pokoje: " + guestManager.findAllGuest().get(indexOfValue).getRoomId() + "\n");
         }
-        
-        
-        
-        
+
+
     }//GEN-LAST:event_selectionTabelMouseClicked
 
     private void addRoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addRoomActionPerformed
-        // TODO add your handling code here:
-        
+        AddRoom addRoom = new AddRoom(roomManager);
+        addRoom.setVisible(true);
+
     }//GEN-LAST:event_addRoomActionPerformed
 
     private void guestButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guestButtonMouseClicked
@@ -240,7 +256,72 @@ public class MainWindow extends javax.swing.JFrame {
         findTextField.setVisible(false);
     }//GEN-LAST:event_formWindowActivated
 
- 
+    private void checkoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkoutButtonActionPerformed
+        CheckOutSwingWorker checkOutSwingWorker = new CheckOutSwingWorker(guestManager, guestID);
+        checkOutSwingWorker.execute();
+    }//GEN-LAST:event_checkoutButtonActionPerformed
+
+     private class CheckOutSwingWorker extends SwingWorker<Integer, Integer> {
+
+        
+        private final GuestManager guestManager;
+        private final Long guestId;
+
+        public CheckOutSwingWorker( GuestManager guestManager, Long guestId) {
+
+            this.guestManager = guestManager;
+            this.guestId = guestId;
+        }
+
+        @Override
+        protected Integer doInBackground() throws Exception {
+            Guest guest = new Guest();
+            guest = guestManager.getGuest(guestId);
+            guestManager.checkOutGuest(guest);
+            return null;
+        }
+     }
+    private class AccommodationSwingWorker extends SwingWorker<Integer, Integer> {
+
+        private final RoomManager roomManager;
+        private final GuestManager guestManager;
+
+        public AccommodationSwingWorker(RoomManager roomManager, GuestManager guestManager) {
+
+            this.roomManager = roomManager;
+            this.guestManager = guestManager;
+        }
+
+        @Override
+        protected Integer doInBackground() throws Exception {
+            List<Room> freeRooms = guestManager.freeRooms();
+            if (freeRooms.size() == 0) {
+                return 2;
+            }
+            return 1;
+        }
+
+        @Override
+        protected void done() {
+            int result = 0;
+            try {
+                result = get();
+            } catch (InterruptedException ex) {
+                java.util.logging.Logger.getLogger(AddRoom.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ExecutionException ex) {
+                java.util.logging.Logger.getLogger(AddRoom.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            switch (result) {
+                case 1:
+                    CheckIn checkIn = new CheckIn(roomManager, guestManager);
+                    checkIn.setVisible(true);
+                    break;
+                case 2:
+                    JOptionPane.showMessageDialog(null, "Všechny pokoje jsou plné");
+                    break;
+            }
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton accommodation;
