@@ -7,22 +7,16 @@ package cz.muni.fi.pv168.hotel.gui;
 
 import cz.muni.fi.pv168.hotel.Guest;
 import cz.muni.fi.pv168.hotel.GuestManager;
-import cz.muni.fi.pv168.hotel.GuestManagerImpl;
 import cz.muni.fi.pv168.hotel.Room;
 import cz.muni.fi.pv168.hotel.RoomManager;
-import cz.muni.fi.pv168.hotel.RoomManagerImpl;
-import cz.muni.fi.pv168.hotel.exception.ServiceFailureException;
-import cz.muni.fi.pv168.hotel.exception.ValidationException;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
 import javax.swing.ListModel;
 import javax.swing.SwingWorker;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -32,7 +26,7 @@ public class MainWindow extends javax.swing.JFrame {
 
     private final RoomManager roomManager;
     private final GuestManager guestManager;
-    private Long guestID;
+    private Guest guest;
 
     /**
      * Creates new form MainWindow
@@ -266,8 +260,8 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowActivated
 
     private void checkoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkoutButtonActionPerformed
-        CheckOutSwingWorker checkOutSwingWorker = new CheckOutSwingWorker(guestManager, guestID);
-        checkOutSwingWorker.execute();
+        CheckOut checkOut = new CheckOut(guestManager, guest);
+        checkOut.setVisible(true);
     }//GEN-LAST:event_checkoutButtonActionPerformed
 
     private void removeRoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeRoomActionPerformed
@@ -302,7 +296,7 @@ public class MainWindow extends javax.swing.JFrame {
 
         @Override
         protected void done() {
-            
+
             try {
                 roomManager.deleteRoom(get());
             } catch (IllegalArgumentException eae) {
@@ -339,7 +333,6 @@ public class MainWindow extends javax.swing.JFrame {
         protected Object doInBackground() throws Exception {
             if (guestManager != null) {
                 Guest guest = guestManager.findAllGuest().get(index);
-                guestID = guest.getId();
                 return guest;
 
             } else {
@@ -352,13 +345,16 @@ public class MainWindow extends javax.swing.JFrame {
         @Override
         protected void done() {
             try {
-                showTextArea.append(get().toString());
+                guest = (Guest) get();
+
             } catch (InterruptedException ex) {
                 Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ExecutionException ex) {
                 Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
             }
+            showTextArea.append(guest.toString());
         }
+
     }
 
     private class RoomListSwingWorker extends SwingWorker<List<Room>, List<Room>> {
@@ -408,26 +404,6 @@ public class MainWindow extends javax.swing.JFrame {
             return guestList;
         }
 
-    }
-
-    private class CheckOutSwingWorker extends SwingWorker<Integer, Integer> {
-
-        private final GuestManager guestManager;
-        private final Long guestId;
-
-        public CheckOutSwingWorker(GuestManager guestManager, Long guestId) {
-
-            this.guestManager = guestManager;
-            this.guestId = guestId;
-        }
-
-        @Override
-        protected Integer doInBackground() throws Exception {
-            Guest guest = new Guest();
-            guest = guestManager.getGuest(guestId);
-            guestManager.checkOutGuest(guest);
-            return null;
-        }
     }
 
     private class AccommodationSwingWorker extends SwingWorker<Integer, Integer> {

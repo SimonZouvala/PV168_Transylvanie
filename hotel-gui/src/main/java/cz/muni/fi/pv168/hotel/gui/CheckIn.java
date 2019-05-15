@@ -98,14 +98,9 @@ public class CheckIn extends javax.swing.JFrame {
     private void confirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmActionPerformed
         String nameText = name.getText();
         String phoneText = phone.getText();
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                ConfirmSwingWorker confirmSwingWorker = new ConfirmSwingWorker(nameText, phoneText, roomManager, guestManager);
-                confirmSwingWorker.execute();
-                setVisible(false); //you can't see me!
-                dispose();
-            }
-        });
+        ConfirmSwingWorker confirmSwingWorker = new ConfirmSwingWorker(nameText, phoneText, roomManager, guestManager);
+        confirmSwingWorker.execute();
+
     }//GEN-LAST:event_confirmActionPerformed
     private class ConfirmSwingWorker extends SwingWorker {
 
