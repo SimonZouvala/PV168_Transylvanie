@@ -23,6 +23,9 @@ public interface GuestManager {
     Guest findGuestByRoom(Room room);
 
     int checkOutGuest(Guest guest);
+    
+    int checkOutGuestPrice(Guest guest);
 
     List<Room> freeRooms();
 }
+

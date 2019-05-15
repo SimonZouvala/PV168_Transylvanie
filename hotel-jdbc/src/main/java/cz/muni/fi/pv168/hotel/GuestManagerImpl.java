@@ -173,6 +173,15 @@ public class GuestManagerImpl implements GuestManager {
         Period period = Period.between(LocalDate.now(), guest.getDateOfCheckIn());
         return room.getPrice() * period.getDays();
     }
+    
+    public int checkOutGuestPrice(Guest guest) {
+        if (guest == null) throw new IllegalArgumentException("guest is null");
+        if (guest.getId() == null) throw new IllegalEntityException("guest id is null");
+
+        Room room = getRoomByGuest(guest);
+        Period period = Period.between(LocalDate.now(), guest.getDateOfCheckIn());
+        return room.getPrice() * period.getDays();
+    }
 
 
     @Override
