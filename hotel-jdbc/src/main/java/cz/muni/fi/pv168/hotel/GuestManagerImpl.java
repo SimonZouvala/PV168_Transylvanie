@@ -180,7 +180,7 @@ public class GuestManagerImpl implements GuestManager {
 
         Room room = getRoomByGuest(guest);
         Period period = Period.between(LocalDate.now(), guest.getDateOfCheckIn());
-        return room.getPrice() * period.getDays();
+        return Math.abs(room.getPrice() * period.getDays());
     }
 
 
