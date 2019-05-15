@@ -24,12 +24,14 @@ public class AddRoom extends javax.swing.JFrame {
 
     private final static Logger log = LoggerFactory.getLogger(AddRoom.class);
     private final RoomManager roomManager;
+    private final RoomListModel model;
 
     /**
      * Creates new form AddRoom
      */
-    public AddRoom(RoomManager roomManager) {
+    public AddRoom(RoomManager roomManager, RoomListModel model) {
         this.roomManager = roomManager;
+        this.model = model;
         initComponents();
     }
 
@@ -177,6 +179,7 @@ public class AddRoom extends javax.swing.JFrame {
                 log.debug("Room with" + String.valueOf(number) + " exists");
                 return 7;
             }
+            model.addRoom(new Room(price_int,capacity_int,number_int));
             return 1;
         }
 

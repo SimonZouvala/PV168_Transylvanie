@@ -83,11 +83,6 @@ public class MainWindow extends javax.swing.JFrame {
         });
 
         guestButton.setText("Hoste");
-        guestButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                guestButtonMouseClicked(evt);
-            }
-        });
         guestButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 guestButtonActionPerformed(evt);
@@ -241,16 +236,10 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_selectionTabelMouseClicked
 
     private void addRoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addRoomActionPerformed
-        AddRoom addRoom = new AddRoom(roomManager);
+        AddRoom addRoom = new AddRoom(roomManager, (RoomListModel) selectionTabel.getModel());
         addRoom.setVisible(true);
 
     }//GEN-LAST:event_addRoomActionPerformed
-
-    private void guestButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guestButtonMouseClicked
-        // TODO add your handling code here:
-
-
-    }//GEN-LAST:event_guestButtonMouseClicked
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         // TODO add your handling code here:
@@ -270,7 +259,8 @@ public class MainWindow extends javax.swing.JFrame {
         RemoveRoomSwingWorker removeRoomSwingWorker = new RemoveRoomSwingWorker(roomManager, indexOfValue, guestManager);
         removeRoomSwingWorker.execute();
 
-        roomButtonActionPerformed(evt);
+
+
     }//GEN-LAST:event_removeRoomActionPerformed
 
     private class RemoveRoomSwingWorker extends SwingWorker<Room, Room> {
@@ -291,6 +281,10 @@ public class MainWindow extends javax.swing.JFrame {
             if (!guestManager.freeRooms().contains(room)) {
                 return null;
             }
+
+            RoomListModel model = (RoomListModel) selectionTabel.getModel();
+            model.deleteRoom(room);
+
             return room;
         }
 
@@ -299,12 +293,16 @@ public class MainWindow extends javax.swing.JFrame {
 
             try {
                 roomManager.deleteRoom(get());
+
             } catch (IllegalArgumentException eae) {
                 JOptionPane.showMessageDialog(null, "Nějaký host je ubytován v tomto pokoji");
+
             } catch (InterruptedException ex) {
                 Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ExecutionException ex) {
                 Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
+            } finally {
+                
             }
 
         }
@@ -345,14 +343,14 @@ public class MainWindow extends javax.swing.JFrame {
         @Override
         protected void done() {
             try {
-                guest = (Guest) get();
+                showTextArea.append(get().toString());
 
             } catch (InterruptedException ex) {
                 Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ExecutionException ex) {
                 Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
             }
-            showTextArea.append(guest.toString());
+
         }
 
     }
@@ -383,15 +381,6 @@ public class MainWindow extends javax.swing.JFrame {
 
     private class GuestListSwingWorker extends SwingWorker<List<Guest>, List<Guest>> {
 
-        @Override
-        protected void done() {
-            try {
-                selectionTabel.setModel((ListModel<String>) new GuestListModel(get()));
-            } catch (InterruptedException | ExecutionException ex) {
-                Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-
         private final GuestManager guestManager;
 
         public GuestListSwingWorker(GuestManager guestManager) {
@@ -404,6 +393,14 @@ public class MainWindow extends javax.swing.JFrame {
             return guestList;
         }
 
+        @Override
+        protected void done() {
+            try {
+                selectionTabel.setModel((ListModel<String>) new GuestListModel(get()));
+            } catch (InterruptedException | ExecutionException ex) {
+                Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }
 
     private class AccommodationSwingWorker extends SwingWorker<Integer, Integer> {
