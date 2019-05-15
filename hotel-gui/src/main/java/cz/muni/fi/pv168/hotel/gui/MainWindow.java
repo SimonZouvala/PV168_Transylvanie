@@ -27,6 +27,7 @@ public class MainWindow extends javax.swing.JFrame {
     private final RoomManager roomManager;
     private final GuestManager guestManager;
     private Guest guest;
+    private boolean wasWindowActivatedBefore = false;
 
     /**
      * Creates new form MainWindow
@@ -59,6 +60,7 @@ public class MainWindow extends javax.swing.JFrame {
         addRoom = new javax.swing.JButton();
         removeRoom = new javax.swing.JButton();
         findTextField = new javax.swing.JTextField();
+        findButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -125,8 +127,14 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
-        findTextField.setText("Hledej...");
         findTextField.setToolTipText("Hledej...");
+
+        findButton.setText("Hledej");
+        findButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                findButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -145,7 +153,7 @@ public class MainWindow extends javax.swing.JFrame {
                             .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 181, Short.MAX_VALUE)
+                                .addGap(18, 18, Short.MAX_VALUE)
                                 .addComponent(checkoutButton))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(8, 8, 8)
@@ -153,6 +161,8 @@ public class MainWindow extends javax.swing.JFrame {
                                     .addComponent(jScrollPane1)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(findTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(findButton)
                                         .addGap(0, 0, Short.MAX_VALUE))))))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(addRoom, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -177,7 +187,8 @@ public class MainWindow extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addRoom)
                     .addComponent(removeRoom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(findTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(findTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(findButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane1)
@@ -201,6 +212,7 @@ public class MainWindow extends javax.swing.JFrame {
         showTextArea.setText("");
         selectionTabel.setVisible(true);
         findTextField.setVisible(true);
+        findButton.setVisible(true);
         addRoom.setVisible(false);
         removeRoom.setVisible(false);
 
@@ -218,6 +230,8 @@ public class MainWindow extends javax.swing.JFrame {
         removeRoom.setVisible(true);
         removeRoom.setEnabled(false);
         findTextField.setVisible(false);
+        findButton.setVisible(false);
+        checkoutButton.setEnabled(false);
 
 
     }//GEN-LAST:event_roomButtonActionPerformed
@@ -225,10 +239,12 @@ public class MainWindow extends javax.swing.JFrame {
     private void selectionTabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_selectionTabelMouseClicked
         // TODO add your handling code here:
         showTextArea.setText("");
+        
         PrintSwingWorker printSwingWorker;
         int indexOfValue = selectionTabel.getSelectedIndex();
         if ((selectionTabel.getModel() instanceof GuestListModel)) {
             printSwingWorker = new PrintSwingWorker(guestManager, indexOfValue);
+            checkoutButton.setEnabled(true);
         } else {
             printSwingWorker = new PrintSwingWorker(roomManager, indexOfValue);
 
@@ -238,18 +254,29 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_selectionTabelMouseClicked
 
     private void addRoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addRoomActionPerformed
-        AddRoom addRoom = new AddRoom(roomManager, (RoomListModel) selectionTabel.getModel());
-        addRoom.setVisible(true);
+        AddRoom room = new AddRoom(roomManager, (RoomListModel) selectionTabel.getModel());
+        room.setVisible(true);
+
 
     }//GEN-LAST:event_addRoomActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         // TODO add your handling code here:
-        addRoom.setVisible(false);
-        removeRoom.setVisible(false);
-        findTextField.setVisible(false);
-        selectionTabel.setVisible(false);
-        showTextArea.setText("");
+        if (!wasWindowActivatedBefore) {
+            addRoom.setVisible(false);
+            removeRoom.setVisible(false);
+            findTextField.setVisible(false);
+            findButton.setVisible(false);
+            selectionTabel.setVisible(false);
+            showTextArea.setText("");
+            wasWindowActivatedBefore = true;
+            checkoutButton.setEnabled(false);
+        } else {
+            removeRoom.setEnabled(false);
+            selectionTabel.clearSelection();
+            showTextArea.setText("");
+            checkoutButton.setEnabled(false);
+        }
     }//GEN-LAST:event_formWindowActivated
 
     private void checkoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkoutButtonActionPerformed
@@ -264,8 +291,45 @@ public class MainWindow extends javax.swing.JFrame {
         removeRoomSwingWorker.execute();
 
 
-
     }//GEN-LAST:event_removeRoomActionPerformed
+
+    private void findButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findButtonActionPerformed
+        // TODO add your handling code here:
+        FindGuestSwingWorker findGuestSwingWorker = new FindGuestSwingWorker(guestManager, findTextField.getText());
+        findGuestSwingWorker.execute();
+
+    }//GEN-LAST:event_findButtonActionPerformed
+
+    private class FindGuestSwingWorker extends SwingWorker<Guest, Guest> {
+
+        private final GuestManager guestManager;
+        private final String name;
+
+        public FindGuestSwingWorker(GuestManager guestManager, String name) {
+            this.guestManager = guestManager;
+            this.name = name;
+        }
+
+        @Override
+        protected Guest doInBackground() throws Exception {
+            Guest guest = guestManager.findGuestByName(name);
+            return guest;
+        }
+
+        @Override
+        protected void done() {
+            try {
+                showTextArea.append(get().toString());
+            } catch (IllegalArgumentException | NullPointerException eae) {
+                JOptionPane.showMessageDialog(null, "Host není ubytován");
+            } catch (InterruptedException ex) {
+                Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ExecutionException ex) {
+                Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+    }
 
     private class RemoveRoomSwingWorker extends SwingWorker<Room, Room> {
 
@@ -286,8 +350,6 @@ public class MainWindow extends javax.swing.JFrame {
                 return null;
             }
 
-            RoomListModel model = (RoomListModel) selectionTabel.getModel();
-            model.deleteRoom(room);
 
             return room;
         }
@@ -298,6 +360,9 @@ public class MainWindow extends javax.swing.JFrame {
             try {
                 roomManager.deleteRoom(get());
 
+                RoomListModel model = (RoomListModel) selectionTabel.getModel();
+                model.deleteRoom(get());
+
             } catch (IllegalArgumentException eae) {
                 JOptionPane.showMessageDialog(null, "Nějaký host je ubytován v tomto pokoji");
 
@@ -306,7 +371,7 @@ public class MainWindow extends javax.swing.JFrame {
             } catch (ExecutionException ex) {
                 Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
             } finally {
-                
+
             }
 
         }
@@ -453,6 +518,7 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JButton accommodation;
     private javax.swing.JButton addRoom;
     private javax.swing.JButton checkoutButton;
+    private javax.swing.JButton findButton;
     private javax.swing.JTextField findTextField;
     private javax.swing.JButton guestButton;
     private javax.swing.JScrollPane jScrollPane1;

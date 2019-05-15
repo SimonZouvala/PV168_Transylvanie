@@ -179,7 +179,7 @@ public class AddRoom extends javax.swing.JFrame {
                 log.debug("Room with" + String.valueOf(number) + " exists");
                 return 7;
             }
-            model.addRoom(new Room(price_int,capacity_int,number_int));
+            
             return 1;
         }
 
@@ -188,6 +188,7 @@ public class AddRoom extends javax.swing.JFrame {
             int result = 0;
             try {
                 result = get();
+                model.addRoom(new Room(Integer.parseInt(price),Integer.parseInt(capacity),Integer.parseInt(number)));
             } catch (InterruptedException ex) {
                 java.util.logging.Logger.getLogger(AddRoom.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ExecutionException ex) {

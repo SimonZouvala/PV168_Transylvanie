@@ -41,7 +41,7 @@
                       </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <EmptySpace type="separate" pref="181" max="32767" attributes="0"/>
+                              <EmptySpace type="separate" max="32767" attributes="0"/>
                               <Component id="checkoutButton" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
@@ -50,6 +50,8 @@
                                   <Component id="jScrollPane1" max="32767" attributes="0"/>
                                   <Group type="102" attributes="0">
                                       <Component id="findTextField" min="-2" pref="236" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="findButton" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
@@ -87,6 +89,7 @@
                   <Component id="addRoom" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="removeRoom" alignment="3" max="32767" attributes="0"/>
                   <Component id="findTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="findButton" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -193,9 +196,16 @@
     </Component>
     <Component class="javax.swing.JTextField" name="findTextField">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Hledej..."/>
         <Property name="toolTipText" type="java.lang.String" value="Hledej..."/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="findButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Hledej"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="findButtonActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
