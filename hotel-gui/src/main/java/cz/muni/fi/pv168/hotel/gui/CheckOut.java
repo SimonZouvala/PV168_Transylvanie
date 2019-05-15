@@ -46,11 +46,16 @@ public class CheckOut extends javax.swing.JFrame {
     private void initComponents() {
 
         confirm = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        textArea = new javax.swing.JTextArea();
         back = new javax.swing.JButton();
+        textArea = new javax.swing.JLabel();
+        textAreaPrice = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
 
         confirm.setText("odhlasit");
         confirm.addActionListener(new java.awt.event.ActionListener() {
@@ -58,10 +63,6 @@ public class CheckOut extends javax.swing.JFrame {
                 confirmActionPerformed(evt);
             }
         });
-
-        textArea.setColumns(20);
-        textArea.setRows(5);
-        jScrollPane1.setViewportView(textArea);
 
         back.setText("zpět");
         back.addActionListener(new java.awt.event.ActionListener() {
@@ -81,16 +82,20 @@ public class CheckOut extends javax.swing.JFrame {
                 .addComponent(confirm, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(47, 47, 47)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(69, 69, 69)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(textAreaPrice, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
+                    .addComponent(textArea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(17, 17, 17)
+                .addGap(40, 40, 40)
+                .addComponent(textArea, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(48, 48, 48)
+                .addComponent(textAreaPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(confirm, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(back))
@@ -110,6 +115,12 @@ public class CheckOut extends javax.swing.JFrame {
         setVisible(false);
         dispose();
     }//GEN-LAST:event_backActionPerformed
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        // TODO add your handling code here:
+        TextSwingWorker textSwingWorker = new TextSwingWorker(guest, guestManager);
+        textSwingWorker.execute();
+    }//GEN-LAST:event_formWindowActivated
 
     private class TextSwingWorker extends SwingWorker {
 
@@ -137,10 +148,9 @@ public class CheckOut extends javax.swing.JFrame {
             } catch (ExecutionException ex) {
                 java.util.logging.Logger.getLogger(AddRoom.class.getName()).log(Level.SEVERE, null, ex);
             }
-            textArea.append("Jméno hosta:");
-            textArea.append(guest.getName());
-            textArea.append("Cena:");
-            textArea.append(Integer.toString(price));
+            textArea.setText("Jméno hosta: " + guest.getName());
+            textAreaPrice.setText("Cena: " + Integer.toString(price));
+  
         }
     }
     private class ConfirmSwingWorker extends SwingWorker {
@@ -169,7 +179,7 @@ public class CheckOut extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton back;
     private javax.swing.JButton confirm;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea textArea;
+    private javax.swing.JLabel textArea;
+    private javax.swing.JLabel textAreaPrice;
     // End of variables declaration//GEN-END:variables
 }

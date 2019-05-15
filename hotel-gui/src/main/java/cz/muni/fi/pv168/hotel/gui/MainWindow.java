@@ -199,6 +199,7 @@ public class MainWindow extends javax.swing.JFrame {
         guestListSwingWorker.execute();
 
         showTextArea.setText("");
+        selectionTabel.setVisible(true);
         findTextField.setVisible(true);
         addRoom.setVisible(false);
         removeRoom.setVisible(false);
@@ -212,6 +213,7 @@ public class MainWindow extends javax.swing.JFrame {
         roomListSwingWorker.execute();
 
         showTextArea.setText("");
+        selectionTabel.setVisible(true);
         addRoom.setVisible(true);
         removeRoom.setVisible(true);
         removeRoom.setEnabled(false);
@@ -246,6 +248,8 @@ public class MainWindow extends javax.swing.JFrame {
         addRoom.setVisible(false);
         removeRoom.setVisible(false);
         findTextField.setVisible(false);
+        selectionTabel.setVisible(false);
+        showTextArea.setText("");
     }//GEN-LAST:event_formWindowActivated
 
     private void checkoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkoutButtonActionPerformed
@@ -330,7 +334,7 @@ public class MainWindow extends javax.swing.JFrame {
         @Override
         protected Object doInBackground() throws Exception {
             if (guestManager != null) {
-                Guest guest = guestManager.findAllGuest().get(index);
+                guest = guestManager.findAllGuest().get(index);
                 return guest;
 
             } else {
