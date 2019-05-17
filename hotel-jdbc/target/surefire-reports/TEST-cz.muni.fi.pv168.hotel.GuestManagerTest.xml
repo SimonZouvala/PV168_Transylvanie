@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="26" failures="0" name="cz.muni.fi.pv168.hotel.GuestManagerTest" time="3.47" errors="0" skipped="0">
+<testsuite tests="26" failures="0" name="cz.muni.fi.pv168.hotel.GuestManagerTest" time="3.588" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_152\jre\bin"/>
@@ -61,30 +61,30 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="cz.muni.fi.pv168.hotel.GuestManagerTest" name="createGuestWithSqlExceptionThrown" time="1.645"/>
-  <testcase classname="cz.muni.fi.pv168.hotel.GuestManagerTest" name="getGuestWithSqlExceptionThrown" time="0.143"/>
-  <testcase classname="cz.muni.fi.pv168.hotel.GuestManagerTest" name="deleteGuestWithSqlExceptionThrown" time="0.083"/>
-  <testcase classname="cz.muni.fi.pv168.hotel.GuestManagerTest" name="createGuestWithNullName" time="0.082"/>
-  <testcase classname="cz.muni.fi.pv168.hotel.GuestManagerTest" name="deleteGuest" time="0.179"/>
-  <testcase classname="cz.muni.fi.pv168.hotel.GuestManagerTest" name="findGuestWithNullRoom" time="0.069"/>
-  <testcase classname="cz.muni.fi.pv168.hotel.GuestManagerTest" name="checkOutGuestWithSqlExceptionThrown" time="0.083"/>
-  <testcase classname="cz.muni.fi.pv168.hotel.GuestManagerTest" name="createGuest" time="0.086"/>
-  <testcase classname="cz.muni.fi.pv168.hotel.GuestManagerTest" name="freeRooms" time="0.102"/>
-  <testcase classname="cz.muni.fi.pv168.hotel.GuestManagerTest" name="createNullGuest" time="0.036"/>
-  <testcase classname="cz.muni.fi.pv168.hotel.GuestManagerTest" name="createGuestWithCheckInToday" time="0.059"/>
-  <testcase classname="cz.muni.fi.pv168.hotel.GuestManagerTest" name="createGuestNullCheckOut" time="0.053"/>
-  <testcase classname="cz.muni.fi.pv168.hotel.GuestManagerTest" name="deleteNonExistingGuest" time="0.055"/>
-  <testcase classname="cz.muni.fi.pv168.hotel.GuestManagerTest" name="createGuestCheckInAndCheckOutInSameDay" time="0.059"/>
-  <testcase classname="cz.muni.fi.pv168.hotel.GuestManagerTest" name="findGuestbyRoomWithNullId" time="0.036"/>
-  <testcase classname="cz.muni.fi.pv168.hotel.GuestManagerTest" name="createGuestWithNullPhone" time="0.037"/>
-  <testcase classname="cz.muni.fi.pv168.hotel.GuestManagerTest" name="createGuestNullCheckIn" time="0.061"/>
-  <testcase classname="cz.muni.fi.pv168.hotel.GuestManagerTest" name="findGuestByRoomWithSqlExceptionThrown" time="0.052"/>
-  <testcase classname="cz.muni.fi.pv168.hotel.GuestManagerTest" name="findAllGuestsWithSqlExceptionThrown" time="0.052"/>
-  <testcase classname="cz.muni.fi.pv168.hotel.GuestManagerTest" name="deleteGuestWithNullId" time="0.05"/>
-  <testcase classname="cz.muni.fi.pv168.hotel.GuestManagerTest" name="freeRoomsWithSqlExceptionThrown" time="0.05"/>
-  <testcase classname="cz.muni.fi.pv168.hotel.GuestManagerTest" name="deleteNullGuest" time="0.033"/>
-  <testcase classname="cz.muni.fi.pv168.hotel.GuestManagerTest" name="findAllGuest" time="0.065"/>
-  <testcase classname="cz.muni.fi.pv168.hotel.GuestManagerTest" name="findGuestByName" time="0.07"/>
-  <testcase classname="cz.muni.fi.pv168.hotel.GuestManagerTest" name="findGuestByRoom" time="0.061"/>
-  <testcase classname="cz.muni.fi.pv168.hotel.GuestManagerTest" name="createGuestWithExistingId" time="0.037"/>
+  <testcase classname="cz.muni.fi.pv168.hotel.GuestManagerTest" name="createGuestWithSqlExceptionThrown" time="1.716"/>
+  <testcase classname="cz.muni.fi.pv168.hotel.GuestManagerTest" name="getGuestWithSqlExceptionThrown" time="0.149"/>
+  <testcase classname="cz.muni.fi.pv168.hotel.GuestManagerTest" name="deleteGuestWithSqlExceptionThrown" time="0.075"/>
+  <testcase classname="cz.muni.fi.pv168.hotel.GuestManagerTest" name="createGuestWithNullName" time="0.058"/>
+  <testcase classname="cz.muni.fi.pv168.hotel.GuestManagerTest" name="deleteGuest" time="0.199"/>
+  <testcase classname="cz.muni.fi.pv168.hotel.GuestManagerTest" name="findGuestWithNullRoom" time="0.06"/>
+  <testcase classname="cz.muni.fi.pv168.hotel.GuestManagerTest" name="checkOutGuestWithSqlExceptionThrown" time="0.063"/>
+  <testcase classname="cz.muni.fi.pv168.hotel.GuestManagerTest" name="createGuest" time="0.064"/>
+  <testcase classname="cz.muni.fi.pv168.hotel.GuestManagerTest" name="freeRooms" time="0.097"/>
+  <testcase classname="cz.muni.fi.pv168.hotel.GuestManagerTest" name="createNullGuest" time="0.052"/>
+  <testcase classname="cz.muni.fi.pv168.hotel.GuestManagerTest" name="createGuestWithCheckInToday" time="0.071"/>
+  <testcase classname="cz.muni.fi.pv168.hotel.GuestManagerTest" name="createGuestNullCheckOut" time="0.061"/>
+  <testcase classname="cz.muni.fi.pv168.hotel.GuestManagerTest" name="deleteNonExistingGuest" time="0.057"/>
+  <testcase classname="cz.muni.fi.pv168.hotel.GuestManagerTest" name="createGuestCheckInAndCheckOutInSameDay" time="0.08"/>
+  <testcase classname="cz.muni.fi.pv168.hotel.GuestManagerTest" name="findGuestbyRoomWithNullId" time="0.042"/>
+  <testcase classname="cz.muni.fi.pv168.hotel.GuestManagerTest" name="createGuestWithNullPhone" time="0.045"/>
+  <testcase classname="cz.muni.fi.pv168.hotel.GuestManagerTest" name="createGuestNullCheckIn" time="0.067"/>
+  <testcase classname="cz.muni.fi.pv168.hotel.GuestManagerTest" name="findGuestByRoomWithSqlExceptionThrown" time="0.044"/>
+  <testcase classname="cz.muni.fi.pv168.hotel.GuestManagerTest" name="findAllGuestsWithSqlExceptionThrown" time="0.048"/>
+  <testcase classname="cz.muni.fi.pv168.hotel.GuestManagerTest" name="deleteGuestWithNullId" time="0.042"/>
+  <testcase classname="cz.muni.fi.pv168.hotel.GuestManagerTest" name="freeRoomsWithSqlExceptionThrown" time="0.068"/>
+  <testcase classname="cz.muni.fi.pv168.hotel.GuestManagerTest" name="deleteNullGuest" time="0.038"/>
+  <testcase classname="cz.muni.fi.pv168.hotel.GuestManagerTest" name="findAllGuest" time="0.069"/>
+  <testcase classname="cz.muni.fi.pv168.hotel.GuestManagerTest" name="findGuestByName" time="0.069"/>
+  <testcase classname="cz.muni.fi.pv168.hotel.GuestManagerTest" name="findGuestByRoom" time="0.068"/>
+  <testcase classname="cz.muni.fi.pv168.hotel.GuestManagerTest" name="createGuestWithExistingId" time="0.033"/>
 </testsuite>

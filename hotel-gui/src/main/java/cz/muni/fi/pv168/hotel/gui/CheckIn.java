@@ -22,10 +22,12 @@ import org.slf4j.LoggerFactory;
 
 /**
  *
- * @author Lydie
+ * @author Šimon Zouvala {445475@mail.muni.cz}
+ * @author Lýdie Hemalová {433757@mail.muni.cz}
  */
 public class CheckIn extends javax.swing.JFrame {
-
+   
+    private static final I18n I18N = new I18n(CheckIn.class);
     private final static Logger log = LoggerFactory.getLogger(CheckIn.class);
     private final RoomManager roomManager;
     private final GuestManager guestManager;
@@ -58,11 +60,14 @@ public class CheckIn extends javax.swing.JFrame {
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("cz/muni/fi/pv168/hotel/gui/HotelBundle"); // NOI18N
         setTitle(bundle.getString("chekIn.title")); // NOI18N
 
-        name.setText("jmeno");
-        name.setToolTipText("jmeno");
+        name.setToolTipText(bundle.getString("checkIn.name")); // NOI18N
+        name.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nameActionPerformed(evt);
+            }
+        });
 
-        phone.setText("phone");
-        phone.setToolTipText("telefon");
+        phone.setToolTipText(bundle.getString("checkIn.phone")); // NOI18N
 
         confirm.setText(bundle.getString("chekIn.accommodate")); // NOI18N
         confirm.addActionListener(new java.awt.event.ActionListener() {
@@ -120,7 +125,11 @@ public class CheckIn extends javax.swing.JFrame {
         confirmSwingWorker.execute();
 
     }//GEN-LAST:event_confirmActionPerformed
-    private class ConfirmSwingWorker extends SwingWorker {
+
+    private void nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nameActionPerformed
+    private class ConfirmSwingWorker extends SwingWorker<ResultTextCheckIn,ResultTextCheckIn> {
 
         private final String name;
         private final String phone;
@@ -135,40 +144,39 @@ public class CheckIn extends javax.swing.JFrame {
         }
 
         @Override
-        protected Integer doInBackground() throws Exception {
+        protected ResultTextCheckIn doInBackground() throws Exception {
+            if(name == null || phone == null ||
+                    name.length() < 1 || phone.length()<1){
+                log.error("phone or name is empty");
+                return ResultTextCheckIn.EMPTY_FIELD;
+                    } 
             try {
                 Guest guest = new Guest(null, name, phone);
                 guestManager.createGuest(guest);
             } catch (ServiceFailureException e) {
                 log.error("Cannot add guest", e);
-                return 3;
+                return ResultTextCheckIn.GUEST_NOT_CREATE;
             } catch (IllegalEntityException iee) {
                 log.debug("all rooms are full");
-                return 2;
+                return ResultTextCheckIn.ALL_ROOMS_FULL;
             }
-            return 1;
+            return ResultTextCheckIn.ADD_GUEST;
         }
         @Override
         protected void done() {
-            int result = 0;
+            ResultTextCheckIn result = null;
             try {
-                result = (int) get();
+                result = get();
             } catch (InterruptedException ex) {
                 java.util.logging.Logger.getLogger(AddRoom.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ExecutionException ex) {
                 java.util.logging.Logger.getLogger(AddRoom.class.getName()).log(Level.SEVERE, null, ex);
             }
-            switch (result) {
-                case 1:
-                    setVisible(false); //you can't see me!
-                    dispose();
-                    break;
-                case 2:
-                    JOptionPane.showMessageDialog(null, "Všechny pokoje jsou plné ");
-                    break;
-                case 3:
-                    JOptionPane.showMessageDialog(null, "Nejde přidat hosta");
-                    break;
+             if (result.equals(ResultTextCheckIn.ADD_GUEST)) {
+                setVisible(false);
+                dispose();
+            } else {
+                    JOptionPane.showMessageDialog(null, I18N.getString((ResultTextCheckIn) result));
             }
         }
     }

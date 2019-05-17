@@ -18,10 +18,11 @@ import org.slf4j.LoggerFactory;
 
 /**
  *
- * @author Lydie
+ * @author Šimon Zouvala {445475@mail.muni.cz}
+ * @author Lýdie Hemalová {433757@mail.muni.cz}
  */
 public class AddRoom extends javax.swing.JFrame {
-
+    private static final I18n I18N = new I18n(AddRoom.class);
     private final static Logger log = LoggerFactory.getLogger(AddRoom.class);
     private final RoomManager roomManager;
     private final RoomListModel model;
@@ -64,11 +65,11 @@ public class AddRoom extends javax.swing.JFrame {
             }
         });
 
-        number.setToolTipText("číslo pokoje");
+        number.setToolTipText(bundle.getString("AddRoom.number")); // NOI18N
 
-        price.setToolTipText("cena");
+        price.setToolTipText(bundle.getString("AddRoom.price")); // NOI18N
 
-        capacity.setToolTipText("capacita");
+        capacity.setToolTipText(bundle.getString("AddRoom.capacity")); // NOI18N
 
         jLabel1.setText(bundle.getString("addRoom.numberLabel")); // NOI18N
 
@@ -130,7 +131,7 @@ public class AddRoom extends javax.swing.JFrame {
         confirmSwingWorker.execute();
 
     }//GEN-LAST:event_comfirmActionPerformed
-    private class ConfirmSwingWorker extends SwingWorker<Integer, Integer> {
+    private class ConfirmSwingWorker extends SwingWorker<ResultText, ResultText> {
 
         private final String number;
         private final String price;
@@ -145,105 +146,88 @@ public class AddRoom extends javax.swing.JFrame {
         }
 
         @Override
-        protected Integer doInBackground() throws Exception {
+        protected ResultText doInBackground() throws Exception {
+            if(number == null || number.length()<1){
+                log.error("form data invalid - number is empty");
+                return ResultText.NUMBER_EMPTY;
+                    } 
+            if(price == null || price.length()<1){
+                log.error("form data invalid - price is empty");
+                return ResultText.PRICE_EMPTY;
+                    } 
+            if(capacity == null || capacity.length()<1){
+                log.error("form data invalid - capacity is empty");
+                return ResultText.CAPACITY_EMPTY;
+                    } 
+            int number_int;
+            try {
+                number_int = Integer.parseInt(number);
+            }  catch (NumberFormatException e) {
+                log.debug("form data invalid - number can not parse");
+                return ResultText.NUMBER_INVALID;
+            } 
+            if (number_int <= 0) {
+                log.debug("form data invalid - number is negative");
+                return ResultText.NUMBER_NEGATIVE;
+            }
             int price_int;
             try {
                 price_int = Integer.valueOf(price);
             } catch (NumberFormatException e) {
                 log.debug("form data invalid - price can not parse");
-                return 4;
-
-            } catch (NullPointerException e) {
-                log.debug("form data invalid - price is empty");
-                return 2;
-            }
+                return ResultText.PRICE_INVALID;
+            } 
             if (price_int <= 0) {
                 log.debug("form data invalid - price is negative");
-                return 4;
+                return ResultText.PRICE_NEGATIVE;
             }
-
             int capacity_int;
             try {
                 capacity_int = Integer.parseInt(capacity);
             } catch (NumberFormatException e) {
                 log.debug("form data invalid - capacity can not parse");
-                return 3;
-            } catch (NullPointerException e) {
-                log.debug("form data invalid - capacity is empty");
-                return 2;
-            }
+                return ResultText.CAPACITY_INVALID;
+            } 
             if (capacity_int <= 0) {
                 log.debug("form data invalid - capacity is negative");
-                return 3;
+                return ResultText.CAPACITY_NEGATIVE;
             }
 
-            int number_int;
-            try {
-                number_int = Integer.parseInt(number);
-            } catch (NumberFormatException e) {
-                log.debug("form data invalid - number can not parse");
-                return 5;
-            } catch (NullPointerException e) {
-                log.debug("form data invalid - number is empty");
-                return 2;
-            }
-            if (number_int <= 0) {
-                log.debug("form data invalid - number is negative");
-                return 5;
-            }
             try {
                 Room room = new Room(price_int, capacity_int, number_int);
                 roomManager.createRoom(room);
                 //redirect-after-POST protects from multiple submission
                 log.debug("redirecting after POST");
-
             } catch (ServiceFailureException e) {
                 log.error("Cannot add room", e);
-                return null;
+                return ResultText.ROOM_NOT_CREATE;
             } catch (ValidationException e) {
-                log.debug("Room with" + String.valueOf(number) + " exists");
-                return 7;
+                log.debug("Room with number " + String.valueOf(number) + " exists");
+                return ResultText.ROOM_WITH_SAME_NUMBER;
             }
-            
-            return 1;
+            return ResultText.ROOM_ADD;
         }
 
         @Override
         protected void done() {
-            int result = 0;
+            ResultText result = null;
             try {
                 result = get();
-                model.addRoom(new Room(Integer.parseInt(price),Integer.parseInt(capacity),Integer.parseInt(number)));
+                
             } catch (InterruptedException ex) {
                 java.util.logging.Logger.getLogger(AddRoom.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ExecutionException ex) {
                 java.util.logging.Logger.getLogger(AddRoom.class.getName()).log(Level.SEVERE, null, ex);
             }
-            switch (result) {
-                case 1:
-                    setVisible(false); //you can't see me!
-                    dispose();
-                    break;
-                case 2:
-                    JOptionPane.showMessageDialog(null, "Je nutné vyplnit všechny hodnoty ");
-                    break;
-                case 3:
-                    JOptionPane.showMessageDialog(null, "Kapacita není validní číslo nebo je zaporná ");
-                    break;
-                case 4:
-                    JOptionPane.showMessageDialog(null, "Cena není validní číslo nebo je zaporná ");
-                    break;
-                case 5:
-                    JOptionPane.showMessageDialog(null, "Cislo pokoje není validní číslo nebo je zaporná ");
-                    break;
-                case 6:
-                    JOptionPane.showMessageDialog(null, "pokoj nelze pridat");
-                    break;
-                case 7:
-                    JOptionPane.showMessageDialog(null, "Již existuje pokoj se stejným číslem");
-                    break;
+            if (result.equals(ResultText.ROOM_ADD)) {
+                model.addRoom(new Room(Integer.parseInt(price), Integer.parseInt(capacity), Integer.parseInt(number)));
+                setVisible(false);
+                dispose();
+            } else {
+                JOptionPane.showMessageDialog(null, I18N.getString((ResultText) result));
             }
         }
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

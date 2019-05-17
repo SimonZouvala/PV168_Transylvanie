@@ -87,17 +87,23 @@
     </Component>
     <Component class="javax.swing.JTextField" name="number">
       <Properties>
-        <Property name="toolTipText" type="java.lang.String" value="&#x10d;&#xed;slo pokoje"/>
+        <Property name="toolTipText" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+          <ResourceString bundle="cz/muni/fi/pv168/hotel/gui/HotelBundle.properties" key="AddRoom.number" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+        </Property>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="price">
       <Properties>
-        <Property name="toolTipText" type="java.lang.String" value="cena"/>
+        <Property name="toolTipText" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+          <ResourceString bundle="cz/muni/fi/pv168/hotel/gui/HotelBundle.properties" key="AddRoom.price" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+        </Property>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="capacity">
       <Properties>
-        <Property name="toolTipText" type="java.lang.String" value="capacita"/>
+        <Property name="toolTipText" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+          <ResourceString bundle="cz/muni/fi/pv168/hotel/gui/HotelBundle.properties" key="AddRoom.capacity" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+        </Property>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">

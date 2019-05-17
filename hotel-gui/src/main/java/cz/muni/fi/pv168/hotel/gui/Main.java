@@ -18,6 +18,7 @@ import org.slf4j.LoggerFactory;
 
 /**
  *
+ * @author Šimon Zouvala {445475@mail.muni.cz}
  * @author Lýdie Hemalová {433757@mail.muni.cz}
  */
 public class Main {

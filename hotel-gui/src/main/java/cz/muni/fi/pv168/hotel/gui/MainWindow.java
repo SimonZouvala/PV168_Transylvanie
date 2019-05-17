@@ -20,10 +20,12 @@ import javax.swing.SwingWorker;
 
 /**
  *
- * @author Lydie
+ * @author Šimon Zouvala {445475@mail.muni.cz}
+ * @author Lýdie Hemalová {433757@mail.muni.cz}
  */
 public class MainWindow extends javax.swing.JFrame {
 
+    private static final I18n I18N = new I18n(MainWindow.class);
     private final RoomManager roomManager;
     private final GuestManager guestManager;
     private Guest guest;
@@ -242,7 +244,7 @@ public class MainWindow extends javax.swing.JFrame {
     private void selectionTabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_selectionTabelMouseClicked
         // TODO add your handling code here:
         showTextArea.setText("");
-        
+
         PrintSwingWorker printSwingWorker;
         int indexOfValue = selectionTabel.getSelectedIndex();
         if ((selectionTabel.getModel() instanceof GuestListModel)) {
@@ -324,7 +326,7 @@ public class MainWindow extends javax.swing.JFrame {
             try {
                 showTextArea.append(get().toString());
             } catch (IllegalArgumentException | NullPointerException eae) {
-                JOptionPane.showMessageDialog(null, "Host není ubytován");
+                JOptionPane.showMessageDialog(null, I18N.getString("find"));
             } catch (InterruptedException ex) {
                 Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ExecutionException ex) {
@@ -353,29 +355,25 @@ public class MainWindow extends javax.swing.JFrame {
                 return null;
             }
 
-
             return room;
         }
 
         @Override
         protected void done() {
-
+            Room result = null;
             try {
-                roomManager.deleteRoom(get());
-
-                RoomListModel model = (RoomListModel) selectionTabel.getModel();
-                model.deleteRoom(get());
-
+                result = get();
+                roomManager.deleteRoom(result);
             } catch (IllegalArgumentException eae) {
-                JOptionPane.showMessageDialog(null, "Nějaký host je ubytován v tomto pokoji");
+                JOptionPane.showMessageDialog(null, I18N.getString((ResultText) ResultText.ROOM_IS_FULL));
 
             } catch (InterruptedException ex) {
                 Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ExecutionException ex) {
                 Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
-            } finally {
-
-            }
+            } 
+            RoomListModel model = (RoomListModel) selectionTabel.getModel();
+            model.deleteRoom(result);
 
         }
 
@@ -475,7 +473,7 @@ public class MainWindow extends javax.swing.JFrame {
         }
     }
 
-    private class AccommodationSwingWorker extends SwingWorker<Integer, Integer> {
+    private class AccommodationSwingWorker extends SwingWorker<ResultTextCheckIn, ResultTextCheckIn> {
 
         private final RoomManager roomManager;
         private final GuestManager guestManager;
@@ -487,17 +485,17 @@ public class MainWindow extends javax.swing.JFrame {
         }
 
         @Override
-        protected Integer doInBackground() throws Exception {
+        protected ResultTextCheckIn doInBackground() throws Exception {
             List<Room> freeRooms = guestManager.freeRooms();
             if (freeRooms.size() == 0) {
-                return 2;
+                return ResultTextCheckIn.ALL_ROOMS_FULL;
             }
-            return 1;
+            return ResultTextCheckIn.ADD_GUEST;
         }
 
         @Override
         protected void done() {
-            int result = 0;
+            ResultTextCheckIn result = null;
             try {
                 result = get();
             } catch (InterruptedException ex) {
@@ -505,14 +503,13 @@ public class MainWindow extends javax.swing.JFrame {
             } catch (ExecutionException ex) {
                 java.util.logging.Logger.getLogger(AddRoom.class.getName()).log(Level.SEVERE, null, ex);
             }
-            switch (result) {
-                case 1:
-                    CheckIn checkIn = new CheckIn(roomManager, guestManager);
-                    checkIn.setVisible(true);
-                    break;
-                case 2:
-                    JOptionPane.showMessageDialog(null, "Všechny pokoje jsou plné");
-                    break;
+            if (result.equals(ResultTextCheckIn.ADD_GUEST)) {
+
+                CheckIn checkIn = new CheckIn(roomManager, guestManager);
+                checkIn.setVisible(true);
+
+            } else {
+                JOptionPane.showMessageDialog(null, I18N.getString((ResultTextCheckIn) result));
             }
         }
     }

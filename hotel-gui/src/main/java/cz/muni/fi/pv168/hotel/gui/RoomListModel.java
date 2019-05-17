@@ -8,10 +8,12 @@ import javax.swing.event.ListDataListener;
 
 /**
  *
- * @author Lýdie Hemalová 433757
+ * @author Šimon Zouvala {445475@mail.muni.cz}
+ * @author Lýdie Hemalová {433757@mail.muni.cz}
  */
 public class RoomListModel extends AbstractListModel {
 
+    private static final I18n I18N = new I18n(RoomListModel.class);
     private List<Room> roomList;
 
     public RoomListModel(List<Room> roomList) {
@@ -23,7 +25,7 @@ public class RoomListModel extends AbstractListModel {
     }
 
     public Object getElementAt(int index) {
-        return "Pokoj č. " + roomList.get(index).getNumber();
+        return I18N.getString("pokoj") + roomList.get(index).getNumber();
     }
 
     public void addRoom(Room room) {
