@@ -4,7 +4,6 @@ import cz.muni.fi.pv168.hotel.Guest;
 import cz.muni.fi.pv168.hotel.Room;
 import java.util.List;
 import javax.swing.AbstractListModel;
-import javax.swing.event.ListDataListener;
 
 /**
  *
@@ -14,16 +13,18 @@ import javax.swing.event.ListDataListener;
 public class RoomListModel extends AbstractListModel {
 
     private static final I18n I18N = new I18n(RoomListModel.class);
-    private List<Room> roomList;
+    private final List<Room> roomList;
 
     public RoomListModel(List<Room> roomList) {
         this.roomList = roomList;
     }
 
+    @Override
     public int getSize() {
         return roomList.size();
     }
 
+    @Override
     public Object getElementAt(int index) {
         return I18N.getString("pokoj") + roomList.get(index).getNumber();
     }

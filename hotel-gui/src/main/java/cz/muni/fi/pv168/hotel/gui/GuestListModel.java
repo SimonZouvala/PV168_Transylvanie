@@ -26,4 +26,9 @@ public class GuestListModel extends AbstractListModel{
   public Object getElementAt(int index) {
     return guestList.get(index).getName();
   }
+   public void addGuest(Guest guest) {
+        guestList.add(guest);
+        int lastRow = guestList.size() - 1;
+        fireIntervalAdded(guest, lastRow, lastRow);
+    }
 }

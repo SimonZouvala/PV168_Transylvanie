@@ -7,9 +7,10 @@ package cz.muni.fi.pv168.hotel.gui;
 
 /**
  *
- * @author Lydie
+ * @author Šimon Zouvala {445475@mail.muni.cz}
+ * @author Lýdie Hemalová {433757@mail.muni.cz}
  */
-public enum ResultText {
+public enum ResultTextAddRoom {
     PRICE_INVALID(String.class),
         PRICE_NEGATIVE(String.class),
         PRICE_EMPTY(String.class),
@@ -26,7 +27,7 @@ public enum ResultText {
 
         private final Class<?> type;
 
-        private ResultText(Class<?> type) {
+        private ResultTextAddRoom(Class<?> type) {
             this.type = type;
         }
         public Class<?> getType() {

@@ -15,6 +15,7 @@ import java.sql.Statement;
 import java.time.Clock;
 import java.time.LocalDate;
 import java.time.Period;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,6 +25,7 @@ import java.util.List;
  */
 
 public class GuestManagerImpl implements GuestManager {
+    
 
     private final DataSource dataSource;
     private final Clock clock;
@@ -170,8 +172,8 @@ public class GuestManagerImpl implements GuestManager {
             throw new ServiceFailureException("Error when check out guest from room", ex);
         }
 
-        Period period = Period.between(LocalDate.now(), guest.getDateOfCheckIn());
-        return room.getPrice() * period.getDays();
+        long noOfDaysBetween = ChronoUnit.DAYS.between(LocalDate.now(), guest.getDateOfCheckIn());
+        return (int) Math.abs(room.getPrice() * noOfDaysBetween);
     }
     
     public int checkOutGuestPrice(Guest guest) {
@@ -179,8 +181,8 @@ public class GuestManagerImpl implements GuestManager {
         if (guest.getId() == null) throw new IllegalEntityException("guest id is null");
 
         Room room = getRoomByGuest(guest);
-        Period period = Period.between(LocalDate.now(), guest.getDateOfCheckIn());
-        return Math.abs(room.getPrice() * period.getDays());
+        long noOfDaysBetween = ChronoUnit.DAYS.between(LocalDate.now(), guest.getDateOfCheckIn());
+        return (int) Math.abs(room.getPrice() * noOfDaysBetween);
     }
 
 

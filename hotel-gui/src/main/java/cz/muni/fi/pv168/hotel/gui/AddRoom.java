@@ -34,6 +34,7 @@ public class AddRoom extends javax.swing.JFrame {
         this.roomManager = roomManager;
         this.model = model;
         initComponents();
+        log.info("Window AddRoom activated");
     }
 
     /**
@@ -127,104 +128,103 @@ public class AddRoom extends javax.swing.JFrame {
         String priceText = price.getText();
         String capacityText = capacity.getText();
 
-        ConfirmSwingWorker confirmSwingWorker = new ConfirmSwingWorker(numberText, capacityText, priceText, roomManager);
+        ConfirmSwingWorker confirmSwingWorker = new ConfirmSwingWorker(numberText, priceText, capacityText, roomManager, model);
         confirmSwingWorker.execute();
 
     }//GEN-LAST:event_comfirmActionPerformed
-    private class ConfirmSwingWorker extends SwingWorker<ResultText, ResultText> {
+    private class ConfirmSwingWorker extends SwingWorker<ResultTextAddRoom, ResultTextAddRoom> {
 
         private final String number;
         private final String price;
         private final String capacity;
         private final RoomManager roomManager;
+        private final RoomListModel model;
 
-        public ConfirmSwingWorker(String number, String price, String capacity, RoomManager roomManager) {
+        public ConfirmSwingWorker(String number, String price, String capacity, RoomManager roomManager ,RoomListModel model ) {
             this.number = number;
             this.price = price;
             this.capacity = capacity;
             this.roomManager = roomManager;
+            this.model = model;
         }
 
         @Override
-        protected ResultText doInBackground() throws Exception {
+        protected ResultTextAddRoom doInBackground() throws Exception {
             if(number == null || number.length()<1){
                 log.error("form data invalid - number is empty");
-                return ResultText.NUMBER_EMPTY;
+                return ResultTextAddRoom.NUMBER_EMPTY;
                     } 
             if(price == null || price.length()<1){
                 log.error("form data invalid - price is empty");
-                return ResultText.PRICE_EMPTY;
+                return ResultTextAddRoom.PRICE_EMPTY;
                     } 
             if(capacity == null || capacity.length()<1){
                 log.error("form data invalid - capacity is empty");
-                return ResultText.CAPACITY_EMPTY;
+                return ResultTextAddRoom.CAPACITY_EMPTY;
                     } 
             int number_int;
             try {
                 number_int = Integer.parseInt(number);
             }  catch (NumberFormatException e) {
                 log.debug("form data invalid - number can not parse");
-                return ResultText.NUMBER_INVALID;
+                return ResultTextAddRoom.NUMBER_INVALID;
             } 
             if (number_int <= 0) {
                 log.debug("form data invalid - number is negative");
-                return ResultText.NUMBER_NEGATIVE;
+                return ResultTextAddRoom.NUMBER_NEGATIVE;
             }
             int price_int;
             try {
                 price_int = Integer.valueOf(price);
             } catch (NumberFormatException e) {
                 log.debug("form data invalid - price can not parse");
-                return ResultText.PRICE_INVALID;
+                return ResultTextAddRoom.PRICE_INVALID;
             } 
             if (price_int <= 0) {
                 log.debug("form data invalid - price is negative");
-                return ResultText.PRICE_NEGATIVE;
+                return ResultTextAddRoom.PRICE_NEGATIVE;
             }
             int capacity_int;
             try {
                 capacity_int = Integer.parseInt(capacity);
             } catch (NumberFormatException e) {
                 log.debug("form data invalid - capacity can not parse");
-                return ResultText.CAPACITY_INVALID;
+                return ResultTextAddRoom.CAPACITY_INVALID;
             } 
             if (capacity_int <= 0) {
                 log.debug("form data invalid - capacity is negative");
-                return ResultText.CAPACITY_NEGATIVE;
+                return ResultTextAddRoom.CAPACITY_NEGATIVE;
             }
-
+            Room room = null;
             try {
-                Room room = new Room(price_int, capacity_int, number_int);
+                room = new Room(price_int, capacity_int, number_int);
                 roomManager.createRoom(room);
-                //redirect-after-POST protects from multiple submission
-                log.debug("redirecting after POST");
             } catch (ServiceFailureException e) {
                 log.error("Cannot add room", e);
-                return ResultText.ROOM_NOT_CREATE;
+                return ResultTextAddRoom.ROOM_NOT_CREATE;
             } catch (ValidationException e) {
                 log.debug("Room with number " + String.valueOf(number) + " exists");
-                return ResultText.ROOM_WITH_SAME_NUMBER;
+                return ResultTextAddRoom.ROOM_WITH_SAME_NUMBER;
             }
-            return ResultText.ROOM_ADD;
+            log.info("New room added");
+            log.debug("redirecting after POST");
+            model.addRoom(room);
+            return ResultTextAddRoom.ROOM_ADD;
         }
 
         @Override
         protected void done() {
-            ResultText result = null;
+            ResultTextAddRoom result = null;
             try {
-                result = get();
-                
-            } catch (InterruptedException ex) {
-                java.util.logging.Logger.getLogger(AddRoom.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (ExecutionException ex) {
+                result = get();                
+            } catch (InterruptedException | ExecutionException ex) {
                 java.util.logging.Logger.getLogger(AddRoom.class.getName()).log(Level.SEVERE, null, ex);
             }
-            if (result.equals(ResultText.ROOM_ADD)) {
-                model.addRoom(new Room(Integer.parseInt(price), Integer.parseInt(capacity), Integer.parseInt(number)));
+            if (result == ResultTextAddRoom.ROOM_ADD) {
                 setVisible(false);
                 dispose();
             } else {
-                JOptionPane.showMessageDialog(null, I18N.getString((ResultText) result));
+                JOptionPane.showMessageDialog(null, I18N.getString((ResultTextAddRoom) result));
             }
         }
         

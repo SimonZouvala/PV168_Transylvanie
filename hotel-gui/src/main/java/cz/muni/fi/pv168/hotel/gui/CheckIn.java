@@ -7,15 +7,12 @@ package cz.muni.fi.pv168.hotel.gui;
 
 import cz.muni.fi.pv168.hotel.Guest;
 import cz.muni.fi.pv168.hotel.GuestManager;
-import cz.muni.fi.pv168.hotel.Room;
 import cz.muni.fi.pv168.hotel.RoomManager;
 import cz.muni.fi.pv168.hotel.exception.IllegalEntityException;
 import cz.muni.fi.pv168.hotel.exception.ServiceFailureException;
-import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.logging.Level;
 import javax.swing.JOptionPane;
-import javax.swing.SwingUtilities;
 import javax.swing.SwingWorker;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,19 +23,23 @@ import org.slf4j.LoggerFactory;
  * @author Lýdie Hemalová {433757@mail.muni.cz}
  */
 public class CheckIn extends javax.swing.JFrame {
-   
+
     private static final I18n I18N = new I18n(CheckIn.class);
     private final static Logger log = LoggerFactory.getLogger(CheckIn.class);
-    private final RoomManager roomManager;
     private final GuestManager guestManager;
+    private final GuestListModel model;
 
     /**
      * Creates new form CheckIn
+     *
+     * @param guestManager
+     * @param model
      */
-    public CheckIn(RoomManager roomManager, GuestManager guestManager) {
-        this.roomManager = roomManager;
+    public CheckIn(GuestManager guestManager, GuestListModel model) {
         this.guestManager = guestManager;
+        this.model = model;
         initComponents();
+        log.info("Window CheckIn activated.");
     }
 
     /**
@@ -121,7 +122,7 @@ public class CheckIn extends javax.swing.JFrame {
     private void confirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmActionPerformed
         String nameText = name.getText();
         String phoneText = phone.getText();
-        ConfirmSwingWorker confirmSwingWorker = new ConfirmSwingWorker(nameText, phoneText, roomManager, guestManager);
+        ConfirmSwingWorker confirmSwingWorker = new ConfirmSwingWorker(nameText, phoneText, guestManager, model);
         confirmSwingWorker.execute();
 
     }//GEN-LAST:event_confirmActionPerformed
@@ -129,29 +130,30 @@ public class CheckIn extends javax.swing.JFrame {
     private void nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_nameActionPerformed
-    private class ConfirmSwingWorker extends SwingWorker<ResultTextCheckIn,ResultTextCheckIn> {
+    private class ConfirmSwingWorker extends SwingWorker<ResultTextCheckIn, ResultTextCheckIn> {
 
         private final String name;
         private final String phone;
-        private final RoomManager roomManager;
         private final GuestManager guestManager;
+        private final GuestListModel model;
 
-        public ConfirmSwingWorker(String name, String phone, RoomManager roomManager, GuestManager guestManager) {
+        public ConfirmSwingWorker(String name, String phone, GuestManager guestManager, GuestListModel model) {
             this.name = name;
             this.phone = phone;
-            this.roomManager = roomManager;
             this.guestManager = guestManager;
+            this.model = model;
         }
 
         @Override
         protected ResultTextCheckIn doInBackground() throws Exception {
-            if(name == null || phone == null ||
-                    name.length() < 1 || phone.length()<1){
+            if (name == null || phone == null
+                    || name.length() < 1 || phone.length() < 1) {
                 log.error("phone or name is empty");
                 return ResultTextCheckIn.EMPTY_FIELD;
-                    } 
+            }
+            Guest guest;
             try {
-                Guest guest = new Guest(null, name, phone);
+                guest = new Guest(null, name, phone);
                 guestManager.createGuest(guest);
             } catch (ServiceFailureException e) {
                 log.error("Cannot add guest", e);
@@ -160,23 +162,26 @@ public class CheckIn extends javax.swing.JFrame {
                 log.debug("all rooms are full");
                 return ResultTextCheckIn.ALL_ROOMS_FULL;
             }
+            if (model != null) {
+                model.addGuest(guest);
+            }
             return ResultTextCheckIn.ADD_GUEST;
         }
+
         @Override
         protected void done() {
             ResultTextCheckIn result = null;
             try {
                 result = get();
-            } catch (InterruptedException ex) {
-                java.util.logging.Logger.getLogger(AddRoom.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (ExecutionException ex) {
+            } catch (InterruptedException | ExecutionException ex) {
                 java.util.logging.Logger.getLogger(AddRoom.class.getName()).log(Level.SEVERE, null, ex);
             }
-             if (result.equals(ResultTextCheckIn.ADD_GUEST)) {
+            if (result == ResultTextCheckIn.ADD_GUEST) {
+                log.info("New guest added.");
                 setVisible(false);
                 dispose();
             } else {
-                    JOptionPane.showMessageDialog(null, I18N.getString((ResultTextCheckIn) result));
+                JOptionPane.showMessageDialog(null, I18N.getString((ResultTextCheckIn) result));
             }
         }
     }

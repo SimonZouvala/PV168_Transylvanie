@@ -7,7 +7,8 @@ package cz.muni.fi.pv168.hotel.gui;
 
 /**
  *
- * @author Lydie
+ * @author Šimon Zouvala {445475@mail.muni.cz}
+ * @author Lýdie Hemalová {433757@mail.muni.cz}
  */
 public enum ResultTextCheckIn {
     EMPTY_FIELD(String.class),

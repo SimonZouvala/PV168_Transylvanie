@@ -17,6 +17,7 @@ import javax.swing.JOptionPane;
 
 import javax.swing.ListModel;
 import javax.swing.SwingWorker;
+import org.slf4j.LoggerFactory;
 
 /**
  *
@@ -25,11 +26,13 @@ import javax.swing.SwingWorker;
  */
 public class MainWindow extends javax.swing.JFrame {
 
+    private final static org.slf4j.Logger log = LoggerFactory.getLogger(Main.class);
     private static final I18n I18N = new I18n(MainWindow.class);
     private final RoomManager roomManager;
     private final GuestManager guestManager;
     private Guest guest;
     private boolean wasWindowActivatedBefore = false;
+    private boolean guestTableActivatedBefore = false;
 
     /**
      * Creates new form MainWindow
@@ -38,6 +41,7 @@ public class MainWindow extends javax.swing.JFrame {
         this.roomManager = roomManager;
         this.guestManager = guestManager;
         initComponents();
+        log.info("MainWindow activated");
 
     }
 
@@ -210,7 +214,7 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_accommodationActionPerformed
 
     private void guestButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guestButtonActionPerformed
-        // TODO add your handling code here:
+        guestTableActivatedBefore = true;
         GuestListSwingWorker guestListSwingWorker = new GuestListSwingWorker(guestManager);
         guestListSwingWorker.execute();
 
@@ -225,7 +229,7 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_guestButtonActionPerformed
 
     private void roomButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_roomButtonActionPerformed
-        // TODO add your handling code here:
+        guestTableActivatedBefore = false;
         RoomListSwingWorker roomListSwingWorker = new RoomListSwingWorker(roomManager);
         roomListSwingWorker.execute();
 
@@ -326,6 +330,7 @@ public class MainWindow extends javax.swing.JFrame {
             try {
                 showTextArea.append(get().toString());
             } catch (IllegalArgumentException | NullPointerException eae) {
+                log.error("None guest with this name is in hotel.");
                 JOptionPane.showMessageDialog(null, I18N.getString("find"));
             } catch (InterruptedException ex) {
                 Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
@@ -351,10 +356,11 @@ public class MainWindow extends javax.swing.JFrame {
         @Override
         protected Room doInBackground() throws Exception {
             Room room = roomManager.findAllRooms().get(index);
-            if (!guestManager.freeRooms().contains(room)) {
+            if (guestManager.findGuestByRoom(room) != null) {
+                log.error("Deleted room is full.");
                 return null;
             }
-
+            roomManager.deleteRoom(room);
             return room;
         }
 
@@ -363,18 +369,17 @@ public class MainWindow extends javax.swing.JFrame {
             Room result = null;
             try {
                 result = get();
-                roomManager.deleteRoom(result);
-            } catch (IllegalArgumentException eae) {
-                JOptionPane.showMessageDialog(null, I18N.getString((ResultText) ResultText.ROOM_IS_FULL));
-
             } catch (InterruptedException ex) {
                 Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ExecutionException ex) {
                 Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
-            } 
-            RoomListModel model = (RoomListModel) selectionTabel.getModel();
-            model.deleteRoom(result);
-
+            }
+            if (result != null) {
+                RoomListModel model = (RoomListModel) selectionTabel.getModel();
+                model.deleteRoom(result);
+            } else {
+                JOptionPane.showMessageDialog(null, I18N.getString((ResultTextAddRoom) ResultTextAddRoom.ROOM_IS_FULL));
+            }
         }
 
     }
@@ -488,6 +493,7 @@ public class MainWindow extends javax.swing.JFrame {
         protected ResultTextCheckIn doInBackground() throws Exception {
             List<Room> freeRooms = guestManager.freeRooms();
             if (freeRooms.size() == 0) {
+                log.info("Rooms are full");
                 return ResultTextCheckIn.ALL_ROOMS_FULL;
             }
             return ResultTextCheckIn.ADD_GUEST;
@@ -503,9 +509,14 @@ public class MainWindow extends javax.swing.JFrame {
             } catch (ExecutionException ex) {
                 java.util.logging.Logger.getLogger(AddRoom.class.getName()).log(Level.SEVERE, null, ex);
             }
-            if (result.equals(ResultTextCheckIn.ADD_GUEST)) {
 
-                CheckIn checkIn = new CheckIn(roomManager, guestManager);
+            if (result.equals(ResultTextCheckIn.ADD_GUEST)) {
+                CheckIn checkIn;
+                if (guestTableActivatedBefore) {
+                    checkIn = new CheckIn(guestManager, (GuestListModel) selectionTabel.getModel());
+                } else {
+                    checkIn = new CheckIn(guestManager, null);
+                }
                 checkIn.setVisible(true);
 
             } else {

@@ -7,12 +7,8 @@ package cz.muni.fi.pv168.hotel.gui;
 
 import cz.muni.fi.pv168.hotel.Guest;
 import cz.muni.fi.pv168.hotel.GuestManager;
-import cz.muni.fi.pv168.hotel.RoomManager;
-import cz.muni.fi.pv168.hotel.exception.IllegalEntityException;
-import cz.muni.fi.pv168.hotel.exception.ServiceFailureException;
 import java.util.concurrent.ExecutionException;
 import java.util.logging.Level;
-import javax.swing.JOptionPane;
 import javax.swing.SwingWorker;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,6 +31,7 @@ public class CheckOut extends javax.swing.JFrame {
         this.guestManager = guestManager;
         this.guest = guest;
         initComponents();
+        log.info("Window CheckOut actived");
     }
 
     /**
@@ -129,6 +126,7 @@ public class CheckOut extends javax.swing.JFrame {
     }//GEN-LAST:event_confirmActionPerformed
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
+        log.info("None guest added.");
         setVisible(false);
         dispose();
     }//GEN-LAST:event_backActionPerformed
@@ -160,9 +158,7 @@ public class CheckOut extends javax.swing.JFrame {
             int price = 0;
             try {
                 price = (int) get();
-            } catch (InterruptedException ex) {
-                java.util.logging.Logger.getLogger(AddRoom.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (ExecutionException ex) {
+            } catch (InterruptedException | ExecutionException ex) {
                 java.util.logging.Logger.getLogger(AddRoom.class.getName()).log(Level.SEVERE, null, ex);
             }
             textArea.setText(guest.getName());
@@ -183,6 +179,7 @@ public class CheckOut extends javax.swing.JFrame {
         @Override
         protected Integer doInBackground() throws Exception {
             guestManager.checkOutGuest(guest);
+            log.info("Guest check out");
             return null;
         }
 
