@@ -50,9 +50,6 @@ public class Main {
     }
 
     private static DataSource configureDataSource(Properties properties) {
-        String path = properties.getProperty("jdbc.path")
-                .replace("${user.home}", System.getProperty("user.home"));
-
         EmbeddedDataSource ds = new EmbeddedDataSource();
         //we will use in memory database
         ds.setDatabaseName("hotelDB");
