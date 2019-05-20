@@ -36,51 +36,45 @@ public class Main {
     public static void main(String[] args) {
 
         DataSource dataSource;
-        try {
-
-            dataSource = cz.muni.fi.pv168.hotel.Main.getDataSource();
-
-//        Properties properties = loadPropertiesFromClassPath("jdbc.properties");
+        dataSource = configureDataSource(loadPropertiesFromClassPath("jdbc.properties"));
+        //        Properties properties = loadPropertiesFromClassPath("jdbc.properties");
 //        System.err.println(properties);
 //        DataSource dataSource = configureDataSource(properties);
-            RoomManager rmanager = new RoomManagerImpl(dataSource);
-            GuestManager gmanager = new GuestManagerImpl(dataSource, clock);
-            log.info("vytvořeny manažery");
-            EventQueue.invokeLater(() -> {
-                new MainWindow(rmanager, gmanager).setVisible(true);
-            });
-        } catch (IOException | SQLException e) {
-            log.error("Nepovedlo se vytvořit databázi", e);
-        }
+        RoomManager rmanager = new RoomManagerImpl(dataSource);
+        GuestManager gmanager = new GuestManagerImpl(dataSource, clock);
+        log.info("vytvořeny manažery");
+        EventQueue.invokeLater(() -> {
+            new MainWindow(rmanager, gmanager).setVisible(true);
+        });
 
     }
 
-//    private static DataSource configureDataSource(Properties properties) {
-//        String path = properties.getProperty("configuration.db.path")
-//                .replace("${user.home}", System.getProperty("user.home"));
-//
-//        EmbeddedDataSource ds = new EmbeddedDataSource();
-//        //we will use in memory database
-//        ds.setDatabaseName(path);
-//        // database is created automatically if it does not exist yet
-//        ds.setCreateDatabase("create");
-//        return ds;
-//        //return null;
-//    }
-//
-//    private static Properties loadPropertiesFromClassPath(String propertiesFileName) {
-//        ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-////        ClassLoader classLoader = PropertiesOnClasspathExample.class.getClassLoader();
-//        URL url = classLoader.getResource(propertiesFileName);
-//        if (url == null) {
-//            throw new IllegalArgumentException("properties file not found on classpath: " + propertiesFileName);
-//        }
-//        try (InputStream is = url.openStream()) {
-//            Properties properties = new Properties();
-//            properties.load(is);
-//            return properties;
-//        } catch (IOException ex) {
-//            throw new RuntimeException("Error when loading properties file from classpath: " + url, ex);
-//        }
-//    }
+    private static DataSource configureDataSource(Properties properties) {
+        String path = properties.getProperty("jdbc.path")
+                .replace("${user.home}", System.getProperty("user.home"));
+
+        EmbeddedDataSource ds = new EmbeddedDataSource();
+        //we will use in memory database
+        ds.setDatabaseName("hotelDB");
+        // database is created automatically if it does not exist yet
+        ds.setCreateDatabase("create");
+        return ds;
+        //return null;
+    }
+
+    private static Properties loadPropertiesFromClassPath(String propertiesFileName) {
+        ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+//        ClassLoader classLoader = PropertiesOnClasspathExample.class.getClassLoader();
+        URL url = classLoader.getResource(propertiesFileName);
+        if (url == null) {
+            throw new IllegalArgumentException("properties file not found on classpath: " + propertiesFileName);
+        }
+        try (InputStream is = url.openStream()) {
+            Properties properties = new Properties();
+            properties.load(is);
+            return properties;
+        } catch (IOException ex) {
+            throw new RuntimeException("Error when loading properties file from classpath: " + url, ex);
+        }
+    }
 }
