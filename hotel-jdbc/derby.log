@@ -1,13 +1,13 @@
 ----------------------------------------------------------------
-Mon May 20 00:12:35 CEST 2019:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.1.0 - (1808820): instance a816c00e-016a-d227-57b8-000006794018 
-on database directory memory:C:\xxx\skola\java_projekt\pv168_transylvanie\hotel-jdbc\guestmgr-test with class loader sun.misc.Launcher$AppClassLoader@232204a1 
-Loaded from file:/C:/Users/Lydie/.m2/repository/org/apache/derby/derby/10.14.1.0/derby-10.14.1.0.jar
+Mon May 20 17:15:05 CEST 2019:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.1.0 - (1808820): instance a816c00e-016a-d5cf-7a52-000006885770 
+on database directory memory:/home/simon/JAVA/PV168/pv168_transylvanie/hotel-jdbc/hotelDB with class loader sun.misc.Launcher$AppClassLoader@4e0e2f2a 
+Loaded from file:/home/simon/.m2/repository/org/apache/derby/derby/10.14.1.0/derby-10.14.1.0.jar
 java.vendor=Oracle Corporation
-java.runtime.version=1.8.0_152-b16
-user.dir=C:\xxx\skola\java_projekt\pv168_transylvanie\hotel-jdbc
-os.name=Windows 10
+java.runtime.version=1.8.0_201-b09
+user.dir=/home/simon/JAVA/PV168/pv168_transylvanie/hotel-jdbc
+os.name=Linux
 os.arch=amd64
-os.version=10.0
+os.version=4.15.0-50-generic
 derby.system.home=null
 Database Class Loader started - derby.database.classpath=''

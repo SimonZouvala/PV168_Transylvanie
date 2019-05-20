@@ -24,12 +24,14 @@ public class CheckOut extends javax.swing.JFrame {
     private final static Logger log = LoggerFactory.getLogger(CheckOut.class);
     private final GuestManager guestManager;
     private final Guest guest;
+    private final GuestListModel model;
     /**
      * Creates new form CheckOut
      */
-    public CheckOut(GuestManager guestManager, Guest guest) {
+    public CheckOut(GuestManager guestManager, Guest guest, GuestListModel guestListModel) {
         this.guestManager = guestManager;
         this.guest = guest;
+        this.model = guestListModel;
         initComponents();
         log.info("Window CheckOut actived");
     }
@@ -53,7 +55,11 @@ public class CheckOut extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("cz/muni/fi/pv168/hotel/gui/HotelBundle"); // NOI18N
         setTitle(bundle.getString("checkOut.title")); // NOI18N
+        setType(java.awt.Window.Type.POPUP);
         addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
             }
@@ -137,6 +143,11 @@ public class CheckOut extends javax.swing.JFrame {
         textSwingWorker.execute();
     }//GEN-LAST:event_formWindowActivated
 
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_formWindowClosed
+
     private class TextSwingWorker extends SwingWorker {
 
         public TextSwingWorker() {
@@ -153,7 +164,10 @@ public class CheckOut extends javax.swing.JFrame {
             int price = 0;
             try {
                 price = (int) get();
-            } catch (InterruptedException | ExecutionException ex) {
+            }catch(NullPointerException npe){
+                price = 0;
+            }
+            catch (InterruptedException | ExecutionException ex) {
                 java.util.logging.Logger.getLogger(CheckOut.class.getName()).log(Level.SEVERE, null, ex);
             }
             textArea.setText(guest.getName());
@@ -177,6 +191,7 @@ public class CheckOut extends javax.swing.JFrame {
 
         @Override
         protected void done() {
+            model.refreshGuests();
             setVisible(false);
             dispose();
         }

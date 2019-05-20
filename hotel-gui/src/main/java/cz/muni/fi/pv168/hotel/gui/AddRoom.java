@@ -58,6 +58,7 @@ public class AddRoom extends javax.swing.JFrame {
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("cz/muni/fi/pv168/hotel/gui/HotelBundle"); // NOI18N
         setTitle(bundle.getString("addRoom.title")); // NOI18N
         setName("pokoj"); // NOI18N
+        setType(java.awt.Window.Type.UTILITY);
 
         comfirm.setText(bundle.getString("addRoom.addButton")); // NOI18N
         comfirm.addActionListener(new java.awt.event.ActionListener() {
