@@ -293,6 +293,10 @@ public class MainWindow extends javax.swing.JFrame {
         checkOut.setVisible(true);
         selectionTabel.setVisible(false);
         showTextArea.setText("");
+        findButton.setVisible(false);
+        findTextField.setVisible(false);
+        checkoutButton.setEnabled(false);
+        
     }//GEN-LAST:event_checkoutButtonActionPerformed
 
     private void removeRoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeRoomActionPerformed
