@@ -334,26 +334,30 @@ public class MainWindow extends javax.swing.JFrame {
             Guest result = null;
             try {
                 result = get();
+                if (result == null) {
+                    log.error("None guest with this name is in hotel.");
+                    JOptionPane.showMessageDialog(null, I18N.getString("find"));
+                    showTextArea.setText("Not found");
+                } else {
+                showTextArea.setText(result.toString());
+               }
+                      
             } catch (InterruptedException | ExecutionException ex) {
-                Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
+                // zalogovat
+                // show error window
             }
-            try {
-                showTextArea.append(result.toString());
-            } catch (IllegalArgumentException | NullPointerException eae) {
-                log.error("None guest with this name is in hotel.");
-                JOptionPane.showMessageDialog(null, I18N.getString("find"));
-            }
-
+           
         }
     }
 
-    private class RemoveRoomSwingWorker extends SwingWorker<Room, Room> {
+    private class RemoveRoomSwingWorker extends SwingWorker<Room, Void> {
 
         private final int index;
 
         public RemoveRoomSwingWorker(int index) {
 
-            this.index = index;
+            this.index = index ;
+// TODO predat room, ne index
 
         }
 
@@ -374,9 +378,10 @@ public class MainWindow extends javax.swing.JFrame {
             try {
                 result = get();
             } catch (InterruptedException ex) {
-                Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
+                throw new AssertionError("Interrupted", ex);
             } catch (ExecutionException ex) {
-                Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
+                    // zalogovat a eerpr window
+                    
             }
             if (result != null) {
                 RoomListModel model = (RoomListModel) selectionTabel.getModel();
@@ -421,7 +426,7 @@ public class MainWindow extends javax.swing.JFrame {
                 }
 
             } catch (NullPointerException | ArrayIndexOutOfBoundsException e) {
-                showTextArea.setText("");
+                showTextArea.setText(""); // nesmite
                 log.error("Nothing selection");
                 removeRoom.setEnabled(false);
             }
@@ -523,7 +528,7 @@ public class MainWindow extends javax.swing.JFrame {
                 java.util.logging.Logger.getLogger(AddRoom.class.getName()).log(Level.SEVERE, null, ex);
             }
 
-            if (result.equals(ResultTextCheckIn.ADD_GUEST)) {
+            if (result == ResultTextCheckIn.ADD_GUEST) {
                 CheckIn checkIn;
                 if (guestTableActivatedBefore) {
                     checkIn = new CheckIn(guestManager, (GuestListModel) selectionTabel.getModel());
