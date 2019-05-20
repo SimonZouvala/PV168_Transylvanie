@@ -7,7 +7,6 @@ package cz.muni.fi.pv168.hotel.gui;
 
 import cz.muni.fi.pv168.hotel.Guest;
 import cz.muni.fi.pv168.hotel.GuestManager;
-import cz.muni.fi.pv168.hotel.RoomManager;
 import cz.muni.fi.pv168.hotel.exception.IllegalEntityException;
 import cz.muni.fi.pv168.hotel.exception.ServiceFailureException;
 import java.util.concurrent.ExecutionException;
@@ -122,7 +121,7 @@ public class CheckIn extends javax.swing.JFrame {
     private void confirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmActionPerformed
         String nameText = name.getText();
         String phoneText = phone.getText();
-        ConfirmSwingWorker confirmSwingWorker = new ConfirmSwingWorker(nameText, phoneText, guestManager, model);
+        ConfirmSwingWorker confirmSwingWorker = new ConfirmSwingWorker(nameText, phoneText);
         confirmSwingWorker.execute();
 
     }//GEN-LAST:event_confirmActionPerformed
@@ -134,14 +133,11 @@ public class CheckIn extends javax.swing.JFrame {
 
         private final String name;
         private final String phone;
-        private final GuestManager guestManager;
-        private final GuestListModel model;
+        private Guest guest = null;
 
-        public ConfirmSwingWorker(String name, String phone, GuestManager guestManager, GuestListModel model) {
+        public ConfirmSwingWorker(String name, String phone) {
             this.name = name;
             this.phone = phone;
-            this.guestManager = guestManager;
-            this.model = model;
         }
 
         @Override
@@ -151,7 +147,6 @@ public class CheckIn extends javax.swing.JFrame {
                 log.error("phone or name is empty");
                 return ResultTextCheckIn.EMPTY_FIELD;
             }
-            Guest guest;
             try {
                 guest = new Guest(null, name, phone);
                 guestManager.createGuest(guest);
@@ -162,9 +157,7 @@ public class CheckIn extends javax.swing.JFrame {
                 log.debug("all rooms are full");
                 return ResultTextCheckIn.ALL_ROOMS_FULL;
             }
-            if (model != null) {
-                model.addGuest(guest);
-            }
+            log.info("New guest added.");
             return ResultTextCheckIn.ADD_GUEST;
         }
 
@@ -177,7 +170,10 @@ public class CheckIn extends javax.swing.JFrame {
                 java.util.logging.Logger.getLogger(AddRoom.class.getName()).log(Level.SEVERE, null, ex);
             }
             if (result == ResultTextCheckIn.ADD_GUEST) {
-                log.info("New guest added.");
+
+                if (model != null) {
+                    model.addGuest(guest);
+                }
                 setVisible(false);
                 dispose();
             } else {

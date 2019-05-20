@@ -209,13 +209,13 @@ public class MainWindow extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void accommodationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accommodationActionPerformed
-        AccommodationSwingWorker accommodationSwingWorker = new AccommodationSwingWorker(roomManager, guestManager);
+        AccommodationSwingWorker accommodationSwingWorker = new AccommodationSwingWorker();
         accommodationSwingWorker.execute();
     }//GEN-LAST:event_accommodationActionPerformed
 
     private void guestButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guestButtonActionPerformed
         guestTableActivatedBefore = true;
-        GuestListSwingWorker guestListSwingWorker = new GuestListSwingWorker(guestManager);
+        GuestListSwingWorker guestListSwingWorker = new GuestListSwingWorker();
         guestListSwingWorker.execute();
 
         showTextArea.setText("");
@@ -230,7 +230,7 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void roomButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_roomButtonActionPerformed
         guestTableActivatedBefore = false;
-        RoomListSwingWorker roomListSwingWorker = new RoomListSwingWorker(roomManager);
+        RoomListSwingWorker roomListSwingWorker = new RoomListSwingWorker();
         roomListSwingWorker.execute();
 
         showTextArea.setText("");
@@ -296,26 +296,24 @@ public class MainWindow extends javax.swing.JFrame {
     private void removeRoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeRoomActionPerformed
         // TODO add your handling code here:
         int indexOfValue = selectionTabel.getSelectedIndex();
-        RemoveRoomSwingWorker removeRoomSwingWorker = new RemoveRoomSwingWorker(roomManager, indexOfValue, guestManager);
+        RemoveRoomSwingWorker removeRoomSwingWorker = new RemoveRoomSwingWorker(indexOfValue);
         removeRoomSwingWorker.execute();
 
 
     }//GEN-LAST:event_removeRoomActionPerformed
 
     private void findButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findButtonActionPerformed
-        // TODO add your handling code here:
-        FindGuestSwingWorker findGuestSwingWorker = new FindGuestSwingWorker(guestManager, findTextField.getText());
+
+        FindGuestSwingWorker findGuestSwingWorker = new FindGuestSwingWorker(findTextField.getText());
         findGuestSwingWorker.execute();
 
     }//GEN-LAST:event_findButtonActionPerformed
 
     private class FindGuestSwingWorker extends SwingWorker<Guest, Guest> {
 
-        private final GuestManager guestManager;
         private final String name;
 
-        public FindGuestSwingWorker(GuestManager guestManager, String name) {
-            this.guestManager = guestManager;
+        public FindGuestSwingWorker(String name) {
             this.name = name;
         }
 
@@ -327,203 +325,192 @@ public class MainWindow extends javax.swing.JFrame {
 
         @Override
         protected void done() {
+            Guest result = null;
             try {
-                showTextArea.append(get().toString());
+                result = get();
+            } catch (InterruptedException | ExecutionException ex) {
+                Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            try {
+                showTextArea.append(result.toString());
             } catch (IllegalArgumentException | NullPointerException eae) {
                 log.error("None guest with this name is in hotel.");
                 JOptionPane.showMessageDialog(null, I18N.getString("find"));
-            } catch (InterruptedException ex) {
-                Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (ExecutionException ex) {
-                Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-
-    }
-
-    private class RemoveRoomSwingWorker extends SwingWorker<Room, Room> {
-
-        private final RoomManager roomManager;
-        private final int index;
-        private final GuestManager guestManager;
-
-        public RemoveRoomSwingWorker(RoomManager roomManager, int index, GuestManager guestManager) {
-            this.roomManager = roomManager;
-            this.index = index;
-            this.guestManager = guestManager;
-        }
-
-        @Override
-        protected Room doInBackground() throws Exception {
-            Room room = roomManager.findAllRooms().get(index);
-            if (guestManager.findGuestByRoom(room) != null) {
-                log.error("Deleted room is full.");
-                return null;
-            }
-            roomManager.deleteRoom(room);
-            return room;
-        }
-
-        @Override
-        protected void done() {
-            Room result = null;
-            try {
-                result = get();
-            } catch (InterruptedException ex) {
-                Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (ExecutionException ex) {
-                Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            if (result != null) {
-                RoomListModel model = (RoomListModel) selectionTabel.getModel();
-                model.deleteRoom(result);
-            } else {
-                JOptionPane.showMessageDialog(null, I18N.getString((ResultTextAddRoom) ResultTextAddRoom.ROOM_IS_FULL));
-            }
-        }
-
-    }
-
-    private class PrintSwingWorker extends SwingWorker<Object, Object> {
-
-        private final RoomManager roomManager;
-        private final GuestManager guestManager;
-        private final int index;
-
-        public PrintSwingWorker(GuestManager guestManager, int index) {
-            this.guestManager = guestManager;
-            this.index = index;
-            this.roomManager = null;
-        }
-
-        public PrintSwingWorker(RoomManager roomManager, int index) {
-            this.roomManager = roomManager;
-            this.index = index;
-            this.guestManager = null;
-        }
-
-        @Override
-        protected Object doInBackground() throws Exception {
-            if (guestManager != null) {
-                guest = guestManager.findAllGuest().get(index);
-                return guest;
-
-            } else {
-                removeRoom.setEnabled(true);
-                return roomManager.findAllRooms().get(index);
             }
 
-        }
-
-        @Override
-        protected void done() {
-            try {
-                showTextArea.append(get().toString());
-
-            } catch (InterruptedException ex) {
-                Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (ExecutionException ex) {
-                Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
-        }
-
-    }
-
-    private class RoomListSwingWorker extends SwingWorker<List<Room>, List<Room>> {
-
-        private final RoomManager roomManager;
-
-        public RoomListSwingWorker(RoomManager roomManager) {
-            this.roomManager = roomManager;
-        }
-
-        @Override
-        protected List<Room> doInBackground() throws Exception {
-            List<Room> roomList = roomManager.findAllRooms();
-            return roomList;
-        }
-
-        @Override
-        protected void done() {
-            try {
-                selectionTabel.setModel((ListModel<String>) new RoomListModel(get()));
-            } catch (InterruptedException | ExecutionException ex) {
-                Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
-            }
         }
     }
 
-    private class GuestListSwingWorker extends SwingWorker<List<Guest>, List<Guest>> {
+        private class RemoveRoomSwingWorker extends SwingWorker<Room, Room> {
 
-        private final GuestManager guestManager;
+            private final int index;
 
-        public GuestListSwingWorker(GuestManager guestManager) {
-            this.guestManager = guestManager;
-        }
+            public RemoveRoomSwingWorker(int index) {
 
-        @Override
-        protected List<Guest> doInBackground() throws Exception {
-            List<Guest> guestList = guestManager.findAllGuest();
-            return guestList;
-        }
+                this.index = index;
 
-        @Override
-        protected void done() {
-            try {
-                selectionTabel.setModel((ListModel<String>) new GuestListModel(get()));
-            } catch (InterruptedException | ExecutionException ex) {
-                Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-    }
-
-    private class AccommodationSwingWorker extends SwingWorker<ResultTextCheckIn, ResultTextCheckIn> {
-
-        private final RoomManager roomManager;
-        private final GuestManager guestManager;
-
-        public AccommodationSwingWorker(RoomManager roomManager, GuestManager guestManager) {
-
-            this.roomManager = roomManager;
-            this.guestManager = guestManager;
-        }
-
-        @Override
-        protected ResultTextCheckIn doInBackground() throws Exception {
-            List<Room> freeRooms = guestManager.freeRooms();
-            if (freeRooms.size() == 0) {
-                log.info("Rooms are full");
-                return ResultTextCheckIn.ALL_ROOMS_FULL;
-            }
-            return ResultTextCheckIn.ADD_GUEST;
-        }
-
-        @Override
-        protected void done() {
-            ResultTextCheckIn result = null;
-            try {
-                result = get();
-            } catch (InterruptedException ex) {
-                java.util.logging.Logger.getLogger(AddRoom.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (ExecutionException ex) {
-                java.util.logging.Logger.getLogger(AddRoom.class.getName()).log(Level.SEVERE, null, ex);
             }
 
-            if (result.equals(ResultTextCheckIn.ADD_GUEST)) {
-                CheckIn checkIn;
-                if (guestTableActivatedBefore) {
-                    checkIn = new CheckIn(guestManager, (GuestListModel) selectionTabel.getModel());
-                } else {
-                    checkIn = new CheckIn(guestManager, null);
+            @Override
+            protected Room doInBackground() throws Exception {
+                Room room = roomManager.findAllRooms().get(index);
+                if (guestManager.findGuestByRoom(room) != null) {
+                    log.error("Deleted room is full.");
+                    return null;
                 }
-                checkIn.setVisible(true);
+                roomManager.deleteRoom(room);
+                return room;
+            }
 
-            } else {
-                JOptionPane.showMessageDialog(null, I18N.getString((ResultTextCheckIn) result));
+            @Override
+            protected void done() {
+                Room result = null;
+                try {
+                    result = get();
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ExecutionException ex) {
+                    Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                if (result != null) {
+                    RoomListModel model = (RoomListModel) selectionTabel.getModel();
+                    model.deleteRoom(result);
+                } else {
+                    JOptionPane.showMessageDialog(null, I18N.getString((ResultTextAddRoom) ResultTextAddRoom.ROOM_IS_FULL));
+                }
+            }
+
+        }
+
+        private class PrintSwingWorker extends SwingWorker<Object, Object> {
+
+            private final RoomManager roomManager;
+            private final GuestManager guestManager;
+            private final int index;
+
+            public PrintSwingWorker(GuestManager guestManager, int index) {
+                this.guestManager = guestManager;
+                this.index = index;
+                this.roomManager = null;
+            }
+
+            public PrintSwingWorker(RoomManager roomManager, int index) {
+                this.roomManager = roomManager;
+                this.index = index;
+                this.guestManager = null;
+            }
+
+            @Override
+            protected Object doInBackground() throws Exception {
+                if (guestManager != null) {
+                    guest = guestManager.findAllGuest().get(index);
+                    return guest;
+
+                } else {
+                    removeRoom.setEnabled(true);
+                    return roomManager.findAllRooms().get(index);
+                }
+
+            }
+
+            @Override
+            protected void done() {
+                try {
+                    showTextArea.append(get().toString());
+
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ExecutionException ex) {
+                    Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+            }
+
+        }
+
+        private class RoomListSwingWorker extends SwingWorker<List<Room>, List<Room>> {
+
+            public RoomListSwingWorker() {
+            }
+
+            @Override
+            protected List<Room> doInBackground() throws Exception {
+                List<Room> roomList = roomManager.findAllRooms();
+                return roomList;
+            }
+
+            @Override
+            protected void done() {
+                try {
+                    selectionTabel.setModel((ListModel<String>) new RoomListModel(get()));
+                } catch (InterruptedException | ExecutionException ex) {
+                    Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         }
-    }
+
+        private class GuestListSwingWorker extends SwingWorker<List<Guest>, List<Guest>> {
+
+            public GuestListSwingWorker() {
+            }
+
+            @Override
+            protected List<Guest> doInBackground() throws Exception {
+                List<Guest> guestList = guestManager.findAllGuest();
+                return guestList;
+            }
+
+            @Override
+            protected void done() {
+                try {
+                    selectionTabel.setModel((ListModel<String>) new GuestListModel(get()));
+                } catch (InterruptedException | ExecutionException ex) {
+                    Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+
+        private class AccommodationSwingWorker extends SwingWorker<ResultTextCheckIn, ResultTextCheckIn> {
+
+            public AccommodationSwingWorker() {
+
+            }
+
+            @Override
+            protected ResultTextCheckIn doInBackground() throws Exception {
+                List<Room> freeRooms = guestManager.freeRooms();
+                if (freeRooms.size() == 0) {
+                    log.info("Rooms are full");
+                    return ResultTextCheckIn.ALL_ROOMS_FULL;
+                }
+                return ResultTextCheckIn.ADD_GUEST;
+            }
+
+            @Override
+            protected void done() {
+                ResultTextCheckIn result = null;
+                try {
+                    result = get();
+                } catch (InterruptedException ex) {
+                    java.util.logging.Logger.getLogger(AddRoom.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ExecutionException ex) {
+                    java.util.logging.Logger.getLogger(AddRoom.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+                if (result.equals(ResultTextCheckIn.ADD_GUEST)) {
+                    CheckIn checkIn;
+                    if (guestTableActivatedBefore) {
+                        checkIn = new CheckIn(guestManager, (GuestListModel) selectionTabel.getModel());
+                    } else {
+                        checkIn = new CheckIn(guestManager, null);
+                    }
+                    checkIn.setVisible(true);
+
+                } else {
+                    JOptionPane.showMessageDialog(null, I18N.getString((ResultTextCheckIn) result));
+                }
+            }
+        }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton accommodation;

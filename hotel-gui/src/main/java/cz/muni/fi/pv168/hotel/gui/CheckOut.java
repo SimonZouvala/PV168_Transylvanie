@@ -120,7 +120,7 @@ public class CheckOut extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void confirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmActionPerformed
-        ConfirmSwingWorker confirmSwingWorker = new ConfirmSwingWorker(guest, guestManager);
+        ConfirmSwingWorker confirmSwingWorker = new ConfirmSwingWorker();
         confirmSwingWorker.execute();
 
     }//GEN-LAST:event_confirmActionPerformed
@@ -133,19 +133,14 @@ public class CheckOut extends javax.swing.JFrame {
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         // TODO add your handling code here:
-        TextSwingWorker textSwingWorker = new TextSwingWorker(guest, guestManager);
+        TextSwingWorker textSwingWorker = new TextSwingWorker();
         textSwingWorker.execute();
     }//GEN-LAST:event_formWindowActivated
 
     private class TextSwingWorker extends SwingWorker {
 
-        private final Guest guest;
-        private final GuestManager guestManager;
-
-        public TextSwingWorker(Guest guest, GuestManager guestManager) {
-            this.guest = guest;
-            this.guestManager = guestManager;
-        }
+        public TextSwingWorker() {
+                    }
 
         @Override
         protected Integer doInBackground() throws Exception {
@@ -159,7 +154,7 @@ public class CheckOut extends javax.swing.JFrame {
             try {
                 price = (int) get();
             } catch (InterruptedException | ExecutionException ex) {
-                java.util.logging.Logger.getLogger(AddRoom.class.getName()).log(Level.SEVERE, null, ex);
+                java.util.logging.Logger.getLogger(CheckOut.class.getName()).log(Level.SEVERE, null, ex);
             }
             textArea.setText(guest.getName());
             textAreaPrice.setText(Integer.toString(price));
@@ -168,12 +163,9 @@ public class CheckOut extends javax.swing.JFrame {
     }
     private class ConfirmSwingWorker extends SwingWorker {
 
-        private final Guest guest;
-        private final GuestManager guestManager;
 
-        public ConfirmSwingWorker(Guest guest, GuestManager guestManager) {
-            this.guest = guest;
-            this.guestManager = guestManager;
+        public ConfirmSwingWorker() {
+            
         }
 
         @Override

@@ -128,7 +128,7 @@ public class AddRoom extends javax.swing.JFrame {
         String priceText = price.getText();
         String capacityText = capacity.getText();
 
-        ConfirmSwingWorker confirmSwingWorker = new ConfirmSwingWorker(numberText, priceText, capacityText, roomManager, model);
+        ConfirmSwingWorker confirmSwingWorker = new ConfirmSwingWorker(numberText, priceText, capacityText);
         confirmSwingWorker.execute();
 
     }//GEN-LAST:event_comfirmActionPerformed
@@ -137,15 +137,14 @@ public class AddRoom extends javax.swing.JFrame {
         private final String number;
         private final String price;
         private final String capacity;
-        private final RoomManager roomManager;
-        private final RoomListModel model;
+        private Room room = null;
 
-        public ConfirmSwingWorker(String number, String price, String capacity, RoomManager roomManager ,RoomListModel model ) {
+
+        public ConfirmSwingWorker(String number, String price, String capacity) {
             this.number = number;
             this.price = price;
             this.capacity = capacity;
-            this.roomManager = roomManager;
-            this.model = model;
+
         }
 
         @Override
@@ -195,7 +194,7 @@ public class AddRoom extends javax.swing.JFrame {
                 log.debug("form data invalid - capacity is negative");
                 return ResultTextAddRoom.CAPACITY_NEGATIVE;
             }
-            Room room = null;
+            
             try {
                 room = new Room(price_int, capacity_int, number_int);
                 roomManager.createRoom(room);
@@ -206,9 +205,7 @@ public class AddRoom extends javax.swing.JFrame {
                 log.debug("Room with number " + String.valueOf(number) + " exists");
                 return ResultTextAddRoom.ROOM_WITH_SAME_NUMBER;
             }
-            log.info("New room added");
-            log.debug("redirecting after POST");
-            model.addRoom(room);
+            log.info("New room added");     
             return ResultTextAddRoom.ROOM_ADD;
         }
 
@@ -221,6 +218,7 @@ public class AddRoom extends javax.swing.JFrame {
                 java.util.logging.Logger.getLogger(AddRoom.class.getName()).log(Level.SEVERE, null, ex);
             }
             if (result == ResultTextAddRoom.ROOM_ADD) {
+                model.addRoom(room);
                 setVisible(false);
                 dispose();
             } else {

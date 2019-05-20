@@ -16,9 +16,7 @@ public class PropertiesOnClasspathExample {
         
         Properties properties = loadPropertiesFromClassPath("configuration.properties");
         System.err.println(properties);
-        
-        
-        
+
     }
 
     private static DataSource configureDataSource(Properties properties) {
