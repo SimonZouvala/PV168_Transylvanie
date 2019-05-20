@@ -305,7 +305,7 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_removeRoomActionPerformed
 
     private void findButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findButtonActionPerformed
-
+        showTextArea.setText("");
         FindGuestSwingWorker findGuestSwingWorker = new FindGuestSwingWorker(findTextField.getText());
         findGuestSwingWorker.execute();
 
@@ -377,6 +377,8 @@ public class MainWindow extends javax.swing.JFrame {
             if (result != null) {
                 RoomListModel model = (RoomListModel) selectionTabel.getModel();
                 model.deleteRoom(result);
+                removeRoom.setEnabled(false);
+                showTextArea.setText("");
             } else {
                 JOptionPane.showMessageDialog(null, I18N.getString((ResultTextAddRoom) ResultTextAddRoom.ROOM_IS_FULL));
             }
@@ -404,22 +406,29 @@ public class MainWindow extends javax.swing.JFrame {
 
         @Override
         protected Object doInBackground() throws Exception {
-            if (guestManager != null) {
-                guest = guestManager.findAllGuest().get(index);
-                return guest;
+            try {
+                if (guestManager != null) {
+                    guest = guestManager.findAllGuest().get(index);
+                    return guest;
 
-            } else {
-                removeRoom.setEnabled(true);
-                return roomManager.findAllRooms().get(index);
+                } else {
+                    removeRoom.setEnabled(true);
+                    return roomManager.findAllRooms().get(index);
+                }
+
+            } catch (NullPointerException | ArrayIndexOutOfBoundsException e) {
+                showTextArea.setText("");
+                log.error("Nothing selection");
+                removeRoom.setEnabled(false);
             }
-
+            return null;
         }
 
         @Override
         protected void done() {
             try {
                 showTextArea.append(get().toString());
-                if (guest.equals(get())) {
+                if (guest == get()) {
                     if (guest.getRoomId() != 0) {
                         checkoutButton.setEnabled(true);
                     } else {
@@ -427,6 +436,10 @@ public class MainWindow extends javax.swing.JFrame {
                     }
                 }
 
+            } catch (NullPointerException | ArrayIndexOutOfBoundsException e) {
+                showTextArea.setText("");
+                log.error("Nothing selection");
+                removeRoom.setEnabled(false);
             } catch (InterruptedException ex) {
                 Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ExecutionException ex) {

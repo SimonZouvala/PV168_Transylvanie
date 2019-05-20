@@ -38,6 +38,9 @@ public class RoomListModel extends AbstractListModel {
     public void deleteRoom(Room room) {
         roomList.remove(room);
         int lastRow = roomList.size() - 1;
+        if(lastRow < 0){
+            lastRow =0;
+        }
         fireIntervalRemoved(room, lastRow, lastRow);
     }
 }

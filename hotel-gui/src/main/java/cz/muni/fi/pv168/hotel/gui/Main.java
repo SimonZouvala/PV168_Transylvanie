@@ -13,6 +13,7 @@ import java.awt.EventQueue;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.sql.SQLException;
 import java.time.Clock;
 import java.util.Properties;
 import java.util.logging.Level;
@@ -36,19 +37,19 @@ public class Main {
 
         DataSource dataSource;
         try {
+
             dataSource = cz.muni.fi.pv168.hotel.Main.getDataSource();
-       
-        
+
 //        Properties properties = loadPropertiesFromClassPath("jdbc.properties");
 //        System.err.println(properties);
 //        DataSource dataSource = configureDataSource(properties);
-        RoomManager rmanager = new RoomManagerImpl(dataSource);
-        GuestManager gmanager = new GuestManagerImpl(dataSource, clock);
-        log.info("vytvořeny manažery");
-        EventQueue.invokeLater(() -> {
-            new MainWindow(rmanager, gmanager).setVisible(true);
-        });
-         } catch (IOException e) {
+            RoomManager rmanager = new RoomManagerImpl(dataSource);
+            GuestManager gmanager = new GuestManagerImpl(dataSource, clock);
+            log.info("vytvořeny manažery");
+            EventQueue.invokeLater(() -> {
+                new MainWindow(rmanager, gmanager).setVisible(true);
+            });
+        } catch (IOException | SQLException e) {
             log.error("Nepovedlo se vytvořit databázi", e);
         }
 
@@ -82,5 +83,4 @@ public class Main {
 //            throw new RuntimeException("Error when loading properties file from classpath: " + url, ex);
 //        }
 //    }
-
 }

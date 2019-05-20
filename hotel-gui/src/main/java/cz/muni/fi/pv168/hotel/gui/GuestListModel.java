@@ -30,6 +30,9 @@ public class GuestListModel extends AbstractListModel {
     public void addGuest(Guest guest) {
         guestList.add(guest);
         int lastRow = guestList.size() - 1;
+        if(lastRow < 0){
+            lastRow =0;
+        }
         fireIntervalAdded(guest, lastRow, lastRow);
     }
 

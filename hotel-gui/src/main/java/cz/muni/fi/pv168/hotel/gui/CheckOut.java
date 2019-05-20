@@ -155,7 +155,12 @@ public class CheckOut extends javax.swing.JFrame {
 
         @Override
         protected Integer doInBackground() throws Exception {
-            int price = guestManager.checkOutGuestPrice(guest);
+           int price;
+            try{
+            price = guestManager.checkOutGuestPrice(guest);
+            } catch(NullPointerException e){
+                price = 0;
+            }
             return price;
         }
 

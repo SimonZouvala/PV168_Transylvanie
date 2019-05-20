@@ -1,6 +1,8 @@
 package cz.muni.fi.pv168.hotel;
 
+import ch.qos.logback.core.db.dialect.DBUtil;
 import com.zaxxer.hikari.HikariDataSource;
+import cz.muni.fi.pv168.hotel.exception.DBUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.io.ClassPathResource;
@@ -8,16 +10,19 @@ import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
 
 import javax.sql.DataSource;
 import java.io.IOException;
+import java.sql.SQLException;
+import java.sql.SQLTransactionRollbackException;
 import java.time.Clock;
 import java.util.List;
 import java.util.Properties;
 
 public class Main {
+
     private static Clock clock = Clock.systemDefaultZone();
 
     private final static Logger log = LoggerFactory.getLogger(Main.class);
 
-    public static DataSource getDataSource() throws IOException {
+    public static DataSource getDataSource() throws IOException, SQLException {
         HikariDataSource ds = new HikariDataSource();
 
         //load connection properties from a file
@@ -31,15 +36,19 @@ public class Main {
         ds.setPassword(p.getProperty("jdbc.password"));
 
         //populate db with tables and data
-        new ResourceDatabasePopulator(
-                new ClassPathResource("createTables.sql"),
-                new ClassPathResource("test-data.sql"))
-                .execute(ds);
+//        new ResourceDatabasePopulator(
+//                new ClassPathResource("createTables.sql"),
+//                new ClassPathResource("test-data.sql"))
+//                .execute(ds);
+        try {
+            DBUtils.executeSqlScript(ds, Main.class.getResourceAsStream("/createTables.sql"));
+        } catch (SQLTransactionRollbackException e) {
+            log.info("Table existed: " + e.getLocalizedMessage());
+        }
         return ds;
     }
 
     public static void main(String[] args) throws Exception, IOException {
-
 
         log.info("start");
 
