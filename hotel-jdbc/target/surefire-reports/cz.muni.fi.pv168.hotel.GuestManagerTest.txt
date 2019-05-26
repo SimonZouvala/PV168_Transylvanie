@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: cz.muni.fi.pv168.hotel.GuestManagerTest
 -------------------------------------------------------------------------------
-Tests run: 26, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.331 sec
+Tests run: 26, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.495 sec

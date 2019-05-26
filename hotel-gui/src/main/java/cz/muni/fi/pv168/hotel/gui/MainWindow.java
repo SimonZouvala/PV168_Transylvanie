@@ -31,6 +31,7 @@ public class MainWindow extends javax.swing.JFrame {
     private final RoomManager roomManager;
     private final GuestManager guestManager;
     private Guest guest;
+    private Room room;
     private boolean wasWindowActivatedBefore = false;
     private boolean guestTableActivatedBefore = false;
 
@@ -42,7 +43,6 @@ public class MainWindow extends javax.swing.JFrame {
         this.guestManager = guestManager;
         initComponents();
         log.info("MainWindow activated");
-
     }
 
     /**
@@ -150,34 +150,30 @@ public class MainWindow extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(accommodation, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addComponent(roomButton)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(guestButton)))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(addRoom, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(removeRoom, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(findTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(6, 6, 6)
+                            .addComponent(findButton))
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(accommodation, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addComponent(roomButton)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(guestButton))))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, Short.MAX_VALUE)
-                                .addComponent(checkoutButton))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(8, 8, 8)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jScrollPane1)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(findTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(findButton)
-                                        .addGap(0, 0, Short.MAX_VALUE))))))
+                        .addGap(18, 76, Short.MAX_VALUE)
+                        .addComponent(checkoutButton))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(addRoom, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(removeRoom, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(8, 8, 8)
+                        .addComponent(jScrollPane1)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -224,8 +220,6 @@ public class MainWindow extends javax.swing.JFrame {
         findButton.setVisible(true);
         addRoom.setVisible(false);
         removeRoom.setVisible(false);
-
-
     }//GEN-LAST:event_guestButtonActionPerformed
 
     private void roomButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_roomButtonActionPerformed
@@ -241,8 +235,6 @@ public class MainWindow extends javax.swing.JFrame {
         findTextField.setVisible(false);
         findButton.setVisible(false);
         checkoutButton.setEnabled(false);
-
-
     }//GEN-LAST:event_roomButtonActionPerformed
 
     private void selectionTabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_selectionTabelMouseClicked
@@ -253,10 +245,8 @@ public class MainWindow extends javax.swing.JFrame {
         int indexOfValue = selectionTabel.getSelectedIndex();
         if ((selectionTabel.getModel() instanceof GuestListModel)) {
             printSwingWorker = new PrintSwingWorker(guestManager, indexOfValue);
-
         } else {
             printSwingWorker = new PrintSwingWorker(roomManager, indexOfValue);
-
         }
         printSwingWorker.execute();
 
@@ -302,17 +292,15 @@ public class MainWindow extends javax.swing.JFrame {
     private void removeRoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeRoomActionPerformed
         // TODO add your handling code here:
         int indexOfValue = selectionTabel.getSelectedIndex();
-        RemoveRoomSwingWorker removeRoomSwingWorker = new RemoveRoomSwingWorker(indexOfValue);
+        RemoveRoomSwingWorker removeRoomSwingWorker = new RemoveRoomSwingWorker();
         removeRoomSwingWorker.execute();
-
-
     }//GEN-LAST:event_removeRoomActionPerformed
 
     private void findButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findButtonActionPerformed
         showTextArea.setText("");
+        selectionTabel.clearSelection();
         FindGuestSwingWorker findGuestSwingWorker = new FindGuestSwingWorker(findTextField.getText());
         findGuestSwingWorker.execute();
-
     }//GEN-LAST:event_findButtonActionPerformed
 
     private class FindGuestSwingWorker extends SwingWorker<Guest, Guest> {
@@ -331,39 +319,33 @@ public class MainWindow extends javax.swing.JFrame {
 
         @Override
         protected void done() {
-            Guest result = null;
+            Guest guest = null;
             try {
-                result = get();
-                if (result == null) {
+                guest = get();
+                if (guest == null) {
                     log.error("None guest with this name is in hotel.");
                     JOptionPane.showMessageDialog(null, I18N.getString("find"));
-                    showTextArea.setText("Not found");
+                    showTextArea.setText(I18N.getString("Not_found"));
                 } else {
-                showTextArea.setText(result.toString());
+                showTextArea.setText(guest.toString());
                }
                       
-            } catch (InterruptedException | ExecutionException ex) {
-                // zalogovat
-                // show error window
+            } catch (InterruptedException ex) {
+                throw new AssertionError("Interrupted", ex);
+            } catch (ExecutionException ex) {
+                log.error("Execution exception in FindGuestSwingWorker");
+                JOptionPane.showMessageDialog(null, "ExecutionException");    
             }
-           
         }
     }
 
     private class RemoveRoomSwingWorker extends SwingWorker<Room, Void> {
 
-        private final int index;
-
-        public RemoveRoomSwingWorker(int index) {
-
-            this.index = index ;
-// TODO predat room, ne index
-
+        public RemoveRoomSwingWorker() {
         }
 
         @Override
         protected Room doInBackground() throws Exception {
-            Room room = roomManager.findAllRooms().get(index);
             if (guestManager.findGuestByRoom(room) != null) {
                 log.error("Deleted room is full.");
                 return null;
@@ -374,18 +356,19 @@ public class MainWindow extends javax.swing.JFrame {
 
         @Override
         protected void done() {
-            Room result = null;
+            Room room = null;
             try {
-                result = get();
+                room = get();
             } catch (InterruptedException ex) {
                 throw new AssertionError("Interrupted", ex);
             } catch (ExecutionException ex) {
+                log.error("Execution exception in FindGuestSwingWorker");
+                JOptionPane.showMessageDialog(null, "ExecutionException");   
                     // zalogovat a eerpr window
-                    
             }
-            if (result != null) {
+            if (room != null) {
                 RoomListModel model = (RoomListModel) selectionTabel.getModel();
-                model.deleteRoom(result);
+                model.deleteRoom(room);
                 removeRoom.setEnabled(false);
                 showTextArea.setText("");
             } else {
@@ -422,15 +405,13 @@ public class MainWindow extends javax.swing.JFrame {
 
                 } else {
                     removeRoom.setEnabled(true);
-                    return roomManager.findAllRooms().get(index);
+                    room = roomManager.findAllRooms().get(index);
+                    return room;
                 }
 
             } catch (NullPointerException | ArrayIndexOutOfBoundsException e) {
-                showTextArea.setText(""); // nesmite
-                log.error("Nothing selection");
-                removeRoom.setEnabled(false);
+                return e;
             }
-            return null;
         }
 
         @Override
@@ -450,13 +431,13 @@ public class MainWindow extends javax.swing.JFrame {
                 log.error("Nothing selection");
                 removeRoom.setEnabled(false);
             } catch (InterruptedException ex) {
-                Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
+                throw new AssertionError("Interrupted", ex);
             } catch (ExecutionException ex) {
-                Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
+                log.error("Execution exception in FindGuestSwingWorker");
+                JOptionPane.showMessageDialog(null, "ExecutionException");    
             }
 
         }
-
     }
 
     private class RoomListSwingWorker extends SwingWorker<List<Room>, List<Room>> {
@@ -474,8 +455,11 @@ public class MainWindow extends javax.swing.JFrame {
         protected void done() {
             try {
                 selectionTabel.setModel((ListModel<String>) new RoomListModel(get()));
-            } catch (InterruptedException | ExecutionException ex) {
-                Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (InterruptedException ex) {
+                throw new AssertionError("Interrupted", ex);
+            } catch (ExecutionException ex) {
+                log.error("Execution exception in FindGuestSwingWorker");
+                JOptionPane.showMessageDialog(null, "ExecutionException");    
             }
         }
     }
@@ -495,8 +479,11 @@ public class MainWindow extends javax.swing.JFrame {
         protected void done() {
             try {
                 selectionTabel.setModel((ListModel<String>) new GuestListModel(get()));
-            } catch (InterruptedException | ExecutionException ex) {
-                Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (InterruptedException ex) {
+                throw new AssertionError("Interrupted", ex);
+            } catch (ExecutionException ex) {
+                log.error("Execution exception in FindGuestSwingWorker");
+                JOptionPane.showMessageDialog(null, "ExecutionException");    
             }
         }
     }
@@ -523,9 +510,10 @@ public class MainWindow extends javax.swing.JFrame {
             try {
                 result = get();
             } catch (InterruptedException ex) {
-                java.util.logging.Logger.getLogger(AddRoom.class.getName()).log(Level.SEVERE, null, ex);
+                throw new AssertionError("Interrupted", ex);
             } catch (ExecutionException ex) {
-                java.util.logging.Logger.getLogger(AddRoom.class.getName()).log(Level.SEVERE, null, ex);
+                log.error("Execution exception in FindGuestSwingWorker");
+                JOptionPane.showMessageDialog(null, "ExecutionException");    
             }
 
             if (result == ResultTextCheckIn.ADD_GUEST) {

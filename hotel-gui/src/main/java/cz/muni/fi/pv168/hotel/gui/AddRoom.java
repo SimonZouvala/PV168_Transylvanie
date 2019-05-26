@@ -215,8 +215,11 @@ public class AddRoom extends javax.swing.JFrame {
             ResultTextAddRoom result = null;
             try {
                 result = get();                
-            } catch (InterruptedException | ExecutionException ex) {
-                java.util.logging.Logger.getLogger(AddRoom.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (InterruptedException ex) {
+                throw new AssertionError("Interrupted", ex);
+            } catch (ExecutionException ex) {
+                log.error("Execution exception in FindGuestSwingWorker");
+                JOptionPane.showMessageDialog(null, "ExecutionException");    
             }
             if (result == ResultTextAddRoom.ROOM_ADD) {
                 model.addRoom(room);

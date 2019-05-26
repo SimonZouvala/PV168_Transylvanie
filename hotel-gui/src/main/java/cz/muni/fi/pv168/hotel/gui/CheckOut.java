@@ -9,6 +9,7 @@ import cz.muni.fi.pv168.hotel.Guest;
 import cz.muni.fi.pv168.hotel.GuestManager;
 import java.util.concurrent.ExecutionException;
 import java.util.logging.Level;
+import javax.swing.JOptionPane;
 import javax.swing.SwingWorker;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -172,8 +173,11 @@ public class CheckOut extends javax.swing.JFrame {
             }catch(NullPointerException npe){
                 price = 0;
             }
-            catch (InterruptedException | ExecutionException ex) {
-                java.util.logging.Logger.getLogger(CheckOut.class.getName()).log(Level.SEVERE, null, ex);
+            catch (InterruptedException ex) {
+                throw new AssertionError("Interrupted", ex);
+            } catch (ExecutionException ex) {
+                log.error("Execution exception in FindGuestSwingWorker");
+                JOptionPane.showMessageDialog(null, "ExecutionException");    
             }
             textArea.setText(guest.getName());
             textAreaPrice.setText(Integer.toString(price));
