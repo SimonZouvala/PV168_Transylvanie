@@ -27,5 +27,7 @@ public interface GuestManager {
     int checkOutGuestPrice(Guest guest);
 
     List<Room> freeRooms();
+
+    List<Guest> findGuestsByName(String name);
 }
 

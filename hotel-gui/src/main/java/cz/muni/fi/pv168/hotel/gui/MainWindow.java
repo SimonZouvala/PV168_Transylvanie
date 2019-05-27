@@ -286,7 +286,7 @@ public class MainWindow extends javax.swing.JFrame {
         findButton.setVisible(false);
         findTextField.setVisible(false);
         checkoutButton.setEnabled(false);
-        
+
     }//GEN-LAST:event_checkoutButtonActionPerformed
 
     private void removeRoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeRoomActionPerformed
@@ -303,7 +303,7 @@ public class MainWindow extends javax.swing.JFrame {
         findGuestSwingWorker.execute();
     }//GEN-LAST:event_findButtonActionPerformed
 
-    private class FindGuestSwingWorker extends SwingWorker<Guest, Guest> {
+    private class FindGuestSwingWorker extends SwingWorker<List<Guest>, Guest> {
 
         private final String name;
 
@@ -312,29 +312,21 @@ public class MainWindow extends javax.swing.JFrame {
         }
 
         @Override
-        protected Guest doInBackground() throws Exception {
-            Guest guest = guestManager.findGuestByName(name);
-            return guest;
+        protected List<Guest> doInBackground() throws Exception {
+            List<Guest> guests = guestManager.findGuestsByName(name);
+            return guests;
         }
 
         @Override
         protected void done() {
-            Guest guest = null;
+
             try {
-                guest = get();
-                if (guest == null) {
-                    log.error("None guest with this name is in hotel.");
-                    JOptionPane.showMessageDialog(null, I18N.getString("find"));
-                    showTextArea.setText(I18N.getString("Not_found"));
-                } else {
-                showTextArea.setText(guest.toString());
-               }
-                      
+                selectionTabel.setModel((ListModel<String>) new GuestListModel(get()));
             } catch (InterruptedException ex) {
                 throw new AssertionError("Interrupted", ex);
             } catch (ExecutionException ex) {
                 log.error("Execution exception in FindGuestSwingWorker");
-                JOptionPane.showMessageDialog(null, "ExecutionException");    
+                JOptionPane.showMessageDialog(null, "Error with find guests by name.");
             }
         }
     }
@@ -362,9 +354,9 @@ public class MainWindow extends javax.swing.JFrame {
             } catch (InterruptedException ex) {
                 throw new AssertionError("Interrupted", ex);
             } catch (ExecutionException ex) {
-                log.error("Execution exception in FindGuestSwingWorker");
-                JOptionPane.showMessageDialog(null, "ExecutionException");   
-                    // zalogovat a eerpr window
+                log.error("Execution exception in RemoveRoomSwingWorker");
+                JOptionPane.showMessageDialog(null, "Error with remmove room.");
+                // zalogovat a eerpr window
             }
             if (room != null) {
                 RoomListModel model = (RoomListModel) selectionTabel.getModel();
@@ -398,20 +390,17 @@ public class MainWindow extends javax.swing.JFrame {
 
         @Override
         protected Object doInBackground() throws Exception {
-            try {
-                if (guestManager != null) {
-                    guest = guestManager.findAllGuest().get(index);
-                    return guest;
 
-                } else {
-                    removeRoom.setEnabled(true);
-                    room = roomManager.findAllRooms().get(index);
-                    return room;
-                }
+            if (guestManager != null) {
+                guest = guestManager.findAllGuest().get(index);
+                return guest;
 
-            } catch (NullPointerException | ArrayIndexOutOfBoundsException e) {
-                return e;
+            } else {
+                removeRoom.setEnabled(true);
+                room = roomManager.findAllRooms().get(index);
+                return room;
             }
+
         }
 
         @Override
@@ -433,8 +422,8 @@ public class MainWindow extends javax.swing.JFrame {
             } catch (InterruptedException ex) {
                 throw new AssertionError("Interrupted", ex);
             } catch (ExecutionException ex) {
-                log.error("Execution exception in FindGuestSwingWorker");
-                JOptionPane.showMessageDialog(null, "ExecutionException");    
+                log.error("Execution exception in PrintSwingWorker");
+                JOptionPane.showMessageDialog(null, "Error with printing");
             }
 
         }
@@ -458,8 +447,8 @@ public class MainWindow extends javax.swing.JFrame {
             } catch (InterruptedException ex) {
                 throw new AssertionError("Interrupted", ex);
             } catch (ExecutionException ex) {
-                log.error("Execution exception in FindGuestSwingWorker");
-                JOptionPane.showMessageDialog(null, "ExecutionException");    
+                log.error("Execution exception in RoomListSwingWorker");
+                JOptionPane.showMessageDialog(null, "Error with show rooms");
             }
         }
     }
@@ -482,8 +471,8 @@ public class MainWindow extends javax.swing.JFrame {
             } catch (InterruptedException ex) {
                 throw new AssertionError("Interrupted", ex);
             } catch (ExecutionException ex) {
-                log.error("Execution exception in FindGuestSwingWorker");
-                JOptionPane.showMessageDialog(null, "ExecutionException");    
+                log.error("Execution exception in GuestListSwingWorker");
+                JOptionPane.showMessageDialog(null, "Error with show guests.");
             }
         }
     }
@@ -512,8 +501,8 @@ public class MainWindow extends javax.swing.JFrame {
             } catch (InterruptedException ex) {
                 throw new AssertionError("Interrupted", ex);
             } catch (ExecutionException ex) {
-                log.error("Execution exception in FindGuestSwingWorker");
-                JOptionPane.showMessageDialog(null, "ExecutionException");    
+                log.error("Execution exception in AccommodationSwingWorker");
+                JOptionPane.showMessageDialog(null, "Error with accommodation.");
             }
 
             if (result == ResultTextCheckIn.ADD_GUEST) {

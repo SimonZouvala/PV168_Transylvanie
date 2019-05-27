@@ -18,6 +18,7 @@ import java.time.Period;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
+import org.assertj.core.util.Arrays;
 
 /**
  * @author Šimon Zouvala {445475@mail.muni.cz}
@@ -272,5 +273,19 @@ public class GuestManagerImpl implements GuestManager {
         } catch (SQLException ex) {
             throw new ServiceFailureException("Error when trying to find empty rooms", ex);
         }
+    }
+    
+    @Override
+    public List<Guest> findGuestsByName(String name){
+        List<Guest> allGuests = findAllGuest();
+        List<Object> findName = Arrays.asList(name.toLowerCase().split(" "));
+        List<Guest> findedGuests = new ArrayList<>();
+        for(Guest guest : allGuests){
+            List<Object> actualName = Arrays.asList(guest.getName().toLowerCase().split(" "));
+            if (actualName.containsAll(findName)){
+                findedGuests.add(guest);
+            }
+        }
+        return findedGuests;
     }
 }
