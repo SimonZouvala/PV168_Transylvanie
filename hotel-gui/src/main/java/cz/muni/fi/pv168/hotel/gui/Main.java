@@ -13,10 +13,8 @@ import java.awt.EventQueue;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
-import java.sql.SQLException;
 import java.time.Clock;
 import java.util.Properties;
-import java.util.logging.Level;
 import javax.sql.DataSource;
 import org.apache.derby.jdbc.EmbeddedDataSource;
 import org.slf4j.Logger;
@@ -37,9 +35,7 @@ public class Main {
 
         DataSource dataSource;
         dataSource = configureDataSource(loadPropertiesFromClassPath("jdbc.properties"));
-        //        Properties properties = loadPropertiesFromClassPath("jdbc.properties");
-//        System.err.println(properties);
-//        DataSource dataSource = configureDataSource(properties);
+
         RoomManager rmanager = new RoomManagerImpl(dataSource);
         GuestManager gmanager = new GuestManagerImpl(dataSource, clock);
         log.info("vytvořeny manažery");
@@ -56,12 +52,10 @@ public class Main {
         // database is created automatically if it does not exist yet
         ds.setCreateDatabase("create");
         return ds;
-        //return null;
     }
 
     private static Properties loadPropertiesFromClassPath(String propertiesFileName) {
         ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-//        ClassLoader classLoader = PropertiesOnClasspathExample.class.getClassLoader();
         URL url = classLoader.getResource(propertiesFileName);
         if (url == null) {
             throw new IllegalArgumentException("properties file not found on classpath: " + propertiesFileName);

@@ -11,8 +11,6 @@ import cz.muni.fi.pv168.hotel.Room;
 import cz.muni.fi.pv168.hotel.RoomManager;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 import javax.swing.ListModel;
@@ -238,7 +236,6 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_roomButtonActionPerformed
 
     private void selectionTabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_selectionTabelMouseClicked
-        // TODO add your handling code here:
         showTextArea.setText("");
 
         PrintSwingWorker printSwingWorker;
@@ -256,11 +253,9 @@ public class MainWindow extends javax.swing.JFrame {
         AddRoom room = new AddRoom(roomManager, (RoomListModel) selectionTabel.getModel());
         room.setVisible(true);
 
-
     }//GEN-LAST:event_addRoomActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        // TODO add your handling code here:
         if (!wasWindowActivatedBefore) {
             addRoom.setVisible(false);
             removeRoom.setVisible(false);
@@ -290,7 +285,6 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_checkoutButtonActionPerformed
 
     private void removeRoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeRoomActionPerformed
-        // TODO add your handling code here:
         int indexOfValue = selectionTabel.getSelectedIndex();
         RemoveRoomSwingWorker removeRoomSwingWorker = new RemoveRoomSwingWorker();
         removeRoomSwingWorker.execute();
@@ -343,6 +337,7 @@ public class MainWindow extends javax.swing.JFrame {
                 return null;
             }
             roomManager.deleteRoom(room);
+            log.error("Room n." + Integer.toString(room.getNumber()) + " was deleted");
             return room;
         }
 
@@ -355,8 +350,7 @@ public class MainWindow extends javax.swing.JFrame {
                 throw new AssertionError("Interrupted", ex);
             } catch (ExecutionException ex) {
                 log.error("Execution exception in RemoveRoomSwingWorker");
-                JOptionPane.showMessageDialog(null, "Error with remmove room.");
-                // zalogovat a eerpr window
+                JOptionPane.showMessageDialog(null, "Error with remove room.");
             }
             if (room != null) {
                 RoomListModel model = (RoomListModel) selectionTabel.getModel();
@@ -486,7 +480,7 @@ public class MainWindow extends javax.swing.JFrame {
         @Override
         protected ResultTextCheckIn doInBackground() throws Exception {
             List<Room> freeRooms = guestManager.freeRooms();
-            if (freeRooms.size() == 0) {
+            if (freeRooms.isEmpty()) {
                 log.info("Rooms are full");
                 return ResultTextCheckIn.ALL_ROOMS_FULL;
             }

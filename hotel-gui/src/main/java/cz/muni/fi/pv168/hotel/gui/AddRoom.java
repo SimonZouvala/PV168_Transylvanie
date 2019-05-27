@@ -10,7 +10,6 @@ import cz.muni.fi.pv168.hotel.RoomManager;
 import cz.muni.fi.pv168.hotel.exception.ServiceFailureException;
 import cz.muni.fi.pv168.hotel.exception.ValidationException;
 import java.util.concurrent.ExecutionException;
-import java.util.logging.Level;
 import javax.swing.JOptionPane;
 import javax.swing.SwingWorker;
 import org.slf4j.Logger;
